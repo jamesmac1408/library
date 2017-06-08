@@ -11,3 +11,9 @@
 
 - Minified JS
 - Autoprefixed + minified CSS
+
+## TODO
+
+- YAML/front-matter for components (title, attributes etc.)
+- Seperate, more detailed demo pages for each component
+- Polyfills (big TODO)
