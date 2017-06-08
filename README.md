@@ -9,5 +9,5 @@
 
 ## Current features
 
-- minified JS
+- Minified JS
 - Autoprefixed + minified CSS
