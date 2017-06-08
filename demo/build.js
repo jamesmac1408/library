@@ -4,7 +4,7 @@ const path = require('path')
 const componentDirs = fs.readdirSync('components').filter((f) => fs.statSync(path.join('components', f)).isDirectory());
 
 const header = fs.readFileSync(path.join('demo', 'partials', 'header.html'), 'utf8');
-const footer = fs.readFileSync(path.join('demo', 'partials', 'header.html'), 'utf8');
+const footer = fs.readFileSync(path.join('demo', 'partials', 'footer.html'), 'utf8');
 
 let html = header;
 
