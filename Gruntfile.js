@@ -11,6 +11,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     postcss: {
       options: {
         map: false, 
@@ -23,6 +24,7 @@ module.exports = function(grunt) {
         src: 'dist/main.css'
       }
     },
+
     uglify: {
       options: {
         
@@ -33,11 +35,44 @@ module.exports = function(grunt) {
         }
       }
     },
+
     execute: {
         target: {
             src: ['demo/build.js']
         }
-    }
+    },
+
+    connect: {
+			server: {
+				options: {
+					livereload: '9090',
+          hostname: 'localhost',
+					base: '.',
+					port: 8080
+				}
+			}
+		},
+
+		watch: {
+      options: {
+        livereload: {
+          host: 'localhost',
+          port: 9090
+        }
+      },
+			sass: {
+				files: '<%= sass.dist.files["dist/main.css"] %>',
+				tasks: ['sass', 'postcss']
+			},
+			js: {
+				files: '<%= uglify.dist.files["dist/main.js"] %>',
+				tasks: ['uglify']
+			},
+      html: {
+        files: 'components/**/demo/**/*',
+        tasks: ['execute']
+      }
+		},
   });
 
 
@@ -45,7 +80,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-execute');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.registerTask('default', ['sass', 'postcss', 'uglify', 'execute']);
+  grunt.registerTask('serve', ['sass', 'postcss', 'uglify', 'execute', 'connect', 'watch']);
 
 };
