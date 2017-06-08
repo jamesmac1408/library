@@ -68,8 +68,8 @@ module.exports = function(grunt) {
 				files: '<%= uglify.dist.files["dist/main.js"] %>',
 				tasks: ['uglify']
 			},
-      html: {
-        files: 'components/**/demo/**/*',
+      demo: {
+        files: ['components/**/demo/**/*', 'demo/**/*'],
         tasks: ['execute']
       }
 		},
