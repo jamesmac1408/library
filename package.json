@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/sdfrontend/material#readme",
   "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "cssnano": "^3.10.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-uglify": "^3.0.1"
+    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-execute": "^0.2.2",
+    "grunt-postcss": "^0.8.0"
   }
 }
