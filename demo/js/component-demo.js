@@ -30,6 +30,7 @@ class ComponentDemo extends HTMLElement {
     styles.innerHTML = `
       :host {
         display: block;
+        margin: 16px 0;
       }
       .demo-container {
         border-radius: 4px;
@@ -41,12 +42,12 @@ class ComponentDemo extends HTMLElement {
         overflow-x: hidden;
       }
       .demo-code pre {
-        white-space: nowrap;
+        white-space: pre;
         margin: 0;
         padding: 0;
       }
       .demo-code pre code {
-        padding: 16px;
+        background: rgba(224, 230, 237, 0.25);
       }
     `
     styles.innerHTML += ComponentDemo.highlightStyles;
@@ -58,10 +59,7 @@ class ComponentDemo extends HTMLElement {
         <slot name="output"></slot>
       </div>
       <div class="demo-code">
-        <pre>
-          <code>
-          </code>
-        </pre>
+        <pre><code></code></pre>
       </div>
     ` 
 
