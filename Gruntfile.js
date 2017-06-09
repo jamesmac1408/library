@@ -1,13 +1,31 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+    concat: {
+      options: {
+      },
+      dist: {
+        src: 'components/**/scss/component.scss',
+        dest: 'dist/main.scss'
+      },
+      demo: {
+        src: ['demo/css/base/base.scss', 'components/**/demo/scss/demo.scss'],
+        dest: 'demo/css/main.scss'
+      }
+    },
+
     sass: {
       dist: {
+        options: {},
+        files: {
+          'dist/main.css': 'dist/main.scss'
+        }
+      },
+      demo: {
         options: {
-
         },
         files: {
-          'dist/main.css': 'components/**/sass/component.scss'
+          'demo/css/main.css': 'demo/css/main.scss'
         }
       }
     },
@@ -22,6 +40,9 @@ module.exports = function(grunt) {
       },
       dist: {
         src: 'dist/main.css'
+      },
+      demo: {
+        src: 'demo/css/main.css'
       }
     },
 
@@ -61,20 +82,19 @@ module.exports = function(grunt) {
         }
       },
 			sass: {
-				files: '<%= sass.dist.files["dist/main.css"] %>',
-				tasks: ['sass', 'postcss']
+				files: ['<%= concat.dist.src %>', '<%= concat.demo.src %>'],
+				tasks: ['concat', 'sass', 'postcss']
 			},
 			js: {
 				files: '<%= uglify.dist.files["dist/main.js"] %>',
 				tasks: ['uglify']
 			},
       demo: {
-        files: ['components/**/demo/**/*', 'demo/**/*'],
+        files: ['components/**/*', 'demo/**/*'],
         tasks: ['execute']
       }
 		},
   });
-
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-postcss');
@@ -82,8 +102,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-execute');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['sass', 'postcss', 'uglify', 'execute']);
-  grunt.registerTask('serve', ['sass', 'postcss', 'uglify', 'execute', 'connect', 'watch']);
+
+  grunt.registerTask('default', ['concat', 'sass', 'postcss', 'uglify', 'execute']);
+  grunt.registerTask('serve', ['concat', 'sass', 'postcss', 'uglify', 'execute', 'connect', 'watch']);
 
 };

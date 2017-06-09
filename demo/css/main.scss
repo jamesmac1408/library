@@ -7,10 +7,10 @@ body {
   margin: 0;
   padding: 0;
   background: #f9f9f9;
+  font-family: 'Lato', sans-serif;
 }
 * {
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
 }
 
 .toolbar {
@@ -19,20 +19,23 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 28px;
 
   background: #212121;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
-.toolbar-icon {
-  float: left;
-  padding-right: 16px;
+.toolbar-row {
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start
 }
-.toolbar-icon svg {
-  fill: white;
+.toolbar-logo {
+  height: 24px;
+  width: 24px;
+  margin-right: 16px;
 }
 .toolbar-title {
-  float: left;
+  flex: 1;
   margin-left: 16px;
   color: #fff;
   font-size: 1.25rem;
@@ -55,4 +58,11 @@ body {
   text-transform: capitalize;
   padding-bottom: 4px;
   border-bottom: 1px solid #EEEEEE;
+}
+
+.paper-demo {
+  display: inline-block;
+  padding: 100px 200px;
+  background: white;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
 }

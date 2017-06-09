@@ -7,6 +7,21 @@
 - README.md: each component contains a README.md file which details how to use the component 
 - Demo folder containing index.html, and demo.js if required.
 
+## Folder structure for each component
+```
+components/
+├── COMPONENT_NAME/ 
+│   ├── demo/
+│   |   ├── index.html
+│   |   └── scss/
+|   |       └── demo.scss
+|   ├── js/
+|   |   └── component.js
+|   ├── scss/
+|   |   └── component.scss
+└── └── README.md
+```
+
 ## Current features
 
 - Minified JS
