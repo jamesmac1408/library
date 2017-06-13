@@ -40,7 +40,7 @@ body {
   align-items: center;
 }
 .header-logo {
-  width: 32px;
+  width: 100px;
 }
 .header-title {
   letter-spacing: 3px;
@@ -55,7 +55,7 @@ body {
 
 .drawer-content {
   flex: 1;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .content-section {
