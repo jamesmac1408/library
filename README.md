@@ -5,16 +5,15 @@
 - Each component contained in a seperate folder within 'components/'
 - 2 sub-folders: JS & SASS containing the component.js and component.scss for that component
 - README.md: each component contains a README.md file which details how to use the component 
-- Demo folder containing index.html (with front-matter), and js/demo.js & scss/demo.scss if required.
+- Demo folder containing demo.txt, and demo.js & demo.scss if required.
 
 ## Folder structure for each component
 ```
 components/
 ├── COMPONENT_NAME/ 
 │   ├── demo/
-│   |   ├── index.html
-│   |   └── scss/
-|   |       └── demo.scss
+│   |   ├── demo.txt
+|   |   └── demo.scss
 |   ├── js/
 |   |   └── component.js
 |   ├── scss/

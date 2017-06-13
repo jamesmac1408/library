@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         dest: 'dist/main.scss'
       },
       demo: {
-        src: ['demo/css/base/base.scss', 'components/**/demo/scss/demo.scss'],
+        src: ['demo/css/base/*.scss', 'components/**/demo/demo.scss'],
         dest: 'demo/css/main.scss'
       }
     },
@@ -103,7 +103,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-concat');
-
 
   grunt.registerTask('default', ['concat', 'sass', 'postcss', 'uglify', 'execute']);
   grunt.registerTask('serve', ['concat', 'sass', 'postcss', 'uglify', 'execute', 'connect', 'watch']);

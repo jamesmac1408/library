@@ -19,7 +19,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "cssnano": "^3.10.0",
-    "front-matter": "^2.1.2",
+    "escape-html": "^1.0.3",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-concat": "^1.0.1",
