@@ -1,39 +1,42 @@
 .btn {
-  display: inline-block;
-  position: relative;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  border-radius: 2px;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: 600;
-  transition: box-shadow 0.2s ease-in-out;
-  outline: none;
-  cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    position: relative;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s ease-in-out;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);    
 }
+
 .btn-raised {
-  background: #00C853;
-  color: #fff;
-  margin: 6px;
-  height: 36px;
-  line-height: 36px;
-  padding: 0 16px;
-  box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
-  transition: all .2s linear;
+    background-color: #00C853;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+    color: #fff;
+    height: 36px;
+    line-height: 36px;
+    margin: 6px;
+    padding: 0 16px;
+    transition: all .2s linear;
 }
+
 .btn-raised:active {
-  background: #00AA46;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    background-color: #00AA46;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
 }
+
 .btn-flat {
-  background: none;
-  color: #000;
-  margin: 6px;
-  height: 36px;
-  line-height: 36px;
-  padding: 0 16px;
+    background: none;
+    color: #000;
+    height: 36px;
+    line-height: 36px;
+    margin: 6px;
+    padding: 0 16px;
 }
