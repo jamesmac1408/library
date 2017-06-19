@@ -2,15 +2,9 @@
 layout: default
 ---
 
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
   
-  <ul class="post-list">
-    {% for component in site.components %}
-      <a href="#{{component.name}}" id={{component.name}}>{{ component.name }}</a>
-      {{ component }}
-    {% endfor %}
-  </ul>
+{% for component in site.components %}
+  <a href="#{{component.name}}" id={{component.name}}>{{ component.name }}</a>
+  {{ component }}
+{% endfor %}
 
-</div>

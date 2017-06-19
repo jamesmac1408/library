@@ -1,42 +1,32 @@
-.btn {
+.btn-primary {
+    padding: 6px 0;
+    width: 100%;
     background: none;
     border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    margin: 0;
     outline: none;
-    padding: 0;
-    position: relative;
-    text-transform: uppercase;
-    transition: box-shadow 0.2s ease-in-out;
+    cursor: pointer;
     -webkit-appearance: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);    
+
+    .btn {
+        height: 48px;
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+        border-radius: 2px;
+        background: #00C853;
+        text-align: center;
+        transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+
+        .btn-text {
+            font-family: 'Lato', sans-serif;
+            color: #fff;
+            line-height: 48px;
+            font-size: 14px;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+        }
+    }
+    .btn:active {
+        background: #00AA46;
+        box-shadow: 0 10px 10px 0 rgba(0,0,0,0.26), 0 14px 28px 0 rgba(0,0,0,0.25);
+    }
 }
 
-.btn-raised {
-    background-color: #00C853;
-    box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
-    color: #fff;
-    height: 36px;
-    line-height: 36px;
-    margin: 6px;
-    padding: 0 16px;
-    transition: all .2s linear;
-}
-
-.btn-raised:active {
-    background-color: #00AA46;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-}
-
-.btn-flat {
-    background: none;
-    color: #000;
-    height: 36px;
-    line-height: 36px;
-    margin: 6px;
-    padding: 0 16px;
-}
