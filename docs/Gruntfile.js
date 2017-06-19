@@ -75,7 +75,7 @@ module.exports = function(grunt) {
 			server: {
 				options: {
 					livereload: '9090',
-          hostname: 'localhost',
+          hostname: 'localhost/material',
 					base: 'docs',
 					port: 4000
 				}
