@@ -9,6 +9,7 @@
 
 ## Folder structure for each component
 
+```
 components/
 ├── COMPONENT_NAME/ 
 │   ├── demo/
@@ -19,6 +20,7 @@ components/
 |   ├── scss/
 |   |   └── component.scss
 └── └── README.md
+```
 
 ## Current features
 
