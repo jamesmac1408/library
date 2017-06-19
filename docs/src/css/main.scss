@@ -1,0 +1,246 @@
+body, html {
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.drawer {
+    border-right: 1px solid #e0e6ed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 300px;
+    width: 30%;
+}
+
+.drawer-header {
+    align-items: center;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+}
+
+.header-logo {
+    width: 100px;
+}
+
+.header-title {
+    color: #8492a6;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin: 12px 0;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.drawer-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.content-section {
+    border-bottom-width: 1px;
+    border-color: #e0e6ed;
+    border-style: solid;
+    border-width: 0px;
+}
+
+.content-section:nth-of-type(1) {
+    border-top-width: 1px;
+}
+
+.content-title--container {
+    padding: 24px;
+}
+
+.content-title--text {
+    font-size: 20px;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.content-title--text::after {
+    background: #FFF;
+    content: '\25BE';
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.content-body {
+    display: none;
+    padding: 0 24px 24px;
+}
+
+.content-section.active .content-title--text::after {
+    transform: rotate(180deg);
+}
+
+.content-section.active .content-body {
+    display: block;
+}
+
+.main {
+    flex: 1;
+    margin-top: 64px;
+    padding: 0 80px;
+}
+
+.component-title {
+    border-bottom: 1px solid #EEE;
+    padding-bottom: 4px;
+    text-transform: capitalize;
+}
+
+.demo-container {
+    border: 1px solid #e0e6ed;
+    border-radius: 4px;
+    margin: 16px 0;
+}
+
+.demo-output {
+    border-bottom: 1px solid #e0e6ed;
+    overflow-x: hidden;
+    padding: 16px;
+}
+
+.demo-code pre {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+}
+
+.demo-code pre code {
+    background: rgba(224, 230, 237, 0.25);
+}
+/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+
+.hljs {
+    background: #F0F0F0;
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+}
+
+
+/* Base color: saturation 0; */
+
+.hljs,
+.hljs-subst {
+    color: #444;
+}
+
+.hljs-comment {
+    color: #888;
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+    font-weight: bold;
+}
+
+
+/* User color: hue: 0 */
+
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+    color: #800;
+}
+
+.hljs-title,
+.hljs-section {
+    color: #800;
+    font-weight: bold;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+    color: #BC6060;
+}
+
+
+/* Language color: hue: 90; */
+
+.hljs-literal {
+    color: #78A960;
+}
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+    color: #397300;
+}
+
+
+/* Meta color: hue: 200 */
+
+.hljs-meta {
+    color: #1f7199;
+}
+
+.hljs-meta-string {
+    color: #4d99bf;
+}
+
+
+/* Misc effects */
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
+
+.paper-demo {
+    background: #FFF;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+    display: inline-block;
+    padding: 100px 200px; 
+}

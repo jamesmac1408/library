@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Posts</h1>
+  
+  <ul class="post-list">
+    {% for component in site.components %}
+      <div>{{ component.name }}</div>
+      {{ component }}
+    {% endfor %}
+  </ul>
+
+</div>
