@@ -8,7 +8,7 @@ layout: default
   
   <ul class="post-list">
     {% for component in site.components %}
-      <div>{{ component.name }}</div>
+      <a href="#{{component.name}}" id={{component.name}}>{{ component.name }}</a>
       {{ component }}
     {% endfor %}
   </ul>

@@ -105,6 +105,20 @@ body {
     display: block;
 }
 
+.components-list {
+    margin: 0;
+    padding: 0;
+
+    .components-list--item {
+        list-style: none;
+
+        a {
+            text-decoration: none;
+            color: green;
+        }
+    }
+}
+
 .main {
     flex: 1;
     margin-top: 64px;
@@ -147,152 +161,9 @@ body {
     }
 }
 
-/*
-
-Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
-
-*/
-
-.hljs {
-    background: #F0F0F0;
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
-}
-
-
-/* Base color: saturation 0; */
-
-.hljs,
-.hljs-subst {
-    color: #444;
-}
-
-.hljs-comment {
-    color: #888;
-}
-
-.hljs-keyword,
-.hljs-attribute,
-.hljs-selector-tag,
-.hljs-meta-keyword,
-.hljs-doctag,
-.hljs-name {
-    font-weight: bold;
-}
-
-
-/* User color: hue: 0 */
-
-.hljs-type,
-.hljs-string,
-.hljs-number,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-quote,
-.hljs-template-tag,
-.hljs-deletion {
-    color: #800;
-}
-
-.hljs-title,
-.hljs-section {
-    color: #800;
-    font-weight: bold;
-}
-
-.hljs-regexp,
-.hljs-symbol,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-link,
-.hljs-selector-attr,
-.hljs-selector-pseudo {
-    color: #BC6060;
-}
-
-
-/* Language color: hue: 90; */
-
-.hljs-literal {
-    color: #78A960;
-}
-
-.hljs-built_in,
-.hljs-bullet,
-.hljs-code,
-.hljs-addition {
-    color: #397300;
-}
-
-
-/* Meta color: hue: 200 */
-
-.hljs-meta {
-    color: #1f7199;
-}
-
-.hljs-meta-string {
-    color: #4d99bf;
-}
-
-
-/* Misc effects */
-
-.hljs-emphasis {
-    font-style: italic;
-}
-
-.hljs-strong {
-    font-weight: bold;
-}
-
 .paper-demo {
     background: #FFF;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
     display: inline-block;
     padding: 100px 200px; 
-}
-
-.btn {
-    background: none;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    margin: 0;
-    outline: none;
-    padding: 0;
-    position: relative;
-    text-transform: uppercase;
-    transition: box-shadow 0.2s ease-in-out;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);    
-}
-
-.btn-raised {
-    background-color: #00C853;
-    box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
-    color: #fff;
-    height: 36px;
-    line-height: 36px;
-    margin: 6px;
-    padding: 0 16px;
-    transition: all .2s linear;
-}
-
-.btn-raised:active {
-    background-color: #00AA46;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-}
-
-.btn-flat {
-    background: none;
-    color: #000;
-    height: 36px;
-    line-height: 36px;
-    margin: 6px;
-    padding: 0 16px;
 }

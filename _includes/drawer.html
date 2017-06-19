@@ -24,7 +24,13 @@
                 <h2 class="content-title--text">Components</h1>
             </div>
             <div class="content-body">
-                components list
+                <ul class="components-list">
+                    {% for component in site.components %}
+                    <li class="components-list--item">
+                        <a href="#{{component.name}}">{{ component.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
 

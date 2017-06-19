@@ -9,8 +9,8 @@ module.exports = function(grunt) {
         dest: 'assets/scss/main.scss'
       },
       demo: {
-        src: ['assets/demo-site/src/demo-site-styles.scss', '_components/**/demo/demo.scss', '_components/**/scss/component.scss'],
-        dest: 'assets/demo-site/dist/scss/demo-site-styles.scss'
+        src: ['assets/demo-site/src/demo-site-styles.scss', '_components/**/demo/demo.scss'],
+        dest: 'assets/demo-site/dist/scss/styles.scss'
       }
     },
 
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         options: {
         },
         files: {
-          'assets/demo-site/dist/css/demo-site-styles.css': 'assets/demo-site/dist/scss/demo-site-styles.scss'
+          'assets/demo-site/dist/css/styles.css': 'assets/demo-site/dist/scss/styles.scss'
         }
       }
     },
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         src: 'assets/css/main.css'
       },
       demo: {
-        src: 'assets/demo-site/dist/css/demo-site-styles.css'
+        src: 'assets/demo-site/dist/css/styles.css'
       }
     },
 
@@ -53,6 +53,11 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'assets/js/main.js': ['_components/**/js/component.js']
+        }
+      },
+      demo: {
+        files: {
+          'assets/demo-site/dist/js/main.js': ['_components/**/demo/demo.js']
         }
       }
     },

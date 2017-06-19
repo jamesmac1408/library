@@ -10,6 +10,7 @@ collections:
     output:   true
 
 # Handling Reading
+title:                "Shop Direct Component Library"
 safe:                 false
 include:              [".htaccess"]
 exclude:              ["Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/", "gruntfile.js", "package-lock.json", "package.json", "assets/scss"]

@@ -6,15 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title></title>
+  <title>Shop Direct Component Library</title>
   <meta name="description" content="">
 
   <link rel="shortcut icon" href="/assets/demo-site/dist/images/favicon.png" type="image/x-icon">
 
-  <link rel="stylesheet" href="/assets/demo-site/dist/css/demo-site-styles.css">
+  <link rel="stylesheet" href="/assets/demo-site/dist/css/styles.css">
+  <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="/assets/demo-site/dist/css/syntax.css">
   <link rel="canonical" href="/assets/demo-site/dist/">
-  <link rel="alternate" type="application/rss+xml" title="" href="/assets/demo-site/dist/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Shop Direct Component Library" href="/assets/demo-site/dist/feed.xml">
   
   
 </head>
@@ -50,7 +51,17 @@
                 <h2 class="content-title--text">Components</h1>
             </div>
             <div class="content-body">
-                components list
+                <ul class="components-list">
+                    
+                    <li class="components-list--item">
+                        <a href="#Button">Button</a>
+                    </li>
+                    
+                    <li class="components-list--item">
+                        <a href="#Ripple">Ripple</a>
+                    </li>
+                    
+                </ul>
             </div>
         </div>
 
@@ -66,8 +77,10 @@
   
   <ul class="post-list">
     
-      <div>Button</div>
-      <div class="demo-container">
+      <a href="#Button" id=Button>Button</a>
+      <h1 id="button-demos">BUTTON DEMOS</h1>
+
+<div class="demo-container">
 <div class="demo-output">
 <div class="btn btn-raised">Button</div>
 <div class="btn btn-flat">Button</div>
@@ -79,17 +92,9 @@
 </div>
 </div>
 
-<!--<div class="demo-container">
-<div class="btn btn-raised">Some other demo</div>
-</div>
-
-<div class="demo-code">{% highlight html %}
-    <div class="btn btn-raised">Some other demo</div>
-{% endhighlight %}</div>-->
-
 
     
-      <div>Ripple</div>
+      <a href="#Ripple" id=Ripple>Ripple</a>
       <!--<div class="demo-container">
     "demo":
     <div class="paper-demo">demo</div>
@@ -111,14 +116,14 @@
 
   <!--<div class="wrapper">
 
-    <h2 class="footer-heading"></h2>
+    <h2 class="footer-heading">Shop Direct Component Library</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>
             
-              
+              Shop Direct Component Library
             
             </li>
             
@@ -141,6 +146,7 @@
   </div>-->
 
 </footer>
+<script src="/assets/demo-site/dist/js/main.js"></script>
 
 
     </div>
