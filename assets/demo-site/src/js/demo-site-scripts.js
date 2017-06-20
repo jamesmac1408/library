@@ -36,6 +36,7 @@ function Drawer(el) {
   }
 
   this._onBodyClick = function(evt) {
+    console.log('body click');
     if (!this.active) {
       return;
     }
@@ -60,4 +61,3 @@ headerIcon.addEventListener('click', function() {
   drawer.toggle();
 });
 
-console.log('watch');
