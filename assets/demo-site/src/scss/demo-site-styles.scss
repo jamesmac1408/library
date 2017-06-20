@@ -220,10 +220,8 @@ body {
             background: rgba(255,255,255,0.2);
         }
         .header-title {
-            margin-left: 24px;
-            text-transform: capitalize;
-            font-size: 18px;
-            font-weight: 300;
+             @include title();
+            margin-left: 16px;
             color: $primary-1-text;
         }
     }
@@ -248,6 +246,8 @@ body {
 }
 
 .main {
+    position: relative;
+    z-index: 99;
     flex: 1;
     padding: 40px;
     overflow-y: scroll;
@@ -280,13 +280,14 @@ body {
         flex-direction: row;
         align-items: center;
         padding: 16px;
-        background: $primary-2;
+        background: $primary-1;
 
         svg {
-            margin-right: 12px;
+            margin: 0 8px;
             fill: $primary-2-text;
         }
         span {
+            margin-left: 16px;
             color: $primary-2-text;
             @include title();
         }

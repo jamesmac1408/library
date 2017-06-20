@@ -168,10 +168,10 @@ body {
     .header .header-leftContent .header-icon:hover, .header .header-leftContent .header-icon.active {
       background: rgba(255, 255, 255, 0.2); }
     .header .header-leftContent .header-title {
-      margin-left: 24px;
-      text-transform: capitalize;
-      font-size: 18px;
-      font-weight: 300;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      margin-left: 16px;
       color: #fff; }
   .header .logo-container {
     height: 100%;
@@ -188,6 +188,8 @@ body {
   overflow: hidden; }
 
 .main {
+  position: relative;
+  z-index: 99;
   flex: 1;
   padding: 40px;
   overflow-y: scroll;
@@ -214,11 +216,12 @@ body {
     flex-direction: row;
     align-items: center;
     padding: 16px;
-    background: #37474F; }
+    background: #263238; }
     .component .component-title svg {
-      margin-right: 12px;
+      margin: 0 8px;
       fill: #fff; }
     .component .component-title span {
+      margin-left: 16px;
       color: #fff;
       font-size: 16px;
       font-weight: 700;
