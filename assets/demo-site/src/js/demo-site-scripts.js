@@ -18,7 +18,7 @@ function Drawer(el) {
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
         self.drawerContainer.classList.add('active');
-        document.body.addEventListener('click', self._onBodyClick);
+        document.body.addEventListener('touchstart', self._onBodyClick);
       });
     });
   }
@@ -30,7 +30,7 @@ function Drawer(el) {
   }
 
   this._hideDrawer = function() {
-    document.body.removeEventListener('click', this._onBodyClick);
+    document.body.removeEventListener('touchstart', this._onBodyClick);
     this.drawerContainer.classList.remove('active');
     this.drawerContainer.addEventListener('transitionend', this._removeDrawer);
   }
