@@ -18,7 +18,7 @@ function Drawer(el) {
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
         self.drawerContainer.classList.add('active');
-        document.body.addEventListener('touchstart', self._onBodyClick);
+        document.body.addEventListener('touchend', self._onBodyClick);
       });
     });
   }
@@ -30,13 +30,12 @@ function Drawer(el) {
   }
 
   this._hideDrawer = function() {
-    document.body.removeEventListener('touchstart', this._onBodyClick);
+    document.body.removeEventListener('touchend', this._onBodyClick);
     this.drawerContainer.classList.remove('active');
     this.drawerContainer.addEventListener('transitionend', this._removeDrawer);
   }
 
   this._onBodyClick = function(evt) {
-    console.log('body click');
     if (!this.active) {
       return;
     }
@@ -55,9 +54,44 @@ function Drawer(el) {
   this._init();
 }
 
+function CodeBlock(el) {
+  this.body = el;
+  this.btn = el.querySelector('.demo-code--copy');
+
+  this._addEventListeners = function() {
+
+    this.clipboard.on('success', function(e) {
+        // console.log(e);
+    });
+
+    this.clipboard.on('error', function(e) {
+        throw new Error(e);
+    });
+  }
+
+  this._init = function() {
+    var self = this;
+    this.clipboard = new Clipboard(this.btn, {
+        text: function(trigger) {
+          return self.body.innerText
+        }
+      }
+    );
+
+    this._addEventListeners();
+  }
+
+  this._init();
+}
+
 var headerIcon = document.getElementById('headerIcon');
 var drawer = new Drawer(document.getElementById('drawerContainer'));
 headerIcon.addEventListener('click', function() {
   drawer.toggle();
 });
+
+var codeBlocks = document.querySelectorAll('.demo-code');
+for (var i = 0; i < codeBlocks.length; i += 1) {
+  new CodeBlock(codeBlocks[i]);
+}
 

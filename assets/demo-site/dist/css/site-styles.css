@@ -199,37 +199,61 @@ body {
 .component {
   background: #fff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  padding: 16px;
   margin: 24px; }
   @media (max-width: 768px) {
     .component {
       margin: 24px 0; } }
   .component .component-title {
-    border-bottom: 1px solid #EEE;
-    padding-bottom: 4px;
-    text-transform: capitalize; }
-  .component .demo-container {
-    border: 1px solid #e0e6ed;
-    border-radius: 4px;
-    margin: 16px 0; }
-  .component .demo-output {
-    box-sizing: initial;
-    border-bottom: 1px solid #e0e6ed;
-    overflow-x: hidden;
-    padding: 16px; }
-  .component .demo-code {
+    text-transform: capitalize;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     padding: 16px;
-    background: rgba(224, 230, 237, 0.25); }
-    .component .demo-code figure {
-      margin: 0;
-      background: none; }
-      .component .demo-code figure pre {
+    background: #37474F; }
+    .component .component-title svg {
+      margin-right: 12px;
+      fill: #fff; }
+    .component .component-title span {
+      color: #fff;
+      font-weight: 700;
+      line-height: 24px; }
+  .component .component-body {
+    padding: 16px; }
+    .component .component-body .demo-container {
+      border: 1px solid #e0e6ed;
+      border-radius: 4px;
+      margin: 16px 0; }
+    .component .component-body .demo-output {
+      box-sizing: initial;
+      border-bottom: 1px solid #e0e6ed;
+      overflow-x: hidden;
+      padding: 16px; }
+    .component .component-body .demo-code {
+      position: relative;
+      padding: 16px;
+      background: rgba(224, 230, 237, 0.25); }
+      .component .component-body .demo-code .demo-code--copy {
+        -webkit-appearance: none;
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid #e0e6ed;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        padding: 8px;
+        position: absolute;
+        top: 0;
+        right: 0; }
+      .component .component-body .demo-code figure {
         margin: 0;
-        padding: 0;
-        white-space: pre; }
-        .component .demo-code figure pre code {
-          font-family: consolas;
-          font-size: 14px;
-          line-height: 1.5; }
+        background: none; }
+        .component .component-body .demo-code figure pre {
+          margin: 0;
+          padding: 0;
+          white-space: pre-wrap; }
+          .component .component-body .demo-code figure pre code {
+            font-family: consolas;
+            font-size: 14px;
+            line-height: 1.5; }
 
 /*# sourceMappingURL=site-styles.css.map */
