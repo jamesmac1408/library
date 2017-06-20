@@ -18,8 +18,7 @@ module.exports = function(grunt) {
         }
       },
       demo: {
-        options: {
-        },
+        options: {},
         files: {
           'assets/demo-site/dist/css/site-styles.css': 'assets/demo-site/src/scss/*',
           'assets/demo-site/dist/css/demo-styles.css': '_components/**/demo/demo.scss'
@@ -45,18 +44,13 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      options: {
-        
-      },
       dist: {
-        files: {
-          'assets/js/main.js': ['_components/**/js/component.js']
-        }
+        src:  ['_components/**/js/component.js'],
+        dest: 'assets/js/main.js'
       },
       demo: {
-        files: {
-          'assets/demo-site/dist/js/main.js': ['_components/**/demo/demo.js', 'assets/demo-site/src/js/*']
-        }
+        src: ['_components/**/demo/demo.js', 'assets/demo-site/src/js/*.js'],
+        dest: 'assets/demo-site/dist/js/main.js'
       }
     },
 
@@ -92,11 +86,11 @@ module.exports = function(grunt) {
 				tasks: ['concat', 'sass', 'postcss', 'jekyll']
 			},
 			js: {
-				files: ['<%= uglify.dist.files["assets/js/main.js"] %>', '<%= uglify.demo.files["assets/demo-site/dist/js/main.js"] %>'],
+				files: ['<%= uglify.dist.src %>', '<%= uglify.demo.src %>'],
 				tasks: ['uglify', 'jekyll']
 			},
       demo: {
-        files: ['demo/**/*', '_components/**/*', '_layouts/**/*', '_includes/**/*', '_plugins/**/*', '_assets/css/*'],
+        files: ['_components/**/scss', '_layouts/**/*', '_includes/**/*', '_plugins/**/*', '_assets/css/*'],
         tasks: ['jekyll']
       }
 		},
