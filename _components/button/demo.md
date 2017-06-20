@@ -24,7 +24,17 @@
 {% code %}
 <button class="btn-wrapper btn-primary">
     <div class="btn">
-        <span class="btn-text">Button</span>
+        <span class="btn-text">...</span>
+    </div>  
+</button>
+{% endcode %}
+{% enddemo %}
+
+{% demo %}
+{% code %}
+<button class="btn-wrapper btn-primary">
+    <div class="btn">
+        <span class="btn-text">...</span>
     </div>  
 </button>
 {% endcode %}
