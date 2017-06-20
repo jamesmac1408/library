@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         options: {
         },
         files: {
-          'assets/demo-site/dist/css/site-styles.css': 'assets/demo-site/src/*',
+          'assets/demo-site/dist/css/site-styles.css': 'assets/demo-site/src/scss/*',
           'assets/demo-site/dist/css/demo-styles.css': '_components/**/demo/demo.scss'
         }
       }
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
       },
       demo: {
         files: {
-          'assets/demo-site/dist/js/main.js': ['_components/**/demo/demo.js']
+          'assets/demo-site/dist/js/main.js': ['_components/**/demo/demo.js', 'assets/demo-site/src/js/*']
         }
       }
     },
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
 				tasks: ['concat', 'sass', 'postcss', 'jekyll']
 			},
 			js: {
-				files: '<%= uglify.dist.files["assets/js/main.js"] %>',
+				files: ['<%= uglify.dist.files["assets/js/main.js"] %>', '<%= uglify.demo.files["assets/demo-site/dist/js/main.js"] %>'],
 				tasks: ['uglify', 'jekyll']
 			},
       demo: {
