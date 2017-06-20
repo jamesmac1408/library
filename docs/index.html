@@ -11,8 +11,13 @@
 
   <link rel="shortcut icon" href="assets/demo-site/dist/images/favicon.png" type="image/x-icon">
 
-  <link rel="stylesheet" href="assets/demo-site/dist/css/styles.css">
+  <!-- Base site styles -->
+  <link rel="stylesheet" href="assets/demo-site/dist/css/site-styles.css">
+  <!-- Styles for each components demo -->
+  <link rel="stylesheet" href="assets/demo-site/dist/css/demo-styles.css">
+  <!-- Compiled component styles (that is used in build) -->
   <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Markdown syntax highlighting styles -->
   <link rel="stylesheet" href="assets/demo-site/dist/css/syntax.css">
 
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -93,7 +98,12 @@
           
   <div class="component">
     <a href="#Primary Button" id=Primary Button>Primary Button</a>
-    <div class="demo-container">
+    <p><strong>The Primary Button should only be used once per screen. 
+It should always be the main call to action that continues or completes the journey.</strong></p>
+
+<p>Transitions between states are animated, using with ease-in-ease-out over 0.3s.</p>
+
+<div class="demo-container">
 <div class="demo-output">
 <div class="col--3">
     <button class="btn-wrapper btn-primary">

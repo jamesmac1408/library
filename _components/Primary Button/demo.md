@@ -3,6 +3,10 @@
 "description": ""
 ---
 
+**The Primary Button should only be used once per screen. 
+It should always be the main call to action that continues or completes the journey.**  
+
+Transitions between states are animated, using with ease-in-ease-out over 0.3s.
 
 {% demo %}
 {% output %}

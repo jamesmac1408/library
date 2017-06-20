@@ -7,10 +7,6 @@ module.exports = function(grunt) {
       dist: {
         src: '_components/**/scss/component.scss',
         dest: 'assets/scss/main.scss'
-      },
-      demo: {
-        src: ['assets/demo-site/src/demo-site-styles.scss', '_components/**/demo/demo.scss'],
-        dest: 'assets/demo-site/dist/scss/styles.scss'
       }
     },
 
@@ -25,7 +21,8 @@ module.exports = function(grunt) {
         options: {
         },
         files: {
-          'assets/demo-site/dist/css/styles.css': 'assets/demo-site/dist/scss/styles.scss'
+          'assets/demo-site/dist/css/site-styles.css': 'assets/demo-site/src/*',
+          'assets/demo-site/dist/css/demo-styles.css': '_components/**/demo/demo.scss'
         }
       }
     },
@@ -42,7 +39,8 @@ module.exports = function(grunt) {
         src: 'assets/css/main.css'
       },
       demo: {
-        src: 'assets/demo-site/dist/css/styles.css'
+        src: 'assets/demo-site/dist/css/site-styles.css',
+        src: 'assets/demo-site/dist/css/demo-styles.css'
       }
     },
 
@@ -90,7 +88,7 @@ module.exports = function(grunt) {
         }
       },
 			sass: {
-				files: ['<%= concat.dist.src %>', '<%= concat.demo.src %>'],
+				files: ['<%= concat.dist.src %>', '<%= sass.demo.files["assets/demo-site/dist/css/site-styles.css"] %>', '<%= sass.demo.files["assets/demo-site/dist/css/demo-styles.css"] %>'],
 				tasks: ['concat', 'sass', 'postcss', 'jekyll']
 			},
 			js: {
