@@ -4,7 +4,9 @@ layout: default
 
   
 {% for component in site.components %}
-  <a href="#{{component.name}}" id={{component.name}}>{{ component.name }}</a>
-  {{ component }}
+  <div class="component">
+    <a href="#{{component.name}}" id={{component.name}}>{{ component.name }}</a>
+    {{ component }}
+  </div>
 {% endfor %}
 

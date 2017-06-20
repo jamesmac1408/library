@@ -1,5 +1,5 @@
 ---
-"name": "Button"
+"name": "Primary Button"
 "description": ""
 ---
 
@@ -39,4 +39,3 @@
 </button>
 {% endcode %}
 {% enddemo %}
-
