@@ -1,4 +1,5 @@
 @import 'theme';
+@import 'typography';
 
 body, html {
     min-height: 100vh;
@@ -8,6 +9,7 @@ body, html {
 
 body {
     font-family: 'Lato', sans-serif;
+    font-size: 14px;
     margin: 0;
     padding: 0;
     display: flex;
@@ -125,10 +127,8 @@ body {
         }
 
         .content-title--text {
+            @include subheading();
             color: $sub-header;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 14px;
             margin: 0;
             overflow: hidden;
             position: relative;
@@ -168,10 +168,10 @@ body {
                 list-style: none;
 
                 a {
+                    @include body-1();
                     display: block;
-                    padding: 12px 16px;
+                    padding: 8px 16px;
                     text-decoration: none;
-                    font-size: 14px;
                     color: $primary-1-text;
                 }
             }
@@ -256,7 +256,7 @@ body {
     background: $body-bg;
 
     @media (max-width: $screen-mob-max) {
-        padding: 16px 0;
+        padding: 0;
     }
 }
 
@@ -268,9 +268,13 @@ body {
     @media (max-width: $screen-mob-max) {
         margin: 24px 0;
     }
+    &:nth-child(1) {
+        @media (max-width: $screen-mob-max) {
+            margin-top: 0;
+        }
+    }
 
     .component-title {
-        text-transform: capitalize;
         text-decoration: none;
         display: flex;
         flex-direction: row;
@@ -284,8 +288,7 @@ body {
         }
         span {
             color: $primary-2-text;
-            font-weight: 700;
-            line-height: 24px;
+            @include title();
         }
     }
 
@@ -334,11 +337,27 @@ body {
 
                     code {
                         font-family: consolas;
-                        font-size: 14px;
+                        @include body-1();
                         line-height: 1.5;
                     }
                 }
             }
+        }
+
+        h1 {
+            @include display-1();
+        }
+        h2 {
+            @include display-2();
+        }
+        h3 {
+            @include display-3();
+        }
+        h4 {
+            @include display-4();
+        }
+        p {
+             @include body-1();
         }
     }
 }

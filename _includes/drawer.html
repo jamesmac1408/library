@@ -29,7 +29,7 @@
                     <ul class="components-list">
                         {% for component in site.components %}
                         <li class="components-list--item">
-                            <a href="#{{component.name}}">{{ component.name }}</a>
+                            <a href="#{{component.name | cgi_escape }}">{{ component.name }}</a>
                         </li>
                         {% endfor %}
                     </ul>

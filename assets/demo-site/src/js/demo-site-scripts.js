@@ -1,3 +1,7 @@
+/*
+  ============ Drawer ============
+*/
+
 function Drawer(el) {
   this.drawerContainer = el;
   this.drawer = el.querySelector('.drawer');
@@ -30,6 +34,10 @@ function Drawer(el) {
   }
 
   this._hideDrawer = function() {
+    if (!this.active) {
+      return;
+    }
+
     document.body.removeEventListener('touchend', this._onBodyClick);
     this.drawerContainer.classList.remove('active');
     this.drawerContainer.addEventListener('transitionend', this._removeDrawer);
@@ -45,14 +53,28 @@ function Drawer(el) {
     }
   }
 
+  this._addEventListeners = function() {
+    /* close drawer on clicking a link */
+    var links = this.drawer.querySelectorAll('.components-list--item > a');
+    for (var i = 0; i < links.length; i += 1) {
+      links[i].addEventListener('click', this._hideDrawer);
+    }
+  }
 
   this._init = function() {
     this._onBodyClick = this._onBodyClick.bind(this);
+    this._hideDrawer = this._hideDrawer.bind(this);
     this._removeDrawer = this._removeDrawer.bind(this);
+
+    this._addEventListeners();
   }
 
   this._init();
 }
+
+/*
+  ============ Code Block ============
+*/
 
 function CodeBlock(el) {
   this.body = el;
@@ -83,6 +105,11 @@ function CodeBlock(el) {
 
   this._init();
 }
+
+
+/*
+  ============ Initialisation ============
+*/
 
 var headerIcon = document.getElementById('headerIcon');
 var drawer = new Drawer(document.getElementById('drawerContainer'));

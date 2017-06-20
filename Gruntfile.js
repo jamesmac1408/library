@@ -90,7 +90,7 @@ module.exports = function(grunt) {
 				tasks: ['uglify', 'jekyll']
 			},
       demo: {
-        files: ['_components/**/scss', '_layouts/**/*', '_includes/**/*', '_plugins/**/*', '_assets/css/*'],
+        files: ['_components/**/demo.md', '_layouts/**/*', '_includes/**/*', '_plugins/**/*', '_assets/css/*'],
         tasks: ['jekyll']
       }
 		},
