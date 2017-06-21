@@ -23,7 +23,7 @@
                     <ul class="collection-list">
                         {% for component in site.design %}
                         <li class="collection-listItem">
-                            <a href="/design/#{{component.name | cgi_escape }}">{{ component.name }}</a>
+                            <a href="{{ site.baseurl }}/design/#{{component.name | cgi_escape }}">{{ component.name }}</a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -37,7 +37,7 @@
                     <ul class="collection-list">
                         {% for component in site.components %}
                         <li class="collection-listItem">
-                            <a href="/components/#{{component.name | cgi_escape }}">{{ component.name }}</a>
+                            <a href="{{ site.baseurl }}/components/#{{component.name | cgi_escape }}">{{ component.name }}</a>
                         </li>
                         {% endfor %}
                     </ul>
