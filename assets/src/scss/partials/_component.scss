@@ -103,7 +103,7 @@
                         white-space: pre-wrap;
 
                         code {
-                            font-family: consolas;
+                            font-family: 'Roboto Mono', monospace;
                             @include body-1();
                             line-height: 1.5;
                         }

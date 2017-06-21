@@ -244,7 +244,7 @@
             padding: 0;
             white-space: pre-wrap; }
             .component .component-body .demo-container .demo-code figure pre code {
-              font-family: consolas;
+              font-family: 'Roboto Mono', monospace;
               font-size: 14px;
               letter-spacing: 0.56px;
               line-height: 1.5; }
