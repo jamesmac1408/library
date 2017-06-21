@@ -219,13 +219,17 @@ body {
     background: #263238; }
     .component .component-title svg {
       margin: 0 8px;
-      fill: #fff; }
+      fill: #fff;
+      fill-opacity: 0.2;
+      transition: fill-opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .component .component-title span {
       margin-left: 16px;
       color: #fff;
       font-size: 16px;
       font-weight: 700;
       line-height: 24px; }
+    .component .component-title:hover svg {
+      fill-opacity: 1; }
   .component .component-body {
     padding: 16px; }
     .component .component-body .demo-container {
@@ -244,13 +248,13 @@ body {
       .component .component-body .demo-code .demo-code--copy {
         -webkit-appearance: none;
         cursor: pointer;
-        background: #fff;
-        border: 1px solid #e0e6ed;
-        border-top-width: 0px;
-        border-right-width: 0px;
+        background: transparent;
+        border: 0;
+        opacity: 0.2;
         padding: 8px;
         position: absolute;
         top: 0;
+        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         right: 0; }
       .component .component-body .demo-code figure {
         margin: 0;
@@ -264,6 +268,8 @@ body {
             font-size: 14px;
             letter-spacing: 0.56px;
             line-height: 1.5; }
+      .component .component-body .demo-code:hover .demo-code--copy {
+        opacity: 1; }
     .component .component-body h1 {
       font-weight: 300;
       font-size: 2em; }

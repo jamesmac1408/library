@@ -285,11 +285,17 @@ body {
         svg {
             margin: 0 8px;
             fill: $primary-2-text;
+            fill-opacity: 0.2;
+            transition: fill-opacity 0.3s $nice-easing;
         }
         span {
             margin-left: 16px;
             color: $primary-2-text;
             @include title();
+        }
+
+        &:hover svg {
+            fill-opacity: 1;
         }
     }
 
@@ -317,13 +323,13 @@ body {
             .demo-code--copy {
                 -webkit-appearance: none;
                 cursor: pointer;
-                background: #fff;
-                border: 1px solid #e0e6ed;
-                border-top-width: 0px;
-                border-right-width: 0px;
+                background:transparent;
+                border: 0;
+                opacity: 0.2;
                 padding: 8px;
                 position: absolute;
                 top: 0;
+                transition: opacity 0.3s $nice-easing;
                 right: 0;
             }
 
@@ -342,6 +348,10 @@ body {
                         line-height: 1.5;
                     }
                 }
+            }
+
+            &:hover .demo-code--copy {
+                opacity: 1;
             }
         }
 
