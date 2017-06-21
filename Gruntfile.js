@@ -122,12 +122,17 @@ module.exports = function(grunt) {
     },
 
     jekyll: {
-      options: {
-        bundleExec: true
+      dev: {
+          options: {
+              config: '_config.yml',
+              raw: 'baseurl: ""'
+          }
       },
       dist: {
-        options: {}
-      }
+        options: {
+            config: '_config.yml'
+        }
+    }
     },
 
     connect: {
@@ -151,15 +156,15 @@ module.exports = function(grunt) {
 			sass: {
 				files: ['assets/src/scss/**/*', '_components/**/demo/demo.scss', 
                   '_design/**/scss/component.scss', '_components/**/scss/component.scss'],
-				tasks: ['sass', 'concat', 'postcss', 'jekyll']
+				tasks: ['sass', 'concat', 'postcss', 'jekyll:dev']
 			},
 			js: {
 				files: ['<%= uglify.dist.src %>', '<%= uglify.demo.src %>'],
-				tasks: ['uglify', 'jekyll']
+				tasks: ['uglify', 'jekyll:dev']
 			},
       demo: {
         files: ['_components/**/demo.md', '_design/**/demo.md', '_layouts/**/*', '_includes/**/*', '_plugins/**/*', '_assets/css/*'],
-        tasks: ['jekyll']
+        tasks: ['jekyll:dev']
       }
 		},
   });
@@ -172,7 +177,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['sass', 'concat', 'postcss', 'uglify', 'jekyll']);
-  grunt.registerTask('serve', ['sass', 'concat' ,'postcss', 'uglify', 'jekyll', 'connect', 'watch']);
+  grunt.registerTask('default', ['sass', 'concat', 'postcss', 'uglify', 'jekyll:dist']);
+  grunt.registerTask('serve', ['sass', 'concat' ,'postcss', 'uglify', 'jekyll:dev', 'connect', 'watch']);
 
 };

@@ -164,7 +164,13 @@
           text-decoration: none;
           color: #fff; }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 .component {
+  animation: fadeIn 0.3s 1;
   background: #fff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   margin: 24px; }
