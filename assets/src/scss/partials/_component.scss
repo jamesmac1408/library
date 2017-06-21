@@ -11,18 +11,13 @@
 }
 
 .component {
-    animation: fadeIn 0.3s 1;
+    animation: fadeIn 0.5s 1;
     background: #fff;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
-    margin: 24px;
+    margin: 0 0 40px 0;
 
     @media (max-width: $screen-mob-max) {
-        margin: 24px 0;
-    }
-    &:nth-child(1) {
-        @media (max-width: $screen-mob-max) {
-            margin-top: 0;
-        }
+        margin: 0 0 20px 0;
     }
 
     .component-title {
@@ -80,6 +75,14 @@
                     position: absolute;
                     top: 0;
                     right: 0;
+
+                    svg {
+                        fill-opacity: 0.5;
+                        transition: fill-opacity 0.3s $nice-easing;
+                    }
+                    &:hover svg {
+                        fill-opacity: 1;
+                    }
                 }
 
                 figure {
