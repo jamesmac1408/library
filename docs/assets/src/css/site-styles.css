@@ -186,21 +186,20 @@
       fill: #fff;
       fill-opacity: 0.2;
       transition: fill-opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .component .component-title:hover svg {
+      fill-opacity: 1; }
     .component .component-title span {
       margin-left: 16px;
       color: #fff;
       font-size: 16px;
       font-weight: 700;
       line-height: 24px; }
-    .component .component-title:hover svg {
-      fill-opacity: 1; }
   .component .component-body {
     padding: 16px; }
     .component .component-body .demo-container {
       border: 1px solid #e0e6ed;
       border-radius: 4px;
       margin: 16px 0; }
-<<<<<<< HEAD:assets/src/css/site-styles.css
       .component .component-body .demo-container .demo-output {
         box-sizing: initial;
         border-bottom: 1px solid #e0e6ed;
@@ -234,43 +233,6 @@
               letter-spacing: 0.56px;
               line-height: 1.5; }
     .component .component-body:not(.demo-container) > h1 {
-=======
-    .component .component-body .demo-output {
-      box-sizing: initial;
-      border-bottom: 1px solid #e0e6ed;
-      overflow-x: hidden;
-      padding: 16px; }
-    .component .component-body .demo-code {
-      position: relative;
-      padding: 16px;
-      background: rgba(224, 230, 237, 0.25); }
-      .component .component-body .demo-code .demo-code--copy {
-        -webkit-appearance: none;
-        cursor: pointer;
-        background: transparent;
-        border: 0;
-        opacity: 0.2;
-        padding: 8px;
-        position: absolute;
-        top: 0;
-        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        right: 0; }
-      .component .component-body .demo-code figure {
-        margin: 0;
-        background: none; }
-        .component .component-body .demo-code figure pre {
-          margin: 0;
-          padding: 0;
-          white-space: pre-wrap; }
-          .component .component-body .demo-code figure pre code {
-            font-family: consolas;
-            font-size: 14px;
-            letter-spacing: 0.56px;
-            line-height: 1.5; }
-      .component .component-body .demo-code:hover .demo-code--copy {
-        opacity: 1; }
-    .component .component-body h1 {
->>>>>>> origin/master:assets/demo-site/dist/css/site-styles.css
       font-weight: 300;
       font-size: 2em; }
     .component .component-body:not(.demo-container) > h2 {

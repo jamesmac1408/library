@@ -26,6 +26,11 @@
         svg {
             margin: 0 8px;
             fill: $primary-2-text;
+            fill-opacity: 0.2;
+            transition: fill-opacity 0.3s $nice-easing;
+        }
+        &:hover svg {
+            fill-opacity: 1;
         }
         span {
             margin-left: 16px;

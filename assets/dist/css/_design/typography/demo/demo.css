@@ -1,24 +1,24 @@
-.heading-1 {
+.el-1 {
   font-size: 20px;
   font-weight: 700;
   line-height: 28px; }
 
-.heading-2 {
+.el-2 {
   font-size: 20px;
   font-weight: 700;
   line-height: 28px; }
 
-.heading-3 {
+.el-3 {
   font-size: 16px;
   font-weight: 700;
   line-height: 20px; }
 
-.body {
+.el-4 {
   font-size: 14px;
   font-weight: 400;
   line-height: 20px; }
 
-.meta {
+.el-5 {
   font-size: 12px;
   font-weight: 400;
   line-height: 18px; }
