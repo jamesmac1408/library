@@ -216,10 +216,8 @@
         .component .component-body .demo-container .demo-code .demo-code--copy {
           -webkit-appearance: none;
           cursor: pointer;
-          background: #fff;
-          border: 1px solid #e0e6ed;
-          border-top-width: 0px;
-          border-right-width: 0px;
+          background: transparent;
+          border: 0;
           padding: 8px;
           position: absolute;
           top: 0;
@@ -228,7 +226,7 @@
             .component .component-body .demo-container .demo-code .demo-code--copy {
               display: none; } }
           .component .component-body .demo-container .demo-code .demo-code--copy svg {
-            fill-opacity: 0.5;
+            fill-opacity: 0.3;
             transition: fill-opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
           .component .component-body .demo-container .demo-code .demo-code--copy:hover svg {
             fill-opacity: 1; }
