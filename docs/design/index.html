@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Shop Direct Component Library</title>
+  <meta name="description" content="">
+
+  <link rel="shortcut icon" href="/assets/dist/images/favicon_dark.png" type="image/x-icon">
+
+  <!-- Base site styles -->
+  <link rel="stylesheet" href="/assets/dist/css/main.css">
+  <!-- Compiled component styles (that is used in build) -->
+  <link rel="stylesheet" href="/dist/css/main.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+
+   <link rel="canonical" href="/assets/dist/design/">
+  <link rel="alternate" type="application/rss+xml" title="Shop Direct Component Library" href="/assets/dist/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <aside class="drawer-container" id="drawerContainer">
+    <div class="drawer">
+        <div class="drawer-header">
+            <img class="header-logo" src="/assets/dist/images/logo_dark.png">
+            <h1 class="header-text">
+                Component Library
+            </h1>
+        </div>
+
+        <div class="drawer-content">
+            
+            <div class="content-section">
+                <a class="content-titleContainer" href="/">
+                    <h2 class="content-titleText">Overview</h1>
+                </a>
+            </div>
+
+            <div class="content-section active">
+                <a class="content-titleContainer" href="/design/">
+                    <h2 class="content-titleText">Design</h1>
+                </a>
+                <div class="content-body">
+                    <ul class="collection-list">
+                        
+                        <li class="collection-listItem">
+                            <a href="/design/#Typography">Typography</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="content-section active">
+                <a class="content-titleContainer" href="/components/">
+                    <h2 class="content-titleText">Components</h1>
+                </a>
+                <div class="content-body">
+                    <ul class="collection-list">
+                        
+                        <li class="collection-listItem">
+                            <a href="/components/#Primary+Button">Primary Button</a>
+                        </li>
+                        
+                        <li class="collection-listItem">
+                            <a href="/components/#Secondary+Button">Secondary Button</a>
+                        </li>
+                        
+                        <li class="collection-listItem">
+                            <a href="/components/#Card">Card</a>
+                        </li>
+                        
+                        <li class="collection-listItem">
+                            <a href="/components/#Ripple">Ripple</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</aside>
+
+    <div class="page-container">
+      
+      <header class="header">
+  <div class="header-leftContent">
+    <button class="header-icon" id="headerIcon">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+      </svg>
+    </button>
+    <h1 class="header-title">
+      Some Title
+    </h1>
+  </div>
+  <div class="logo-container">
+    <!--<img class="header-logo" src="assets/dist/images/favicon.png">-->
+  </div>
+</header>
+
+      <main class="main" aria-label="Content">
+        <div class="wrapper">
+          
+  
+
+<div class="component">
+  <a class="component-title" href="#Typography" id="Typography">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+    </svg>
+    <span>Typography</span>
+  </a>
+  <div class="component-body">
+    <h1 id="typography">Typography</h1>
+
+<p>Typography is set via scss mixins</p>
+
+<h2 id="heading-1">Heading 1</h2>
+
+<div class="demo-container">
+<div class="demo-output">
+<h1 class="el-1">Heading 1</h1>
+</div>
+<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">heading-1</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+</div>
+</div>
+
+<h2 id="heading-2">Heading 2</h2>
+
+<div class="demo-container">
+<div class="demo-output">
+<h2 class="el-2">Heading 2</h2>
+</div>
+<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">heading-2</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+</div>
+</div>
+
+<h2 id="heading-3">Heading 3</h2>
+
+<div class="demo-container">
+<div class="demo-output">
+<h3 class="el-3">Heading 3</h3>
+</div>
+<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">heading-3</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+</div>
+</div>
+
+<h2 id="body">Body</h2>
+
+<div class="demo-container">
+<div class="demo-output">
+<p class="el-4">
+  You’ll find soft leather sofas, clean and contemporary cabinets and charming coffee tables in our range of living room furniture. Kit out your lounge in style with traditional bookshelves to display your favourite page-turners or a gorgeous wooden sideboard to store your DVDs. Choose from on-trend, highly functional furniture, decorative lamps, and super-comfy bean bags with our huge collection. And with some of the very best interior design brands on offer, including Catherine Lansfield, Graham &amp; Brown and pieces from top celebrity designers like Fearne Cotton, there’s bound to be something to suit your taste.
+</p>
+</div>
+<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">body</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+</div>
+</div>
+
+<h2 id="meta">Meta</h2>
+
+<div class="demo-container">
+<div class="demo-output">
+<p class="el-5">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+</p>
+</div>
+<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">meta</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+</div>
+</div>
+
+
+  </div>
+</div>
+
+
+
+        </div>
+      </main>
+
+    </div>
+
+    <!-- Demo site specific scripts -->
+<script src="/assets/dist/js/main.js"></script>
+<!-- Compiled component scripts (for use in build) -->
+<script src="/dist/js/main.js"></script>
+
+
+
+
+  </body>
+
+</html>

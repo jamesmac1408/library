@@ -1,32 +1,96 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+
     concat: {
       options: {
       },
+      demo: {
+        options: {
+          sourceMap: true
+        },
+        src: ['assets/src/css/*.css', 'assets/dist/css/_components/**/*.css', 'assets/dist/css/_design/**/*.css', 'assets/src/css/site-styles.css'],
+        dest: 'assets/dist/css/main.css'
+      },
       dist: {
-        src: '_components/**/scss/component.scss',
-        dest: 'assets/scss/main.scss'
+        options: {
+          sourceMap: true
+        },
+        src: ['dist/css/_components/**/*.css', 'dist/css/_design/**/*.css'],
+        dest: 'dist/css/main.css'
       }
     },
 
     sass: {
-      dist: {
-        options: {},
+      /* The sass task compiles all _components/component.scss files into css files, 
+       * and the same for  the _design/component.scss files.
+       * These then both get concatenated down to the main.css, with correct sourcemapping
+       */
+      components: {
+        options: {
+          sourcemap: 'none'
+        },
+        files: [{
+          expand: true,
+          cwd: '',
+          src: ['_components/**/scss/*.scss'],
+          dest: 'dist/css',
+          ext: '.css'
+        }]
+      },
+      design: {
+        options: {
+          sourcemap: 'none'
+        },
+        files: [{
+          expand: true,
+          cwd: '',
+          src: ['_design/**/scss/*.scss'],
+          dest: 'dist/css',
+          ext: '.css'
+        }]
+      },
+      /* These tasks compile all _components/demo/component.scss files into css files, 
+       * and the same for  the _design/demo/component.scss files, as well as the main
+       * demo site styles .scss file.
+       * These all then get concatenated down to the main demo site .css file, with correct sourcemapping
+       */
+      demo: {
         files: {
-          'assets/css/main.css': 'assets/scss/main.scss'
+          'assets/src/css/site-styles.css': 'assets/src/scss/main.scss',
         }
       },
-      demo: {
-        options: {},
-        files: {
-          'assets/demo-site/dist/css/site-styles.css': 'assets/demo-site/src/scss/*',
-          'assets/demo-site/dist/css/demo-styles.css': '_components/**/demo/demo.scss'
-        }
-      }
+      componentsDemo: {
+        options: {
+          sourcemap: 'none'
+        },
+        files: [{
+          expand: true,
+          cwd: '',
+          src: ['_components/**/demo/*.scss'],
+          dest: 'assets/dist/css',
+          ext: '.css'
+        }]
+      },
+      designDemo: {
+        options: {
+          sourcemap: 'none'
+        },
+        files: [{
+          expand: true,
+          cwd: '',
+          src: ['_design/**/demo/*.scss'],
+          dest: 'assets/dist/css',
+          ext: '.css'
+        }]
+      },
     },
 
     postcss: {
+      /* The postcss script performs functions on the generated css files, at the moment it:
+       * - automatically adds vender prefixes for the 'last 4 version' (i.e. automatically including -webkit-transition)
+       * - minifies the css
+       */
       options: {
         map: false, 
         processors: [
@@ -35,22 +99,25 @@ module.exports = function(grunt) {
         ]
       },
       dist: {
-        src: 'assets/css/main.css'
+        src: 'dist/css/main.css'
       },
       demo: {
-        src: 'assets/demo-site/dist/css/site-styles.css',
-        src: 'assets/demo-site/dist/css/demo-styles.css'
+        src: 'assets/dist/css/main.css'
       }
     },
 
     uglify: {
+      /* The uglify script takes in all files in each components/designs /js sub-folder.
+       * This allows us to include multiple scripts per component, for an example if we 
+       * needed to include slick-slider.js for a carousel
+       */
       dist: {
-        src:  ['_components/**/js/component.js'],
-        dest: 'assets/js/main.js'
+        src:  ['_components/**/js/*', '_design/**/js/*'],
+        dest: 'dist/js/main.js'
       },
       demo: {
-        src: ['_components/**/demo/demo.js', 'assets/demo-site/src/js/*.js'],
-        dest: 'assets/demo-site/dist/js/main.js'
+        src: ['_components/**/demo/demo.js', '_design/**/demo/demo.js', 'assets/src/js/*'],
+        dest: 'assets/dist/js/main.js'
       }
     },
 
@@ -82,15 +149,16 @@ module.exports = function(grunt) {
         }
       },
 			sass: {
-				files: ['<%= concat.dist.src %>', '<%= sass.demo.files["assets/demo-site/dist/css/site-styles.css"] %>', '<%= sass.demo.files["assets/demo-site/dist/css/demo-styles.css"] %>'],
-				tasks: ['concat', 'sass', 'postcss', 'jekyll']
+				files: ['assets/src/scss/**/*', '_components/**/demo/demo.scss', 
+                  '_design/**/scss/component.scss', '_components/**/scss/component.scss'],
+				tasks: ['sass', 'concat', 'postcss', 'jekyll']
 			},
 			js: {
 				files: ['<%= uglify.dist.src %>', '<%= uglify.demo.src %>'],
 				tasks: ['uglify', 'jekyll']
 			},
       demo: {
-        files: ['_components/**/demo.md', '_layouts/**/*', '_includes/**/*', '_plugins/**/*', '_assets/css/*'],
+        files: ['_components/**/demo.md', '_design/**/demo.md', '_layouts/**/*', '_includes/**/*', '_plugins/**/*', '_assets/css/*'],
         tasks: ['jekyll']
       }
 		},
@@ -104,7 +172,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['concat', 'sass', 'postcss', 'uglify', 'jekyll']);
-  grunt.registerTask('serve', ['concat', 'sass', 'postcss', 'uglify', 'jekyll', 'connect', 'watch']);
+  grunt.registerTask('default', ['sass', 'concat', 'postcss', 'uglify', 'jekyll']);
+  grunt.registerTask('serve', ['sass', 'concat' ,'postcss', 'uglify', 'jekyll', 'connect', 'watch']);
 
 };

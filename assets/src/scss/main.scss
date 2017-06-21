@@ -1,0 +1,47 @@
+@import '_partials';
+
+body, html {
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+.page-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main {
+    position: relative;
+    z-index: 99;
+    flex: 1;
+    padding: 40px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    background: $body-bg;
+
+    @media (max-width: $screen-mob-max) {
+        padding: 0;
+    }
+}

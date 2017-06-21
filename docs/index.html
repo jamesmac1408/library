@@ -9,21 +9,17 @@
   <title>Shop Direct Component Library</title>
   <meta name="description" content="">
 
-  <link rel="shortcut icon" href="assets/demo-site/dist/images/favicon_dark.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/dist/images/favicon_dark.png" type="image/x-icon">
 
   <!-- Base site styles -->
-  <link rel="stylesheet" href="assets/demo-site/dist/css/site-styles.css">
-  <!-- Styles for each components demo -->
-  <link rel="stylesheet" href="assets/demo-site/dist/css/demo-styles.css">
+  <link rel="stylesheet" href="/assets/dist/css/main.css">
   <!-- Compiled component styles (that is used in build) -->
-  <link rel="stylesheet" href="assets/css/main.css">
-  <!-- Markdown syntax highlighting styles -->
-  <link rel="stylesheet" href="assets/demo-site/dist/css/syntax.css">
+  <link rel="stylesheet" href="/dist/css/main.css">
 
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 
-   <link rel="canonical" href="/assets/demo-site/dist/">
-  <link rel="alternate" type="application/rss+xml" title="Shop Direct Component Library" href="/assets/demo-site/dist/feed.xml">
+   <link rel="canonical" href="/assets/dist/">
+  <link rel="alternate" type="application/rss+xml" title="Shop Direct Component Library" href="/assets/dist/feed.xml">
   
   
 </head>
@@ -34,7 +30,7 @@
     <aside class="drawer-container" id="drawerContainer">
     <div class="drawer">
         <div class="drawer-header">
-            <img class="header-logo" src="assets/demo-site/dist/images/logo_dark.png">
+            <img class="header-logo" src="/assets/dist/images/logo_dark.png">
             <h1 class="header-text">
                 Component Library
             </h1>
@@ -43,38 +39,46 @@
         <div class="drawer-content">
             
             <div class="content-section">
-                <div class="content-title--container">
-                    <h2 class="content-title--text">Overview</h1>
-                </div>
-            </div>
-
-            <div class="content-section">
-                <div class="content-title--container">
-                    <h2 class="content-title--text">Design</h1>
-                </div>
+                <a class="content-titleContainer" href="/">
+                    <h2 class="content-titleText">Overview</h1>
+                </a>
             </div>
 
             <div class="content-section active">
-                <div class="content-title--container">
-                    <h2 class="content-title--text">Components</h1>
-                </div>
+                <a class="content-titleContainer" href="/design/">
+                    <h2 class="content-titleText">Design</h1>
+                </a>
                 <div class="content-body">
-                    <ul class="components-list">
+                    <ul class="collection-list">
                         
-                        <li class="components-list--item">
-                            <a href="#Primary+Button">Primary Button</a>
+                        <li class="collection-listItem">
+                            <a href="/design/#Typography">Typography</a>
                         </li>
                         
-                        <li class="components-list--item">
-                            <a href="#Secondary+Button">Secondary Button</a>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-section active">
+                <a class="content-titleContainer" href="/components/">
+                    <h2 class="content-titleText">Components</h1>
+                </a>
+                <div class="content-body">
+                    <ul class="collection-list">
+                        
+                        <li class="collection-listItem">
+                            <a href="/components/#Primary+Button">Primary Button</a>
                         </li>
                         
-                        <li class="components-list--item">
-                            <a href="#Card">Card</a>
+                        <li class="collection-listItem">
+                            <a href="/components/#Secondary+Button">Secondary Button</a>
                         </li>
                         
-                        <li class="components-list--item">
-                            <a href="#Ripple">Ripple</a>
+                        <li class="collection-listItem">
+                            <a href="/components/#Card">Card</a>
+                        </li>
+                        
+                        <li class="collection-listItem">
+                            <a href="/components/#Ripple">Ripple</a>
                         </li>
                         
                     </ul>
@@ -100,171 +104,22 @@
     </h1>
   </div>
   <div class="logo-container">
-    <!--<img class="header-logo" src="assets/demo-site/dist/images/favicon.png">-->
+    <!--<img class="header-logo" src="assets/dist/images/favicon.png">-->
   </div>
 </header>
 
       <main class="main" aria-label="Content">
         <div class="wrapper">
-          
-  <div class="component">
-    <a class="component-title" href="#Primary+Button" id="Primary+Button">
-      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0h24v24H0z" fill="none"/>
-          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
-      </svg>
-      <span>Primary Button</span>
-    </a>
-    <div class="component-body">
-      <h2 id="overview">Overview</h2>
-
-<p>The Primary Button should only be used once per screen. 
-It should always be the main call to action that continues or completes the journey.</p>
-
-<h2 id="states">States</h2>
-
-<p>Transitions between states are animated, using with ease-in-ease-out over 0.3s.</p>
-
-<div class="demo-container">
-<div class="demo-output">
-<div class="col--3">
-    <button class="btn-wrapper btn-primary">
-        <div class="btn">
-            <span class="btn-text">Button</span>
-        </div>  
-    </button>
-</div>
-<div class="col--6">
-    <button class="btn-wrapper btn-primary">
-        <div class="btn">
-            <span class="btn-text">Button</span>
-        </div>  
-    </button>
-</div>
-</div>
-<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn-wrapper btn-primary"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"btn-text"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>  
-<span class="nt">&lt;/button&gt;</span></code></pre></figure>
-</div>
-</div>
-
-<div class="demo-container">
-<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn-wrapper btn-primary"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"btn-text"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>  
-<span class="nt">&lt;/button&gt;</span></code></pre></figure>
-</div>
-</div>
-
-    </div>
-  </div>
-
-  <div class="component">
-    <a class="component-title" href="#Secondary+Button" id="Secondary+Button">
-      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0h24v24H0z" fill="none"/>
-          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
-      </svg>
-      <span>Secondary Button</span>
-    </a>
-    <div class="component-body">
-      <h2 id="overview">Overview</h2>
-
-<p>The Secondary Button should be used for buttons that are critical to the user completing a journey, but not the final action. These can be used as many times as necessary within a screen.</p>
-
-<h2 id="states">States</h2>
-
-<p>Transitions between states are animated, using with ease-in-ease-out over 0.3s.</p>
-
-<div class="demo-container">
-<div class="demo-output">
-<div class="col--3">
-    <button class="btn-wrapper btn-secondary">
-        <div class="btn">
-            <span class="btn-text">Button</span>
-        </div>  
-    </button>
-</div>
-<div class="col--6">
-    <button class="btn-wrapper btn-secondary">
-        <div class="btn">
-            <span class="btn-text">Button</span>
-        </div>  
-    </button>
-</div>
-</div>
-<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn-wrapper btn-secondary"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"btn-text"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>  
-<span class="nt">&lt;/button&gt;</span></code></pre></figure>
-</div>
-</div>
-
-    </div>
-  </div>
-
-  <div class="component">
-    <a class="component-title" href="#Card" id="Card">
-      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0h24v24H0z" fill="none"/>
-          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
-      </svg>
-      <span>Card</span>
-    </a>
-    <div class="component-body">
-      <div class="demo-container">
-<div class="demo-output">
-<div class="card">im a card</div>
-</div>
-<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div&gt;</span>code<span class="nt">&lt;/div&gt;</span></code></pre></figure>
-</div>
-</div>
-
-    </div>
-  </div>
-
-  <div class="component">
-    <a class="component-title" href="#Ripple" id="Ripple">
-      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0h24v24H0z" fill="none"/>
-          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
-      </svg>
-      <span>Ripple</span>
-    </a>
-    <div class="component-body">
-      <!--<div class="demo-container">
-    "demo":
-    <div class="paper-demo">demo</div>
-
-    "code":
-        <button class="test">...</button>
-
-</div>-->
-
-    </div>
-  </div>
-
-
-
+          <h1> Overview </h1>
         </div>
       </main>
 
     </div>
 
-    <script src="assets/demo-site/dist/js/clipboard.js"></script>
-
-<!-- Demo site specific scripts -->
-<script src="assets/demo-site/dist/js/main.js"></script>
+    <!-- Demo site specific scripts -->
+<script src="/assets/dist/js/main.js"></script>
 <!-- Compiled component scripts (for use in build) -->
-<script src="assets/js/main.js"></script>
+<script src="/dist/js/main.js"></script>
 
 
 

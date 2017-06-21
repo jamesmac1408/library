@@ -1,0 +1,29 @@
+@mixin heading-1() {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+@mixin heading-2() {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+@mixin heading-3() {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+@mixin body() {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+@mixin meta() {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}

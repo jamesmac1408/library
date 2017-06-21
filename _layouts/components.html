@@ -1,0 +1,10 @@
+---
+layout: default
+---
+
+{% for component in site.components %}
+  {% include component.html
+    component = component
+  %}
+{% endfor %}
+

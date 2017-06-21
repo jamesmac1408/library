@@ -9,21 +9,17 @@
   <title>Shop Direct Component Library</title>
   <meta name="description" content="">
 
-  <link rel="shortcut icon" href="assets/demo-site/dist/images/favicon_dark.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/dist/images/favicon_dark.png" type="image/x-icon">
 
   <!-- Base site styles -->
-  <link rel="stylesheet" href="assets/demo-site/dist/css/site-styles.css">
-  <!-- Styles for each components demo -->
-  <link rel="stylesheet" href="assets/demo-site/dist/css/demo-styles.css">
+  <link rel="stylesheet" href="/assets/dist/css/main.css">
   <!-- Compiled component styles (that is used in build) -->
-  <link rel="stylesheet" href="assets/css/main.css">
-  <!-- Markdown syntax highlighting styles -->
-  <link rel="stylesheet" href="assets/demo-site/dist/css/syntax.css">
+  <link rel="stylesheet" href="/dist/css/main.css">
 
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 
-   <link rel="canonical" href="/assets/demo-site/dist/404.html">
-  <link rel="alternate" type="application/rss+xml" title="Shop Direct Component Library" href="/assets/demo-site/dist/feed.xml">
+   <link rel="canonical" href="/assets/dist/404.html">
+  <link rel="alternate" type="application/rss+xml" title="Shop Direct Component Library" href="/assets/dist/feed.xml">
   
   
 </head>
@@ -34,7 +30,7 @@
     <aside class="drawer-container" id="drawerContainer">
     <div class="drawer">
         <div class="drawer-header">
-            <img class="header-logo" src="assets/demo-site/dist/images/logo_dark.png">
+            <img class="header-logo" src="/assets/dist/images/logo_dark.png">
             <h1 class="header-text">
                 Component Library
             </h1>
@@ -43,38 +39,46 @@
         <div class="drawer-content">
             
             <div class="content-section">
-                <div class="content-title--container">
-                    <h2 class="content-title--text">Overview</h1>
-                </div>
-            </div>
-
-            <div class="content-section">
-                <div class="content-title--container">
-                    <h2 class="content-title--text">Design</h1>
-                </div>
+                <a class="content-titleContainer" href="/">
+                    <h2 class="content-titleText">Overview</h1>
+                </a>
             </div>
 
             <div class="content-section active">
-                <div class="content-title--container">
-                    <h2 class="content-title--text">Components</h1>
-                </div>
+                <a class="content-titleContainer" href="/design/">
+                    <h2 class="content-titleText">Design</h1>
+                </a>
                 <div class="content-body">
-                    <ul class="components-list">
+                    <ul class="collection-list">
                         
-                        <li class="components-list--item">
-                            <a href="#Primary+Button">Primary Button</a>
+                        <li class="collection-listItem">
+                            <a href="/design/#Typography">Typography</a>
                         </li>
                         
-                        <li class="components-list--item">
-                            <a href="#Secondary+Button">Secondary Button</a>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-section active">
+                <a class="content-titleContainer" href="/components/">
+                    <h2 class="content-titleText">Components</h1>
+                </a>
+                <div class="content-body">
+                    <ul class="collection-list">
+                        
+                        <li class="collection-listItem">
+                            <a href="/components/#Primary+Button">Primary Button</a>
                         </li>
                         
-                        <li class="components-list--item">
-                            <a href="#Card">Card</a>
+                        <li class="collection-listItem">
+                            <a href="/components/#Secondary+Button">Secondary Button</a>
                         </li>
                         
-                        <li class="components-list--item">
-                            <a href="#Ripple">Ripple</a>
+                        <li class="collection-listItem">
+                            <a href="/components/#Card">Card</a>
+                        </li>
+                        
+                        <li class="collection-listItem">
+                            <a href="/components/#Ripple">Ripple</a>
                         </li>
                         
                     </ul>
@@ -100,7 +104,7 @@
     </h1>
   </div>
   <div class="logo-container">
-    <!--<img class="header-logo" src="assets/demo-site/dist/images/favicon.png">-->
+    <!--<img class="header-logo" src="assets/dist/images/favicon.png">-->
   </div>
 </header>
 
@@ -132,12 +136,10 @@
 
     </div>
 
-    <script src="assets/demo-site/dist/js/clipboard.js"></script>
-
-<!-- Demo site specific scripts -->
-<script src="assets/demo-site/dist/js/main.js"></script>
+    <!-- Demo site specific scripts -->
+<script src="/assets/dist/js/main.js"></script>
 <!-- Compiled component scripts (for use in build) -->
-<script src="assets/js/main.js"></script>
+<script src="/dist/js/main.js"></script>
 
 
 

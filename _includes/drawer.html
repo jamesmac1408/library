@@ -1,7 +1,7 @@
 <aside class="drawer-container" id="drawerContainer">
     <div class="drawer">
         <div class="drawer-header">
-            <img class="header-logo" src="{{ site.baseurl }}/images/logo_dark.png">
+            <img class="header-logo" src="/{{ site.baseurl }}/images/logo_dark.png">
             <h1 class="header-text">
                 Component Library
             </h1>
@@ -10,26 +10,34 @@
         <div class="drawer-content">
             
             <div class="content-section">
-                <div class="content-title--container">
-                    <h2 class="content-title--text">Overview</h1>
-                </div>
-            </div>
-
-            <div class="content-section">
-                <div class="content-title--container">
-                    <h2 class="content-title--text">Design</h1>
-                </div>
+                <a class="content-titleContainer" href="/">
+                    <h2 class="content-titleText">Overview</h1>
+                </a>
             </div>
 
             <div class="content-section active">
-                <div class="content-title--container">
-                    <h2 class="content-title--text">Components</h1>
-                </div>
+                <a class="content-titleContainer" href="/design/">
+                    <h2 class="content-titleText">Design</h1>
+                </a>
                 <div class="content-body">
-                    <ul class="components-list">
+                    <ul class="collection-list">
+                        {% for component in site.design %}
+                        <li class="collection-listItem">
+                            <a href="/design/#{{component.name | cgi_escape }}">{{ component.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="content-section active">
+                <a class="content-titleContainer" href="/components/">
+                    <h2 class="content-titleText">Components</h1>
+                </a>
+                <div class="content-body">
+                    <ul class="collection-list">
                         {% for component in site.components %}
-                        <li class="components-list--item">
-                            <a href="#{{component.name | cgi_escape }}">{{ component.name }}</a>
+                        <li class="collection-listItem">
+                            <a href="/components/#{{component.name | cgi_escape }}">{{ component.name }}</a>
                         </li>
                         {% endfor %}
                     </ul>

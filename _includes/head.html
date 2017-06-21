@@ -6,16 +6,12 @@
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
-  <link rel="shortcut icon" href="{{ site.baseurl }}/images/favicon_dark.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/{{ site.baseurl }}/images/favicon_dark.png" type="image/x-icon">
 
   <!-- Base site styles -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/site-styles.css">
-  <!-- Styles for each components demo -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/demo-styles.css">
+  <link rel="stylesheet" href="/{{ site.baseurl }}/css/main.css">
   <!-- Compiled component styles (that is used in build) -->
-  <link rel="stylesheet" href="assets/css/main.css">
-  <!-- Markdown syntax highlighting styles -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
+  <link rel="stylesheet" href="/dist/css/main.css">
 
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 

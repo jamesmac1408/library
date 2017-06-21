@@ -1,0 +1,105 @@
+@import '../_theme';
+@import '../_typography';
+
+.component {
+    background: #fff;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+    margin: 24px;
+
+    @media (max-width: $screen-mob-max) {
+        margin: 24px 0;
+    }
+    &:nth-child(1) {
+        @media (max-width: $screen-mob-max) {
+            margin-top: 0;
+        }
+    }
+
+    .component-title {
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 16px;
+        background: $primary-1;
+
+        svg {
+            margin: 0 8px;
+            fill: $primary-2-text;
+        }
+        span {
+            margin-left: 16px;
+            color: $primary-2-text;
+            @include title();
+        }
+    }
+
+    .component-body {
+        padding: 16px;
+
+        .demo-container {
+            border: 1px solid #e0e6ed;
+            border-radius: 4px;
+            margin: 16px 0;
+
+            .demo-output {
+                box-sizing: initial;
+                border-bottom: 1px solid #e0e6ed;
+                overflow-x: hidden;
+                padding: 16px;
+            }
+
+            .demo-code {
+                position: relative;
+                padding: 16px; 
+                background: rgba(224, 230, 237, 0.25);
+
+                .demo-code--copy {
+                    -webkit-appearance: none;
+                    cursor: pointer;
+                    background: #fff;
+                    border: 1px solid #e0e6ed;
+                    border-top-width: 0px;
+                    border-right-width: 0px;
+                    padding: 8px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+
+                figure {
+                    margin: 0;
+                    background: none;
+
+                    pre {
+                        margin: 0;
+                        padding: 0;
+                        white-space: pre-wrap;
+
+                        code {
+                            font-family: consolas;
+                            @include body-1();
+                            line-height: 1.5;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:not(.demo-container) > h1 {
+            @include display-1();
+        }
+        &:not(.demo-container) > h2 {
+            @include display-2();
+        }
+        &:not(.demo-container) > h3 {
+            @include display-3();
+        }
+        &:not(.demo-container) > h4 {
+            @include display-4();
+        }
+        &:not(.demo-container) > p {
+             @include body-1();
+        }
+    }
+}

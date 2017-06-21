@@ -1,0 +1,21 @@
+@import '../scss/component';
+
+.el-1 {
+  @include heading-1();
+}
+
+.el-2 {
+  @include heading-2();
+}
+
+.el-3 {
+  @include heading-3();
+}
+
+.el-4 {
+  @include body();
+}
+
+.el-5 {
+  @include meta();
+}
