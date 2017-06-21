@@ -9,18 +9,18 @@
   <title>Shop Direct Component Library</title>
   <meta name="description" content="">
 
-  <link rel="shortcut icon" href="/library/assets/dist/images/favicon_dark.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/dist/images/favicon_dark.png" type="image/x-icon">
 
   <!-- Base site styles -->
-  <link rel="stylesheet" href="/library/assets/dist/css/main.css">
+  <link rel="stylesheet" href="/assets/dist/css/main.css">
   <!-- Compiled component styles (that is used in build) -->
-  <link rel="stylesheet" href="/library/dist/css/main.css">
+  <link rel="stylesheet" href="/dist/css/main.css">
 
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 
-   <link rel="canonical" href="/library/design/">
-  <link rel="alternate" type="application/rss+xml" title="Shop Direct Component Library" href="/library/feed.xml">
+   <link rel="canonical" href="/design/">
+  <link rel="alternate" type="application/rss+xml" title="Shop Direct Component Library" href="/feed.xml">
   
   
 </head>
@@ -31,7 +31,7 @@
     <aside class="drawer-container" id="drawerContainer">
     <div class="drawer">
         <div class="drawer-header">
-            <img class="header-logo" src="/library/assets/dist/images/logo_dark.png">
+            <img class="header-logo" src="/assets/dist/images/logo_dark.png">
             <h1 class="header-text">
                 Component Library
             </h1>
@@ -40,50 +40,50 @@
         <div class="drawer-content">
             
             <div class="content-section">
-                <a class="content-titleContainer" href="/library">
+                <a class="content-titleContainer" href="">
                     <h2 class="content-titleText">Overview</h1>
                 </a>
             </div>
 
             <div class="content-section active">
-                <a class="content-titleContainer" href="/library/design/">
+                <a class="content-titleContainer" href="/design/">
                     <h2 class="content-titleText">Design</h1>
                 </a>
                 <div class="content-body">
                     <ul class="collection-list">
                         
                         <li class="collection-listItem">
-                            <a href="/library/design/#Colour">Colour</a>
+                            <a href="/design/#Colour">Colour</a>
                         </li>
                         
                         <li class="collection-listItem">
-                            <a href="/library/design/#Typography">Typography</a>
+                            <a href="/design/#Typography">Typography</a>
                         </li>
                         
                     </ul>
                 </div>
             </div>
             <div class="content-section active">
-                <a class="content-titleContainer" href="/library/components/">
+                <a class="content-titleContainer" href="/components/">
                     <h2 class="content-titleText">Components</h1>
                 </a>
                 <div class="content-body">
                     <ul class="collection-list">
                         
                         <li class="collection-listItem">
-                            <a href="/library/components/#Primary+Button">Primary Button</a>
+                            <a href="/components/#Primary+Button">Primary Button</a>
                         </li>
                         
                         <li class="collection-listItem">
-                            <a href="/library/components/#Secondary+Button">Secondary Button</a>
+                            <a href="/components/#Secondary+Button">Secondary Button</a>
                         </li>
                         
                         <li class="collection-listItem">
-                            <a href="/library/components/#Card">Card</a>
+                            <a href="/components/#Card">Card</a>
                         </li>
                         
                         <li class="collection-listItem">
-                            <a href="/library/components/#Ripple">Ripple</a>
+                            <a href="/components/#Ripple">Ripple</a>
                         </li>
                         
                     </ul>
@@ -109,7 +109,7 @@
     </h1>
   </div>
   <div class="logo-container">
-    <!--<img class="header-logo" src="/library/images/favicon.png">-->
+    <!--<img class="header-logo" src="/images/favicon.png">-->
   </div>
 </header>
 
@@ -160,6 +160,126 @@
 <span class="p">}</span>
 <span class="nc">.el</span> <span class="p">{</span>
   <span class="k">@include</span> <span class="nd">pri-3</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+</div>
+</div>
+
+<h4 id="secondary-blue">Secondary Blue</h4>
+<p>Informative and critical to signposting the user’s journey through the site.</p>
+
+<div class="demo-container">
+<div class="demo-output">
+<div class="colour-col">
+  <div class="row sec-1">
+    <span class="white">sec-1</span>
+  </div>
+  <div class="row sec-2">
+    <span class="white">sec-2</span>
+  </div>
+  <div class="row sec-3">
+    <span class="black">sec-3</span>
+  </div>
+</div>
+</div>
+<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">sec-1</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">sec-2</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">sec-3</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+</div>
+</div>
+
+<h4 id="error-red">Error Red</h4>
+<p>Signfying an error to the user, indicating that they can’t complete their journey yet.</p>
+
+<div class="demo-container">
+<div class="demo-output">
+<div class="colour-col">
+  <div class="row err-1">
+    <span class="white">err-1</span>
+  </div>
+  <div class="row err-2">
+    <span class="white">err-2</span>
+  </div>
+  <div class="row err-3">
+    <span class="black">err-3</span>
+  </div>
+</div>
+</div>
+<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">err-1</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">err-2</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">err-3</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+</div>
+</div>
+
+<h4 id="moderate-orange">Moderate Orange</h4>
+<p>Neither red, nor yellow. This is moderate orange.</p>
+
+<div class="demo-container">
+<div class="demo-output">
+<div class="colour-col">
+  <div class="row mod-1">
+    <span class="white">mod-1</span>
+  </div>
+  <div class="row mod-2">
+    <span class="white">mod-2</span>
+  </div>
+  <div class="row mod-3">
+    <span class="black">mod-3</span>
+  </div>
+</div>
+</div>
+<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">mod-1</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">mod-2</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">mod-3</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+</div>
+</div>
+
+<h4 id="warning-yellow">Warning Yellow</h4>
+<p>Use sparingly to alert the user to a potential pitfalls—typically check boxes.</p>
+
+<div class="demo-container">
+<div class="demo-output">
+<div class="colour-col">
+  <div class="row war-1">
+    <span class="white">war-1</span>
+  </div>
+  <div class="row war-2">
+    <span class="white">war-2</span>
+  </div>
+  <div class="row war-3">
+    <span class="black">war-3</span>
+  </div>
+</div>
+</div>
+<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">war-1</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">war-2</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.el</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">war-3</span><span class="p">(</span><span class="n">background</span><span class="p">);</span>
 <span class="p">}</span></code></pre></figure>
 </div>
 </div>
@@ -264,9 +384,9 @@
     </div>
 
     <!-- Demo site specific scripts -->
-<script src="/library/assets/dist/js/main.js"></script>
+<script src="/assets/dist/js/main.js"></script>
 <!-- Compiled component scripts (for use in build) -->
-<script src="/library/dist/js/main.js"></script>
+<script src="/dist/js/main.js"></script>
 
 
 

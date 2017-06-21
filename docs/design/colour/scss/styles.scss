@@ -7,3 +7,43 @@
 @mixin pri-3($attr) {
   #{$attr}: #DFFCE5;
 }
+
+@mixin sec-1($attr) {
+  #{$attr}: #0078D1;
+}
+@mixin sec-2($attr) {
+  #{$attr}: #0091EA;
+}
+@mixin sec-3($attr) {
+  #{$attr}: #E5F4FD;
+}
+
+@mixin err-1($attr) {
+  #{$attr}: #D0011B;
+}
+@mixin err-2($attr) {
+  #{$attr}: #FF1744;
+}
+@mixin err-3($attr) {
+  #{$attr}: #FAE5E8;
+}
+
+@mixin mod-1($attr) {
+  #{$attr}: #D75D02;
+}
+@mixin mod-2($attr) {
+  #{$attr}: #FF6D00;
+}
+@mixin mod-3($attr) {
+  #{$attr}: #FFE1CA;
+}
+
+@mixin war-1($attr) {
+  #{$attr}: #E18F00;
+}
+@mixin war-2($attr) {
+  #{$attr}: #FFD600;
+}
+@mixin war-3($attr) {
+  #{$attr}: #FFF7CC;
+}

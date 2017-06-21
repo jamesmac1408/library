@@ -7,9 +7,9 @@
   cursor: pointer;
   -webkit-appearance: none; }
   .btn-secondary .btn {
+    background: #0091EA;
     height: 40px;
     border-radius: 2px;
-    background: #0091EA;
     text-align: center;
     transition: background 0.3s ease-in-out; }
     .btn-secondary .btn .btn-text {

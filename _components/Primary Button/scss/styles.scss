@@ -1,3 +1,5 @@
+@import '../../../_design/colour/scss/styles';
+
 .btn-primary {
     padding: 6px 0;
     width: 100%;
@@ -8,10 +10,10 @@
     -webkit-appearance: none;
 
     .btn {
+        @include pri-2(background);
         height: 48px;
         box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
         border-radius: 2px;
-        background: #00C853;
         text-align: center;
         transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
 
@@ -25,7 +27,7 @@
         }
     }
     .btn:active {
-        background: #00AA46;
+        @include pri-1(background);
         box-shadow: 0 10px 10px 0 rgba(0,0,0,0.26), 0 14px 28px 0 rgba(0,0,0,0.25);
     }
 }

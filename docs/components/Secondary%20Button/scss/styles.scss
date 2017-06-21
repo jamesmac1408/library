@@ -1,3 +1,5 @@
+@import '../../../_design/colour/scss/styles';
+
 .btn-secondary {
     padding: 4px 0;
     width: 100%;
@@ -8,9 +10,9 @@
     -webkit-appearance: none;
 
     .btn {
+        @include sec-2(background);
         height: 40px;
         border-radius: 2px;
-        background: #0091EA;
         text-align: center;
         transition: background 0.3s ease-in-out;
 
@@ -24,7 +26,7 @@
         }
     }
     .btn:hover {
-        background: #0078D1;
+        @include sec-1(background);
     }
     .btn:active {
         background: #1AABFF;

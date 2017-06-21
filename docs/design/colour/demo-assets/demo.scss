@@ -29,6 +29,7 @@
 
   span {
     font-weight: 700;
+    font-size: 16px;
 
     &.white {
       color: #fff;
@@ -47,4 +48,44 @@
 }
 .pri-3 {
   @include pri-3(background);
+}
+
+.sec-1 {
+  @include sec-1(background);
+}
+.sec-2 {
+  @include sec-2(background);
+}
+.sec-3 {
+  @include sec-3(background);
+}
+
+.err-1 {
+  @include err-1(background);
+}
+.err-2 {
+  @include err-2(background);
+}
+.err-3 {
+  @include err-3(background);
+}
+
+.mod-1 {
+  @include mod-1(background);
+}
+.mod-2 {
+  @include mod-2(background);
+}
+.mod-3 {
+  @include mod-3(background);
+}
+
+.war-1 {
+  @include war-1(background);
+}
+.war-2 {
+  @include war-2(background);
+}
+.war-3 {
+  @include war-3(background);
 }
