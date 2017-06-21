@@ -55,7 +55,7 @@ function Drawer(el) {
 
   this._addEventListeners = function() {
     /* close drawer on clicking a link */
-    var links = this.drawer.querySelectorAll('.components-list--item > a');
+    var links = this.drawer.querySelectorAll('.collection-listItem > a');
     for (var i = 0; i < links.length; i += 1) {
       links[i].addEventListener('click', this._hideDrawer);
     }
