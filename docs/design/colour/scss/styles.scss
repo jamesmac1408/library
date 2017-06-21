@@ -1,0 +1,9 @@
+@mixin pri-1($attr) {
+  #{$attr}: #00AA46;
+}
+@mixin pri-2($attr) {
+  #{$attr}: #00C853;
+}
+@mixin pri-3($attr) {
+  #{$attr}: #DFFCE5;
+}

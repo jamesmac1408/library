@@ -8,6 +8,6 @@
 <div class="card">im a card</div>
 {% endoutput %}
 {% code %}
-<div>code</div>
+<div class="card">...</div>
 {% endcode %}
 {% enddemo %}

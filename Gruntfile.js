@@ -50,8 +50,8 @@ module.exports = function(grunt) {
           ext: '.css'
         }]
       },
-      /* These tasks compile all _components/demo/component.scss files into css files, 
-       * and the same for  the _design/demo/component.scss files, as well as the main
+      /* These tasks compile all _components/demo-assets/*.scss files into css files, 
+       * and the same for  the _design/demo-assets/*.scss files, as well as the main
        * demo site styles .scss file.
        * These all then get concatenated down to the main demo site .css file, with correct sourcemapping
        */
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '',
-          src: ['_components/**/demo/*.scss'],
+          src: ['_components/**/demo-assets/*.scss'],
           dest: 'assets/dist/css',
           ext: '.css'
         }]
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '',
-          src: ['_design/**/demo/*.scss'],
+          src: ['_design/**/demo-assets/*.scss'],
           dest: 'assets/dist/css',
           ext: '.css'
         }]
@@ -116,7 +116,7 @@ module.exports = function(grunt) {
         dest: 'dist/js/main.js'
       },
       demo: {
-        src: ['_components/**/demo/demo.js', '_design/**/demo/demo.js', 'assets/src/js/*'],
+        src: ['_components/**/demo-assets/demo.js', '_design/**/demo-assets/demo.js', 'assets/src/js/*'],
         dest: 'assets/dist/js/main.js'
       }
     },
@@ -154,8 +154,8 @@ module.exports = function(grunt) {
         }
       },
 			sass: {
-				files: ['assets/src/scss/**/*', '_components/**/demo/demo.scss', 
-                  '_design/**/scss/component.scss', '_components/**/scss/component.scss'],
+				files: ['assets/src/scss/**/*', '_components/**/demo-assets/demo.scss', '_design/**/demo-assets/demo.scss',
+                  '_design/**/scss/styles.scss', '_components/**/scss/styles.scss'],
 				tasks: ['sass', 'concat', 'postcss', 'jekyll:dev']
 			},
 			js: {

@@ -52,6 +52,10 @@
                     <ul class="collection-list">
                         
                         <li class="collection-listItem">
+                            <a href="/library/design/#Colour">Colour</a>
+                        </li>
+                        
+                        <li class="collection-listItem">
                             <a href="/library/design/#Typography">Typography</a>
                         </li>
                         
@@ -113,8 +117,60 @@
           
   
 
+<span class="spacer" id="Colour"></span>
 <div class="component">
-  <a class="component-title" href="#Typography" id="Typography">
+  <a class="component-title" href="#Colour" >
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+    </svg>
+    <span>Colour</span>
+  </a>
+  <div class="component-body">
+    <h1 id="colour">Colour</h1>
+
+<h2 id="ui-colours">UI Colours</h2>
+
+<p>The main UI colors are used for action buttons, alert messages, and form elements.</p>
+
+<h4 id="primary-green">Primary Green</h4>
+<p>Used sparingly, to indicate success or completion.</p>
+
+<div class="demo-container">
+<div class="demo-output">
+<div class="colour-col">
+  <div class="row pri-1">
+    <span class="white">pri-1</span>
+  </div>
+  <div class="row pri-2">
+    <span class="white">pri-2</span>
+  </div>
+  <div class="row pri-3">
+    <span class="black">pri-3</span>
+  </div>
+</div>
+</div>
+<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
+<figure class="highlight"><pre><code class="language-html" data-lang="html">.el {
+  @include pri-1(background);
+}
+.el {
+  @include pri-2(background);
+}
+.el {
+  @include pri-3(background);
+}</code></pre></figure>
+</div>
+</div>
+
+  </div>
+</div>
+
+  
+
+<span class="spacer" id="Typography"></span>
+<div class="component">
+  <a class="component-title" href="#Typography" >
     <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>

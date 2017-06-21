@@ -13,3 +13,6 @@ for (var i = 0; i < codeBlocks.length; i += 1) {
   new CodeBlock(codeBlocks[i]);
 }
 
+window.addEventListener('hashchange', function(evt) {
+  console.log('ash change');
+})

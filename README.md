@@ -12,14 +12,14 @@
 ```
 components/
 ├── COMPONENT_NAME/ 
-│   ├── demo/
-│   |   ├── demo.txt
+│   ├── demo-assets/
 |   |   └── demo.scss
+|   |   └── demo.js
 |   ├── js/
-|   |   └── component.js
+|   |   └── scripts.js
 |   ├── scss/
-|   |   └── component.scss
-└── └── README.md
+|   |   └── styles.scss
+└── └── demo.md
 ```
 
 ## Current features
