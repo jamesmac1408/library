@@ -1,15 +1,6 @@
 @import '../_theme';
 @import '../_typography';
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 .spacer {
     display: block;
     margin-top: 20px;
@@ -20,7 +11,6 @@
     }
 }
 .component {
-    animation: fadeIn 0.5s 1;
     background: #fff;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
 
@@ -61,6 +51,7 @@
             margin: 16px 0;
 
             .demo-output {
+                position: relative;
                 box-sizing: initial;
                 border-bottom: 1px solid #e0e6ed;
                 overflow-x: hidden;
@@ -83,6 +74,9 @@
                     position: absolute;
                     top: 0;
                     right: 0;
+                    @media (max-width: $screen-mob-max) {
+                        display: none;
+                    }
 
                     svg {
                         fill-opacity: 0.5;

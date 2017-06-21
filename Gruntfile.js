@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         options: {
           sourceMap: true
         },
-        src: ['assets/src/css/*.css', 'assets/dist/css/_components/**/*.css', 'assets/dist/css/_design/**/*.css', 'assets/src/css/site-styles.css'],
+        src: ['assets/src/css/*.css', 'assets/dist/css/_components/**/*.css', 'assets/dist/css/_design/**/*.css', 'assets/dist/css/base.css'],
         dest: 'assets/dist/css/main.css'
       },
       dist: {
@@ -56,8 +56,11 @@ module.exports = function(grunt) {
        * These all then get concatenated down to the main demo site .css file, with correct sourcemapping
        */
       demo: {
+        options: {
+          sourcemap: 'none'
+        },
         files: {
-          'assets/src/css/site-styles.css': 'assets/src/scss/main.scss',
+          'assets/dist/css/base.css': 'assets/src/scss/main.scss',
         }
       },
       componentsDemo: {

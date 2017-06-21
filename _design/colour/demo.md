@@ -25,7 +25,7 @@ Used sparingly, to indicate success or completion.
   </div>
 </div>
 {% endoutput %}
-{% code %}
+{% code scss %}
 .el {
   @include pri-1(background);
 }
