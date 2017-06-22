@@ -1,0 +1,18 @@
+{
+    "name": "SD Component Library",
+    "icons": [
+        {
+            "src": "{{ site.baseurl }}/assets/dist/images/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "{{ site.baseurl }}/assets/dist/images/android-chrome-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#263238",
+    "background_color": "#263238",
+    "display": "standalone"
+}
