@@ -70,8 +70,10 @@
                 .demo-code--copy {
                     -webkit-appearance: none;
                     cursor: pointer;
-                    background: transparent;
-                    border: 0;
+                    background-color: #FFF;
+                    border: 1px solid #e0e6ed;
+                    border-top: 0;
+                    border-right: 0;
                     padding: 8px;
                     position: absolute;
                     top: 0;
@@ -82,8 +84,16 @@
 
                     svg {
                         fill-opacity: 0.3;
-                        transition: fill-opacity 0.3s $nice-easing;
+                        transition: all 0.3s $nice-easing;
+                        transition-property: fill, fill-opacity;
+                        
                     }
+
+                    &.success svg {
+                        fill-opacity: 1;
+                        fill: #00c853;
+                    }
+
                     &:hover svg {
                         fill-opacity: 1;
                     }
@@ -116,6 +126,7 @@
         }
         &:not(.demo-container) > h3 {
             @include display-3();
+            margin: 40px 0 18px;
         }
         &:not(.demo-container) > h4 {
             @include display-4();

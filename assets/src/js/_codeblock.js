@@ -9,7 +9,10 @@ function CodeBlock(el) {
   this._addEventListeners = function() {
 
     this.clipboard.on('success', function(e) {
-        // console.log(e);
+        el.querySelector('.demo-code--copy').classList.add('success');
+        setTimeout(function(){
+            el.querySelector('.demo-code--copy').classList.remove('success');
+        }, 1500);
     });
 
     this.clipboard.on('error', function(e) {
