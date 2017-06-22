@@ -2,7 +2,8 @@
 "name": "Typography"
 ---
 
-# Typography
+* TOC
+{:toc}
 
 Typography is set via scss mixins
 

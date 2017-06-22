@@ -3,6 +3,9 @@
 "description": ""
 ---
 
+* TOC
+{:toc}
+
 {% demo %}
 {% output %}
 <div class="card">im a card</div>

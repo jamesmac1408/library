@@ -22,8 +22,9 @@
                 <div class="content-body">
                     <ul class="collection-list">
                         {% for component in site.design %}
-                        <li class="collection-listItem">
+                        <li class="collection-listItem" id="{{ component.name | cgi_escape }}-nav">
                             <a href="{{ site.baseurl }}/design/#{{component.name | cgi_escape }}">{{ component.name }}</a>
+                            {{ component.content | toc }}
                         </li>
                         {% endfor %}
                     </ul>
@@ -36,8 +37,9 @@
                 <div class="content-body">
                     <ul class="collection-list">
                         {% for component in site.components %}
-                        <li class="collection-listItem">
+                        <li class="collection-listItem" id="{{ component.name | cgi_escape }}-nav">
                             <a href="{{ site.baseurl }}/components/#{{component.name | cgi_escape }}">{{ component.name }}</a>
+                            {{ component.content | toc }}
                         </li>
                         {% endfor %}
                     </ul>

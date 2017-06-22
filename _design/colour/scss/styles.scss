@@ -47,3 +47,13 @@
 @mixin war-3($attr) {
   #{$attr}: #FFF7CC;
 }
+
+@mixin grey-dark($attr) {
+  #{$attr}: #333333;
+}
+@mixin grey-med($attr) {
+  #{$attr}: #616161;
+}
+@mixin grey-outline($attr) {
+  #{$attr}: #E0E0E0;
+}

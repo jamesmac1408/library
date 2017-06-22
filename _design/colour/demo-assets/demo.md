@@ -2,13 +2,15 @@
 "name": "Colour"
 ---
 
-# Colour
+* TOC
+{:toc}
+
 
 ## UI Colours
 
 The main UI colors are used for action buttons, alert messages, and form elements.
 
-#### Primary Green
+### Primary Green
 Used sparingly, to indicate success or completion.
 
 {% demo %}
@@ -38,7 +40,7 @@ Used sparingly, to indicate success or completion.
 {% endcode %}
 {% enddemo %}
 
-#### Secondary Blue
+### Secondary Blue
 Informative and critical to signposting the user’s journey through the site.
 
 {% demo %}
@@ -68,7 +70,7 @@ Informative and critical to signposting the user’s journey through the site.
 {% endcode %}
 {% enddemo %}
 
-#### Error Red
+### Error Red
 Signfying an error to the user, indicating that they can’t complete their journey yet.
 
 {% demo %}
@@ -98,7 +100,7 @@ Signfying an error to the user, indicating that they can’t complete their jour
 {% endcode %}
 {% enddemo %}
 
-#### Moderate Orange
+### Moderate Orange
 Neither red, nor yellow. This is moderate orange.
 
 {% demo %}
@@ -128,7 +130,7 @@ Neither red, nor yellow. This is moderate orange.
 {% endcode %}
 {% enddemo %}
 
-#### Warning Yellow
+### Warning Yellow
 Use sparingly to alert the user to a potential pitfalls—typically check boxes.
 
 {% demo %}
@@ -154,6 +156,40 @@ Use sparingly to alert the user to a potential pitfalls—typically check boxes.
 }
 .el {
   @include war-3(background);
+}
+{% endcode %}
+{% enddemo %}
+
+### Greys
+Grey colors are used for text, backgrounds, lines and borders.
+
+{% demo %}
+{% output %}
+<div class="colour-col">
+  <div class="row grey-dark">
+    <p>
+      <span class="white">grey-dark</span>
+      <br />
+      <span class="white">(The darkest shade used across Shop Direct sites and apps)</span>
+    </p>
+  </div>
+  <div class="row grey-med">
+    <span class="white">grey-med</span>
+  </div>
+  <div class="row grey-outline">
+    <span class="black">grey-outline</span>
+  </div>
+</div>
+{% endoutput %}
+{% code scss %}
+.el {
+  @include grey-dark(background);
+}
+.el {
+  @include grey-med(background);
+}
+.el {
+  @include grey-outline(background);
 }
 {% endcode %}
 {% enddemo %}

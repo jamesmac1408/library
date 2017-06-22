@@ -11,15 +11,18 @@
   align-items: center;
   justify-content: center;
   width: 33%;
-  max-width: 250px; }
+  max-height: 120px; }
   @media (max-width: 768px) {
     .row {
       width: 100%;
-      max-width: none; } }
+      max-height: none; } }
   .row:before {
     content: '';
     display: block;
     padding-top: 60%; }
+  .row p {
+    text-align: center;
+    padding: 0 16px; }
   .row span {
     font-size: 16px;
     font-weight: 700;
@@ -28,6 +31,8 @@
       color: #fff; }
     .row span.black {
       color: #000; }
+    .row span:nth-of-type(2) {
+      font-weight: 400; }
 
 .pri-1 {
   background: #00AA46; }
@@ -73,3 +78,12 @@
 
 .war-3 {
   background: #FFF7CC; }
+
+.grey-dark {
+  background: #333333; }
+
+.grey-med {
+  background: #616161; }
+
+.grey-outline {
+  background: #E0E0E0; }

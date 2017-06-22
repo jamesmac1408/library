@@ -44,6 +44,10 @@
 
     .component-body {
         padding: 16px;
+        
+        #markdown-toc {
+            display: none;
+        }
 
         .demo-container {
             border: 1px solid #e0e6ed;

@@ -147,6 +147,13 @@
 
             .collection-listItem {
                 list-style: none;
+                border-style: solid;
+                border-left-width: 5px;
+                border-top-width: 0;
+                border-right-width: 0;
+                border-bottom-width: 0;
+                border-color: $primary-1;
+                transition: border-color 0.4s ease-in-out;
 
                 a {
                     @include body-1();
@@ -154,6 +161,30 @@
                     padding: 8px 16px;
                     text-decoration: none;
                     color: $primary-1-text;
+                    transition: color 0.2s ease-in-out;
+                }
+
+                .toc {
+                    display: none;
+                }
+                .toc, .toc ul, .toc ol {
+                    list-style: none;
+                    padding: 0 0 0 12px;
+                }
+
+                &.active {
+                    border-color: #1E8FE1;
+
+                    > a {
+                        color: #1E8FE1;
+                    }
+                    .toc {
+                        display: block;
+
+                        li > a.active {
+                            color: #1E8FE1;
+                        }
+                    }
                 }
             }
         }

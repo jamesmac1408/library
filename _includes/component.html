@@ -1,7 +1,7 @@
 {% assign component = include.component %}
 
 <span class="spacer" id="{{component.name | cgi_escape }}"></span>
-<div class="component">
+<div class="component" id="{{component.name | cgi_escape }}-component">
   <a class="component-title" href="#{{component.name | cgi_escape }}" >
     <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 0h24v24H0z" fill="none"/>

@@ -17,17 +17,20 @@
   align-items: center;
   justify-content: center;
   width: 33%;
-  max-width: 250px;
+  max-height: 120px;
   @media (max-width: $screen-mob-max) {
       width: 100%;
-      max-width: none;
+      max-height: none;
   }
   &:before {
     content: '';
     display: block;
     padding-top: 60%;
   }
-
+  p {
+    text-align: center;
+    padding: 0 16px;
+  }
   span {
     @include title();
 
@@ -36,6 +39,9 @@
     }
     &.black {
       color: #000;
+    }
+    &:nth-of-type(2) {
+      font-weight: 400;
     }
   }
 }
@@ -88,4 +94,14 @@
 }
 .war-3 {
   @include war-3(background);
+}
+
+.grey-dark {
+  @include grey-dark(background);
+}
+.grey-med {
+  @include grey-med(background);
+}
+.grey-outline {
+  @include grey-outline(background);
 }

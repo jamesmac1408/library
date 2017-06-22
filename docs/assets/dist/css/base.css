@@ -153,14 +153,35 @@
       margin: 0;
       padding: 0; }
       .drawer-container .drawer .collection-list .collection-listItem {
-        list-style: none; }
+        list-style: none;
+        border-style: solid;
+        border-left-width: 5px;
+        border-top-width: 0;
+        border-right-width: 0;
+        border-bottom-width: 0;
+        border-color: #263238;
+        transition: border-color 0.4s ease-in-out; }
         .drawer-container .drawer .collection-list .collection-listItem a {
           font-size: 14px;
           letter-spacing: 0.56px;
           display: block;
           padding: 8px 16px;
           text-decoration: none;
-          color: #fff; }
+          color: #fff;
+          transition: color 0.2s ease-in-out; }
+        .drawer-container .drawer .collection-list .collection-listItem .toc {
+          display: none; }
+        .drawer-container .drawer .collection-list .collection-listItem .toc, .drawer-container .drawer .collection-list .collection-listItem .toc ul, .drawer-container .drawer .collection-list .collection-listItem .toc ol {
+          list-style: none;
+          padding: 0 0 0 12px; }
+        .drawer-container .drawer .collection-list .collection-listItem.active {
+          border-color: #1E8FE1; }
+          .drawer-container .drawer .collection-list .collection-listItem.active > a {
+            color: #1E8FE1; }
+          .drawer-container .drawer .collection-list .collection-listItem.active .toc {
+            display: block; }
+            .drawer-container .drawer .collection-list .collection-listItem.active .toc li > a.active {
+              color: #1E8FE1; }
 
 .spacer {
   display: block;
@@ -199,6 +220,8 @@
       line-height: 24px; }
   .component .component-body {
     padding: 16px; }
+    .component .component-body #markdown-toc {
+      display: none; }
     .component .component-body .demo-container {
       border: 1px solid #e0e6ed;
       border-radius: 4px;

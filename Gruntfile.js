@@ -22,8 +22,8 @@ module.exports = function(grunt) {
     },
 
     sass: {
-      /* The sass task compiles all _components/component.scss files into css files, 
-       * and the same for  the _design/component.scss files.
+      /* The sass task compiles all _components/styles.scss files into css files, 
+       * and the same for  the _design/styles.scss files.
        * These then both get concatenated down to the main.css, with correct sourcemapping
        */
       components: {
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
        * - minifies the css
        */
       options: {
-        map: false, 
+        map: true, 
         processors: [
           require('autoprefixer')({browsers: 'last 4 versions'}), // add vendor prefixes
           require('cssnano')() // minify the result
@@ -114,6 +114,9 @@ module.exports = function(grunt) {
        * This allows us to include multiple scripts per component, for an example if we 
        * needed to include slick-slider.js for a carousel
        */
+      options: {
+        sourceMap: true
+      },
       dist: {
         src:  ['_components/**/js/*', '_design/**/js/*'],
         dest: 'dist/js/main.js'

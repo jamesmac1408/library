@@ -15,7 +15,7 @@ collections:
 title:                "Shop Direct Component Library"
 safe:                 false
 include:              [".htaccess"]
-exclude:              ["Gruntfile.js", "Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/", "gruntfile.js", "package-lock.json", "package.json", "assets/scss"]
+exclude:              ["Gruntfile.js", "Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/", "gruntfile.js", "package-lock.json", "package.json", "assets/scss", "LICENSE.txt", "README.md", "feed.xml"]
 keep_files:           [".git", ".svn"]
 encoding:             "utf-8"
 markdown_ext:         "markdown,mkdown,mkdn,mkd,md"
@@ -28,7 +28,7 @@ future:      false
 unpublished: false
 
 # Plugins
-whitelist: []
+plugins: []
 
 # Conversion
 markdown:    kramdown
