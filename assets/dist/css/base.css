@@ -239,8 +239,10 @@
         .component .component-body .demo-container .demo-code .demo-code--copy {
           -webkit-appearance: none;
           cursor: pointer;
-          background: transparent;
-          border: 0;
+          background-color: #FFF;
+          border: 1px solid #e0e6ed;
+          border-top: 0;
+          border-right: 0;
           padding: 8px;
           position: absolute;
           top: 0;
@@ -250,7 +252,11 @@
               display: none; } }
           .component .component-body .demo-container .demo-code .demo-code--copy svg {
             fill-opacity: 0.3;
-            transition: fill-opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition-property: fill, fill-opacity; }
+          .component .component-body .demo-container .demo-code .demo-code--copy.success svg {
+            fill-opacity: 1;
+            fill: #00c853; }
           .component .component-body .demo-container .demo-code .demo-code--copy:hover svg {
             fill-opacity: 1; }
         .component .component-body .demo-container .demo-code figure {
@@ -273,7 +279,8 @@
       font-size: 1.5em; }
     .component .component-body:not(.demo-container) > h3 {
       font-size: 18px;
-      font-weight: 400; }
+      font-weight: 400;
+      margin: 40px 0 18px; }
     .component .component-body:not(.demo-container) > h4 {
       font-size: 16px;
       font-weight: 400; }
