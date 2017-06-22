@@ -64,8 +64,7 @@ function Drawer(el) {
     for (var i = 0; i < keys.length; i++) {
       var rect = this.tocs[keys[i]].getComponent().getBoundingClientRect();
       var inView = (
-          /* The 40px adjusts for the spacing element */
-          (rect.top + main.scrollTop - 40) <= upperRange &&
+          (rect.top + main.scrollTop) <= upperRange &&
           (rect.top + rect.height) >= 0
       ) 
       this.tocs[keys[i]].update(inView, main.scrollTop);
@@ -109,14 +108,34 @@ function TableOfContents(el) {
   this.base = el;
 
   this._highlightTitles = function(scrollTop) {
+    var furthestTitle = 0;
     for (var i = 0; i < this.titles.length; i++) {
       var rect = this.titles[i].getBoundingClientRect();
-      if (rect.top < 112) {
+      if (rect.top < 100) {
+        furthestTitle = i;
         this.links[i].classList.add('active');
       } else {
         this.links[i].classList.remove('active');
       }
     }
+    this._updateScrollIndicator(scrollTop, furthestTitle);
+  }
+
+  this._updateScrollIndicator = function(scrollTop, furthestTitle) {
+    var distance = null;
+    var goal = null;
+    if (furthestTitle === (this.titles.length - 1)) {
+      goal = this.titles[furthestTitle].offsetTop + this.component.getBoundingClientRect().bottom - 100;
+      distance = this.titles[furthestTitle].getBoundingClientRect().top - 100;
+    } else {
+      distance = scrollTop;
+      goal = this.titles[furthestTitle + 1].offsetTop - 100;
+    }
+    var percentage = (goal / distance);
+    // console.log(maxDist, distance, distance / maxDist);
+    // console.log(offsetTop / distance);
+    console.log(goal, distance, percentage);
+    this.scrollIndicator.style.height = ((33 * (furthestTitle + 1)) + (33 * percentage)) + 'px';
   }
 
   this.update = function(active, scrollTop) {
@@ -136,8 +155,10 @@ function TableOfContents(el) {
   this._init = function() {
     this.component = document.getElementById(this.base + '-component');
     this.body = document.getElementById(this.base + '-nav');
+    this.scrollIndicator = this.body.querySelector('.scrollIndicator');
     this.toc = this.body.querySelector('.toc');
 
+    console.log(document.getElementById(this.base));
     this.titles = [];
     this.links = this.toc.querySelectorAll('li > a');
     for (var i = 0; i < this.links.length; i++) {

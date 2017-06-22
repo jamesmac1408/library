@@ -146,14 +146,24 @@
             padding: 0;
 
             .collection-listItem {
+                position: relative;
                 list-style: none;
-                border-style: solid;
-                border-left-width: 5px;
-                border-top-width: 0;
-                border-right-width: 0;
-                border-bottom-width: 0;
-                border-color: $primary-1;
-                transition: border-color 0.4s ease-in-out;
+                // border-style: solid;
+                // border-left-width: 5px;
+                // border-top-width: 0;
+                // border-right-width: 0;
+                // border-bottom-width: 0;
+                // border-color: $primary-1;
+                // transition: border-color 0.4s ease-in-out;
+
+                .scrollIndicator {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: #1E8FE1;
+                    width: 5px;
+                    height: 0;
+                }
 
                 a {
                     @include body-1();

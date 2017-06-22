@@ -9,18 +9,18 @@
   <title>Shop Direct Component Library</title>
   <meta name="description" content="">
 
-  <link rel="shortcut icon" href="/library/assets/dist/images/favicon_dark.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/dist/images/favicon_dark.png" type="image/x-icon">
 
   <!-- Base site styles -->
-  <link rel="stylesheet" href="/library/assets/dist/css/main.css">
+  <link rel="stylesheet" href="/assets/dist/css/main.css">
   <!-- Compiled component styles (that is used in build) -->
-  <link rel="stylesheet" href="/library/dist/css/main.css">
+  <link rel="stylesheet" href="/dist/css/main.css">
 
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 
-   <link rel="canonical" href="/library/design/">
-  <link rel="alternate" type="application/rss+xml" title="Shop Direct Component Library" href="/library/feed.xml">
+   <link rel="canonical" href="/design/">
+  <link rel="alternate" type="application/rss+xml" title="Shop Direct Component Library" href="/feed.xml">
   
   
 </head>
@@ -31,7 +31,7 @@
     <aside class="drawer-container" id="drawerContainer">
     <div class="drawer">
         <div class="drawer-header">
-            <img class="header-logo" src="/library/assets/dist/images/logo_dark.png">
+            <img class="header-logo" src="/assets/dist/images/logo_dark.png">
             <h1 class="header-text">
                 Component Library
             </h1>
@@ -40,20 +40,21 @@
         <div class="drawer-content">
             
             <div class="content-section">
-                <a class="content-titleContainer" href="/library">
+                <a class="content-titleContainer" href="">
                     <h2 class="content-titleText">Overview</h1>
                 </a>
             </div>
 
             <div class="content-section active">
-                <a class="content-titleContainer" href="/library/design/">
+                <a class="content-titleContainer" href="/design/">
                     <h2 class="content-titleText">Design</h1>
                 </a>
                 <div class="content-body">
                     <ul class="collection-list">
                         
                         <li class="collection-listItem" id="Colour-nav">
-                            <a href="/library/design/#Colour">Colour</a>
+                            <div class="scrollIndicator"></div>
+                            <a href="/design/#Colour">Colour</a>
                             <ol class="toc">
   <li><a href="#ui-colours" id="markdown-toc-ui-colours">UI Colours</a>    <ul>
       <li><a href="#primary-green" id="markdown-toc-primary-green">Primary Green</a></li>
@@ -68,7 +69,8 @@
                         </li>
                         
                         <li class="collection-listItem" id="Typography-nav">
-                            <a href="/library/design/#Typography">Typography</a>
+                            <div class="scrollIndicator"></div>
+                            <a href="/design/#Typography">Typography</a>
                             <ol class="toc">
   <li><a href="#heading-1" id="markdown-toc-heading-1">Heading 1</a></li>
   <li><a href="#heading-2" id="markdown-toc-heading-2">Heading 2</a></li>
@@ -82,14 +84,15 @@
                 </div>
             </div>
             <div class="content-section active">
-                <a class="content-titleContainer" href="/library/components/">
+                <a class="content-titleContainer" href="/components/">
                     <h2 class="content-titleText">Components</h1>
                 </a>
                 <div class="content-body">
                     <ul class="collection-list">
                         
                         <li class="collection-listItem" id="Primary+Button-nav">
-                            <a href="/library/components/#Primary+Button">Primary Button</a>
+                            <div class="scrollIndicator"></div>
+                            <a href="/components/#Primary+Button">Primary Button</a>
                             <ol class="toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
   <li><a href="#states" id="markdown-toc-states">States</a></li>
@@ -97,7 +100,8 @@
                         </li>
                         
                         <li class="collection-listItem" id="Secondary+Button-nav">
-                            <a href="/library/components/#Secondary+Button">Secondary Button</a>
+                            <div class="scrollIndicator"></div>
+                            <a href="/components/#Secondary+Button">Secondary Button</a>
                             <ol class="toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
   <li><a href="#states" id="markdown-toc-states">States</a></li>
@@ -105,12 +109,14 @@
                         </li>
                         
                         <li class="collection-listItem" id="Card-nav">
-                            <a href="/library/components/#Card">Card</a>
+                            <div class="scrollIndicator"></div>
+                            <a href="/components/#Card">Card</a>
                             <ol class="toc"></ol>
                         </li>
                         
                         <li class="collection-listItem" id="Ripple-nav">
-                            <a href="/library/components/#Ripple">Ripple</a>
+                            <div class="scrollIndicator"></div>
+                            <a href="/components/#Ripple">Ripple</a>
                             <ol class="toc"></ol>
                         </li>
                         
@@ -137,7 +143,7 @@
     </h1>
   </div>
   <div class="logo-container">
-    <!--<img class="header-logo" src="/library/images/favicon.png">-->
+    <!--<img class="header-logo" src="/images/favicon.png">-->
   </div>
 </header>
 
@@ -146,9 +152,8 @@
           
   
 
-<span class="spacer" id="Colour"></span>
 <div class="component" id="Colour-component">
-  <a class="component-title" href="#Colour" >
+  <a class="component-title" href="#Colour" id="Colour">
     <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
@@ -361,9 +366,8 @@
 
   
 
-<span class="spacer" id="Typography"></span>
 <div class="component" id="Typography-component">
-  <a class="component-title" href="#Typography" >
+  <a class="component-title" href="#Typography" id="Typography">
     <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
@@ -462,9 +466,9 @@
     </div>
 
     <!-- Demo site specific scripts -->
-<script src="/library/assets/dist/js/main.js"></script>
+<script src="/assets/dist/js/main.js"></script>
 <!-- Compiled component scripts (for use in build) -->
-<script src="/library/dist/js/main.js"></script>
+<script src="/dist/js/main.js"></script>
 
 
 
