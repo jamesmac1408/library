@@ -3,6 +3,7 @@
 */
 
 var main = document.querySelector('.main');
+var IN_VIEW_THRESHOLD = 100;
 
 function Drawer(el) {
   this.drawerContainer = el;
@@ -57,17 +58,20 @@ function Drawer(el) {
   }
 
   this._updateTocs = function() {
-    var height =     main.getBoundingClientRect().height,
-        upperRange = main.scrollTop;
+    var upperRange = main.scrollTop;
 
+    var tocsInView = [];
     var keys = Object.keys(this.tocs);
     for (var i = 0; i < keys.length; i++) {
       var rect = this.tocs[keys[i]].getComponent().getBoundingClientRect();
-      var inView = (
-          (rect.top + main.scrollTop) <= upperRange &&
-          (rect.top + rect.height) >= 0
-      ) 
-      this.tocs[keys[i]].update(inView, main.scrollTop);
+      if (rect.bottom > 0) {
+        tocsInView.push(this.tocs[keys[i]]);
+      }
+    }
+    var tocToShow = tocsInView[0];
+    for (var i = 0; i < keys.length; i++) {
+        var toShow = (this.tocs[keys[i]] === tocToShow);
+        this.tocs[keys[i]].update(toShow, main.scrollTop);
     }
   }
 
@@ -111,7 +115,7 @@ function TableOfContents(el) {
     var furthestTitle = 0;
     for (var i = 0; i < this.titles.length; i++) {
       var rect = this.titles[i].getBoundingClientRect();
-      if (rect.top < 100) {
+      if (rect.top < IN_VIEW_THRESHOLD) {
         furthestTitle = i;
         this.links[i].classList.add('active');
       } else {
@@ -123,19 +127,21 @@ function TableOfContents(el) {
 
   this._updateScrollIndicator = function(scrollTop, furthestTitle) {
     var distance = null;
-    var goal = null;
+    var goal = IN_VIEW_THRESHOLD;
     if (furthestTitle === (this.titles.length - 1)) {
-      goal = this.titles[furthestTitle].offsetTop + this.component.getBoundingClientRect().bottom - 100;
-      distance = this.titles[furthestTitle].getBoundingClientRect().top - 100;
+      distance = this.component.getBoundingClientRect().bottom;
+      if (distance < goal) {
+        distance = goal;
+      }
     } else {
-      distance = scrollTop;
-      goal = this.titles[furthestTitle + 1].offsetTop - 100;
+      distance = this.titles[furthestTitle + 1].getBoundingClientRect().top;
     }
-    var percentage = (goal / distance);
-    // console.log(maxDist, distance, distance / maxDist);
-    // console.log(offsetTop / distance);
-    console.log(goal, distance, percentage);
-    this.scrollIndicator.style.height = ((33 * (furthestTitle + 1)) + (33 * percentage)) + 'px';
+
+    var percentage = (goal / distance),
+        extraHeight = 33 * percentage,
+        height = 33 * (furthestTitle + 1) + extraHeight;
+
+    this.scrollIndicator.style.height = height + 'px';
   }
 
   this.update = function(active, scrollTop) {
@@ -158,7 +164,6 @@ function TableOfContents(el) {
     this.scrollIndicator = this.body.querySelector('.scrollIndicator');
     this.toc = this.body.querySelector('.toc');
 
-    console.log(document.getElementById(this.base));
     this.titles = [];
     this.links = this.toc.querySelectorAll('li > a');
     for (var i = 0; i < this.links.length; i++) {

@@ -157,12 +157,14 @@
                 // transition: border-color 0.4s ease-in-out;
 
                 .scrollIndicator {
+                    display: none;
                     position: absolute;
                     top: 0;
                     left: 0;
                     background: #1E8FE1;
                     width: 5px;
                     height: 0;
+                    transition: height 0.1s ease-in-out;
                 }
 
                 a {
@@ -183,7 +185,9 @@
                 }
 
                 &.active {
-                    border-color: #1E8FE1;
+                    .scrollIndicator {
+                        display: block;
+                    }
 
                     > a {
                         color: #1E8FE1;

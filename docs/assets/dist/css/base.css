@@ -156,12 +156,14 @@
         position: relative;
         list-style: none; }
         .drawer-container .drawer .collection-list .collection-listItem .scrollIndicator {
+          display: none;
           position: absolute;
           top: 0;
           left: 0;
           background: #1E8FE1;
           width: 5px;
-          height: 0; }
+          height: 0;
+          transition: height 0.1s ease-in-out; }
         .drawer-container .drawer .collection-list .collection-listItem a {
           font-size: 14px;
           letter-spacing: 0.56px;
@@ -175,14 +177,14 @@
         .drawer-container .drawer .collection-list .collection-listItem .toc, .drawer-container .drawer .collection-list .collection-listItem .toc ul, .drawer-container .drawer .collection-list .collection-listItem .toc ol {
           list-style: none;
           padding: 0 0 0 12px; }
-        .drawer-container .drawer .collection-list .collection-listItem.active {
-          border-color: #1E8FE1; }
-          .drawer-container .drawer .collection-list .collection-listItem.active > a {
+        .drawer-container .drawer .collection-list .collection-listItem.active .scrollIndicator {
+          display: block; }
+        .drawer-container .drawer .collection-list .collection-listItem.active > a {
+          color: #1E8FE1; }
+        .drawer-container .drawer .collection-list .collection-listItem.active .toc {
+          display: block; }
+          .drawer-container .drawer .collection-list .collection-listItem.active .toc li > a.active {
             color: #1E8FE1; }
-          .drawer-container .drawer .collection-list .collection-listItem.active .toc {
-            display: block; }
-            .drawer-container .drawer .collection-list .collection-listItem.active .toc li > a.active {
-              color: #1E8FE1; }
 
 .spacer {
   display: block;
@@ -192,6 +194,9 @@
     .spacer {
       margin-top: 0;
       padding-bottom: 0; } }
+
+.component-container {
+  padding: 20px 0; }
 
 .component {
   background: #fff;
