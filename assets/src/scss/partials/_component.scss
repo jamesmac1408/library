@@ -12,14 +12,14 @@
 }
 .component-container {
     padding: 20px 0;
+
+    @media (max-width: $screen-mob-max) {
+        padding: 0 0 20px 0;
+    }
 }
 .component {
     background: #fff;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
-
-    @media (max-width: $screen-mob-max) {
-        margin: 0 0 20px 0;
-    }
 
     .component-title {
         text-decoration: none;

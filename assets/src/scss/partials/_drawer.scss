@@ -129,7 +129,7 @@
 
         .content-body {
             display: none;
-            padding: 0 24px 24px;
+            padding: 0 24px 16px;
             background: $primary-1;
         }
 
@@ -148,6 +148,7 @@
             .collection-listItem {
                 position: relative;
                 list-style: none;
+                padding: 0 0 8px 0;
 
                 .scrollIndicator {
                     display: none;
@@ -157,7 +158,7 @@
                     background: #1E8FE1;
                     width: 5px;
                     height: 0px;
-                    transition: height 0.3s ease-in-out;
+                    transition: height 0.1s $nice-easing;
                 }
 
                 a {
@@ -166,12 +167,12 @@
                     padding: 8px 16px;
                     text-decoration: none;
                     color: $primary-1-text;
-                    transition: color 0.2s ease-in-out;
+                    transition: color 0.2s $nice-easing;
                 }
 
                 .toc {
                     overflow: hidden;
-                    transition: max-height 0.3s ease-in-out;
+                    transition: max-height 0.3s $nice-easing;
                 }
                 .toc, .toc ul, .toc ol {
                     list-style: none;
@@ -188,6 +189,10 @@
                     }
                     .toc {
                         display: block;
+
+                         @media (max-width: $screen-mob-max) {
+                            max-height: none !important;
+                        }
 
                         li > a.active {
                             color: #1E8FE1;

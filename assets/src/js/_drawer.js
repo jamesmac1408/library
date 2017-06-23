@@ -3,7 +3,7 @@
 */
 
 var main = document.querySelector('.main');
-var IN_VIEW_THRESHOLD = 10;
+var IN_VIEW_THRESHOLD = 60;
 
 function Drawer(el) {
   this.drawerContainer = el;
