@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   width: 33%;
-  max-height: 120px; }
+  max-height: 160px; }
   @media (max-width: 768px) {
     .row {
       width: 100%;

@@ -58,21 +58,39 @@ function Drawer(el) {
   }
 
   this._updateTocs = function() {
-    var upperRange = main.scrollTop;
+    this.ticking = false;
 
-    var tocsInView = [];
-    var keys = Object.keys(this.tocs);
+    var tocsInView = [],
+        keys = Object.keys(this.tocs);
+
     for (var i = 0; i < keys.length; i++) {
-      var rect = this.tocs[keys[i]].getComponent().getBoundingClientRect();
-      if (rect.bottom > 0) {
+
+      var component = this.tocs[keys[i]].getComponent(),
+          bottom = (component.offsetTop + component.offsetHeight) - this.latestKnownScrollY;
+
+      if (bottom > 0) {
         tocsInView.push(this.tocs[keys[i]]);
       }
     }
+    
     var tocToShow = tocsInView[0];
     for (var i = 0; i < keys.length; i++) {
         var toShow = (this.tocs[keys[i]] === tocToShow);
-        this.tocs[keys[i]].update(toShow, main.scrollTop);
+        this.tocs[keys[i]].update(toShow, this.latestKnownScrollY);
     }
+  }
+
+  this._requestTick = function() {
+    if (!this.ticking) {
+      requestAnimationFrame(this._updateTocs);
+    }
+    this.ticking = true;
+  }
+
+  // debounces scroll events
+  this._onScroll = function() {
+    this.latestKnownScrollY = main.scrollTop;
+	  this._requestTick();
   }
 
   this._addEventListeners = function() {
@@ -82,15 +100,21 @@ function Drawer(el) {
       links[i].addEventListener('click', this._hideDrawer);
     }
     /* scroll listener */
-    main.addEventListener('scroll', this._updateTocs);
-    window.addEventListener('hashchange', this._updateTocs);
+    main.addEventListener('scroll', this._onScroll);
+    window.addEventListener('hashchange', this._onScroll);
   }
 
   this._init = function() {
+    // sets up debouncing of scroll events
+    this.latestKnownScrollY = 0;
+  	this.ticking = false;
+
     this._onBodyClick = this._onBodyClick.bind(this);
     this._hideDrawer = this._hideDrawer.bind(this);
     this._removeDrawer = this._removeDrawer.bind(this);
     this._updateTocs = this._updateTocs.bind(this);
+    this._requestTick = this._requestTick.bind(this);
+    this._onScroll = this._onScroll.bind(this);
 
     this.tocs = {};
     this.components = Array.prototype.slice.call(document.querySelectorAll('.component'));
@@ -110,6 +134,7 @@ function Drawer(el) {
 
 function TableOfContents(el) {
   this.base = el;
+  this.furthestTitle = null;
 
   this._highlightTitles = function(scrollTop) {
     var furthestTitle = 0;
@@ -126,20 +151,36 @@ function TableOfContents(el) {
   }
 
   this._updateScrollIndicator = function(scrollTop, furthestTitle) {
-    var distance = null;
-    var goal = IN_VIEW_THRESHOLD;
-    if (furthestTitle === (this.titles.length - 1)) {
-      distance = this.component.getBoundingClientRect().bottom;
-      if (distance < goal) {
-        distance = goal;
+    // only update these values when we have a new 'furthestTitle' (perf)
+    if (furthestTitle !== this.furthestTitle) {
+      this.furthestTitle = furthestTitle;
+
+      var currElementDistance = null;
+      var nextElementDistance = null;
+
+      var currTitleOffsetTop = this.titles[furthestTitle].offsetTop;
+
+      if (furthestTitle === (this.titles.length - 1)) {
+        var componentOffsetBottom = (this.component.offsetTop + this.component.offsetHeight) ;
+
+        this.nextElementDistance = componentOffsetBottom;
+        this.currElementDistance = currTitleOffsetTop;
+
+      } else {
+        var nextTitleOffsetTop = this.titles[furthestTitle + 1].offsetTop;
+
+        this.nextElementDistance = nextTitleOffsetTop;
+        this.currElementDistance = currTitleOffsetTop;
       }
-    } else {
-      distance = this.titles[furthestTitle + 1].getBoundingClientRect().top;
     }
 
-    var percentage = (goal / distance),
-        extraHeight = 33 * percentage,
-        height = 33 * (furthestTitle + 1) + extraHeight;
+    goal = this.nextElementDistance - this.currElementDistance;
+    distance = goal - (this.nextElementDistance - scrollTop - IN_VIEW_THRESHOLD);
+    distance = (distance > goal) ? goal : distance;
+
+    var percentage = (distance / goal),
+        extraHeight = (33 * percentage),
+        height = (33 * (furthestTitle + 1)) + extraHeight;
 
     this.scrollIndicator.style.height = height + 'px';
   }
