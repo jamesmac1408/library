@@ -57,13 +57,13 @@ function TableOfContents(el) {
   }
 
   this.update = function(active, scrollTop) {
-    
     if (active) {
       this.body.classList.add('active');
       this.toc.style.maxHeight = this.maxHeight + 'px';
       this._highlightTitles(scrollTop);
     } else {
       this.toc.style.maxHeight = '0px';
+      this.scrollIndicator.style.height = '0px';
       this.body.classList.remove('active');
     }
   }
