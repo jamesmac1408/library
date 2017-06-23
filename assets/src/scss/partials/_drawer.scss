@@ -156,7 +156,7 @@
                     left: 0;
                     background: #1E8FE1;
                     width: 5px;
-                    height: 0;
+                    height: 0px;
                     transition: height 0.1s linear;
                 }
 
@@ -170,7 +170,8 @@
                 }
 
                 .toc {
-                    display: none;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease-in-out;
                 }
                 .toc, .toc ul, .toc ol {
                     list-style: none;
