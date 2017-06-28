@@ -1,8 +1,7 @@
 Function.prototype.bind||(Function.prototype.bind=function(t){if("function"!=typeof this)throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");var o=Array.prototype.slice.call(arguments,1),n=this,i=function(){},r=function(){return n.apply(this instanceof i&&t?this:t,o.concat(Array.prototype.slice.call(arguments)))};return i.prototype=this.prototype,r.prototype=new i,r});
 
 function loopedCarousel(el, pipsCarousel) {
-  this.el = $('#' + el);
-  this.pipsCarousel = $('#' + pipsCarousel);
+  this.wrapper = $('#' + el);
   this.pips = [];
 
   this.numberOfFlankingPips = 2;
@@ -156,9 +155,29 @@ function loopedCarousel(el, pipsCarousel) {
   }
 
   this.init = function() {
-    if (this.el.length < 0) {
-      throw Error('Element not found!');
+    this.initialised = false;
+
+    if (this.wrapper.length < 0) {
+      throw Error('Could not find wrapper element!');
     }
+
+    this.el = this.wrapper.find('.carousel');
+    this.pipsCarousel = this.wrapper.find('.pips-carousel');
+
+    console.log(this.wrapper);
+
+    if (this.el.length < 0) {
+      throw Error('Could not find main carousel element!');
+    }
+    if (this.pipsCarousel.length < 0) {
+      throw Error('Could not find pipsCarousel element!');
+    }
+
+    if (this.wrapper.length < 0 || this.el.length < 0 || this.pipsCarousel.length < 0) {
+      return;
+    }
+
+    this.initialised = true;
 
     this._setMainCarousel = this._setMainCarousel.bind(this);
 

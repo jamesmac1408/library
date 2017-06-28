@@ -46,9 +46,12 @@
 .slick-slide { display: none; }
 .slick-list.dragging img { pointer-events: none; }
 .slick-initialized .slick-track .slick-slide { display: table-cell; }
-.slides { overflow: hidden; }
-.ie7 .slides .slick-slide { display: block; } /* IE7 Fix */
+.carousel { overflow: hidden; }
+.ie7 .carousel .slick-slide { display: block; } /* IE7 Fix */
 
+.carousel {
+  width: 100%;
+}
 .pips-carousel {
   display: inline-block;
   position: relative;

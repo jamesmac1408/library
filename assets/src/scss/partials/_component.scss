@@ -47,6 +47,7 @@
 
     .component-body {
         padding: 16px;
+        line-height: 1.5;
         
         #markdown-toc {
             display: none;
@@ -122,7 +123,7 @@
         }
 
         .highlighter-rouge {
-            background: #eaeaea;
+            background: rgba(224,230,237,.25);
         }
 
         &:not(.demo-container) > h1 {

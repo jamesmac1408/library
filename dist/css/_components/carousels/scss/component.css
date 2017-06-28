@@ -58,13 +58,16 @@
 .slick-initialized .slick-track .slick-slide {
   display: table-cell; }
 
-.slides {
+.carousel {
   overflow: hidden; }
 
-.ie7 .slides .slick-slide {
+.ie7 .carousel .slick-slide {
   display: block; }
 
 /* IE7 Fix */
+.carousel {
+  width: 100%; }
+
 .pips-carousel {
   display: inline-block;
   position: relative;

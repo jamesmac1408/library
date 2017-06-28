@@ -7,24 +7,24 @@
 
 # Looped Carousels
 
-To create a new looped carousel, invoke the `loopedCarousel(carousel, pipsCarousel)` method. 
-This method takes 2 arguments:
+To create a new looped carousel, invoke the `loopedCarousel(wrapper)` method. 
+This method takes 1 argument:
 
 | Parameter | Description  |
 |---|---|
-| `carousel`  | id or element of the main carousel  |  
-| `pipsCarousel`  | id or element of the empty `.pips-carousel` div  |  
+| `wrapper`  | id or element of the wrapper which contains the main slider element, as well as the pips-carousel element  |  
 
-You must create the pips carousel element, place it directly after the slider and give it the class of `pips-carousel`
+`loopedCarousel` looks for `.carousel` & `.pips-carousel` children of the given wrapper. If the wrapper or either one of these children cannot be found, an error will be thrown and the carousel will not be initialised.
 
-`loopedCarousel` appends pips to the `.pips-carousel` element, which positions itself based off its parent's width, therefore it would make sense to wrap the slider in a parent container and make the slider width 100%. 
+1. The `.carousel` element will take 100% of the wrapper width.
+2. The `.looped-carousel` element must be an empty div placed directly after the main carousel
 
 Full example code of this can be seen below.
 
 {% demo %}
 {% output %}
-<div class="demo-grid">
-  <div id="sliderTarget" class="slides">
+<div class="demo-grid"  id="sliderTarget">
+  <div class="carousel">
     <div class="banner banner-1">
       <div class="content">
         <h1>1</h1>
@@ -69,12 +69,10 @@ Full example code of this can be seen below.
   .wrapper {
     width: 100%;
   }
-  .slides {
-    width: 100%;
-  }
 </style>
-<div class="wrapper">
-  <div id="sliderTarget" class="slides slider-300">
+
+<div class="wrapper" id="sliderTarget" >
+  <div class="carousel">
       <div class="banner banner-1">
         <div class="content">
           <h1>1</h1>
@@ -94,8 +92,9 @@ Full example code of this can be seen below.
   </div>
   <div class="pips-carousel" id="sliderTarget-pips"></div>
 </div>
+
 <script>
-  var carousel = new loopedCarousel('sliderTarget', 'sliderTarget-pips');
+  var carousel = new loopedCarousel('sliderTarget');
 </script>
 {% endcode %}
 {% enddemo %}
