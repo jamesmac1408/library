@@ -129,7 +129,7 @@
 
         .content-body {
             display: none;
-            padding: 0 24px 24px;
+            padding: 0 24px 16px;
             background: $primary-1;
         }
 
@@ -148,21 +148,17 @@
             .collection-listItem {
                 position: relative;
                 list-style: none;
-                // border-style: solid;
-                // border-left-width: 5px;
-                // border-top-width: 0;
-                // border-right-width: 0;
-                // border-bottom-width: 0;
-                // border-color: $primary-1;
-                // transition: border-color 0.4s ease-in-out;
+                padding: 0 0 8px 0;
 
                 .scrollIndicator {
+                    display: none;
                     position: absolute;
                     top: 0;
                     left: 0;
                     background: #1E8FE1;
                     width: 5px;
-                    height: 0;
+                    height: 0px;
+                    transition: height 0.1s $nice-easing;
                 }
 
                 a {
@@ -171,11 +167,12 @@
                     padding: 8px 16px;
                     text-decoration: none;
                     color: $primary-1-text;
-                    transition: color 0.2s ease-in-out;
+                    transition: color 0.2s $nice-easing;
                 }
 
                 .toc {
-                    display: none;
+                    overflow: hidden;
+                    transition: max-height 0.3s $nice-easing;
                 }
                 .toc, .toc ul, .toc ol {
                     list-style: none;
@@ -183,13 +180,19 @@
                 }
 
                 &.active {
-                    border-color: #1E8FE1;
+                    .scrollIndicator {
+                        display: block;
+                    }
 
                     > a {
                         color: #1E8FE1;
                     }
                     .toc {
                         display: block;
+
+                         @media (max-width: $screen-mob-max) {
+                            max-height: none !important;
+                        }
 
                         li > a.active {
                             color: #1E8FE1;

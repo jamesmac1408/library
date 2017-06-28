@@ -7,6 +7,13 @@
 - README.md: each component contains a README.md file which details how to use the component 
 - Demo folder containing demo.txt, and demo.js & demo.scss if required.
 
+** Include
+```
+* TOC
+{:toc}
+```
+at the start of all demo.md files to get a contents section in the left hand nav**
+
 ## Folder structure for each component
 
 ```
@@ -26,9 +33,8 @@ components/
 
 - Minified JS
 - Autoprefixed + minified CSS
+- Navigation/contents drawer
 
 ## TODO
 
-- YAML/front-matter for components (title, attributes etc.)
-- Seperate, more detailed demo pages for each component
 - Polyfills (big TODO).

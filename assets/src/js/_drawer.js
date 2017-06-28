@@ -3,6 +3,7 @@
 */
 
 var main = document.querySelector('.main');
+var IN_VIEW_THRESHOLD = 60;
 
 function Drawer(el) {
   this.drawerContainer = el;
@@ -57,41 +58,86 @@ function Drawer(el) {
   }
 
   this._updateTocs = function() {
-    var height =     main.getBoundingClientRect().height,
-        upperRange = main.scrollTop;
+    this.ticking = false;
 
-    var keys = Object.keys(this.tocs);
+    var tocsInView = [],
+        keys = Object.keys(this.tocs);
+
     for (var i = 0; i < keys.length; i++) {
-      var rect = this.tocs[keys[i]].getComponent().getBoundingClientRect();
-      var inView = (
-          (rect.top + main.scrollTop) <= upperRange &&
-          (rect.top + rect.height) >= 0
-      ) 
-      this.tocs[keys[i]].update(inView, main.scrollTop);
+
+      var component = this.tocs[keys[i]].getComponent();
+
+      if (component) {
+        var bottom = (component.offsetTop + component.offsetHeight) - this.latestKnownScrollY;
+
+        if (bottom > 0) {
+          tocsInView.push(this.tocs[keys[i]]);
+        }
+      }
     }
+    
+    var tocToShow = tocsInView[0];
+    for (var i = 0; i < keys.length; i++) {
+        var toShow = (this.tocs[keys[i]] === tocToShow);
+        this.tocs[keys[i]].update(toShow, this.latestKnownScrollY);
+    }
+  }
+
+  this._requestTick = function() {
+    if (!this.ticking) {
+      requestAnimationFrame(this._updateTocs);
+    }
+    this.ticking = true;
+  }
+
+  this._scrollToElement = function(evt) {
+
+    this._hideDrawer();
+
+    var targetElId = /(\/.*\/)?(#.*)/.exec(evt.target.getAttribute('href'))[2],
+        targetEl = document.querySelector(targetElId);
+
+    if (targetEl) {
+      evt.preventDefault();
+      doScrolling(targetEl, 500);
+    } 
+  }
+
+  // debounces scroll events
+  this._onScroll = function() {
+    this.latestKnownScrollY = main.scrollTop;
+	  this._requestTick();
   }
 
   this._addEventListeners = function() {
     /* close drawer on clicking a link */
-    var links = this.drawer.querySelectorAll('.collection-listItem > a');
+    var links = this.drawer.querySelectorAll('.collection-listItem a');
     for (var i = 0; i < links.length; i += 1) {
-      links[i].addEventListener('click', this._hideDrawer);
+      links[i].addEventListener('click', this._scrollToElement);
     }
     /* scroll listener */
-    main.addEventListener('scroll', this._updateTocs);
-    window.addEventListener('hashchange', this._updateTocs);
+    main.addEventListener('scroll', this._onScroll);
+    window.addEventListener('resize', this._onScroll);
+    window.addEventListener('hashchange', this._onScroll);
   }
 
   this._init = function() {
+    // sets up debouncing of scroll events
+    this.latestKnownScrollY = 0;
+  	this.ticking = false;
+
     this._onBodyClick = this._onBodyClick.bind(this);
     this._hideDrawer = this._hideDrawer.bind(this);
     this._removeDrawer = this._removeDrawer.bind(this);
     this._updateTocs = this._updateTocs.bind(this);
+    this._requestTick = this._requestTick.bind(this);
+    this._onScroll = this._onScroll.bind(this);
+    this._scrollToElement = this._scrollToElement.bind(this);
 
     this.tocs = {};
-    this.components = Array.prototype.slice.call(document.querySelectorAll('.component'));
-    for (var i = 0; i < this.components.length; i++) {
-      var component = /(.*)-component/.exec(this.components[i].getAttribute('id'))[1];
+    var navs = Array.prototype.slice.call(document.querySelectorAll('.collection-listItem'));
+    for (var i = 0; i < navs.length; i++) {
+      var component = /(.*)-nav/.exec(navs[i].getAttribute('id'))[1];
       this.tocs[component] = new TableOfContents(component);
     }
 
@@ -99,71 +145,6 @@ function Drawer(el) {
     this._updateTocs();
 
     this._addEventListeners();
-  }
-
-  this._init();
-}
-
-function TableOfContents(el) {
-  this.base = el;
-
-  this._highlightTitles = function(scrollTop) {
-    var furthestTitle = 0;
-    for (var i = 0; i < this.titles.length; i++) {
-      var rect = this.titles[i].getBoundingClientRect();
-      if (rect.top < 100) {
-        furthestTitle = i;
-        this.links[i].classList.add('active');
-      } else {
-        this.links[i].classList.remove('active');
-      }
-    }
-    this._updateScrollIndicator(scrollTop, furthestTitle);
-  }
-
-  this._updateScrollIndicator = function(scrollTop, furthestTitle) {
-    var distance = null;
-    var goal = null;
-    if (furthestTitle === (this.titles.length - 1)) {
-      goal = this.titles[furthestTitle].offsetTop + this.component.getBoundingClientRect().bottom - 100;
-      distance = this.titles[furthestTitle].getBoundingClientRect().top - 100;
-    } else {
-      distance = scrollTop;
-      goal = this.titles[furthestTitle + 1].offsetTop - 100;
-    }
-    var percentage = (goal / distance);
-    // console.log(maxDist, distance, distance / maxDist);
-    // console.log(offsetTop / distance);
-    console.log(goal, distance, percentage);
-    this.scrollIndicator.style.height = ((33 * (furthestTitle + 1)) + (33 * percentage)) + 'px';
-  }
-
-  this.update = function(active, scrollTop) {
-    
-    if (active) {
-      this.body.classList.add('active');
-      this._highlightTitles(scrollTop);
-    } else {
-      this.body.classList.remove('active');
-    }
-  }
-
-  this.getComponent = function() {
-    return this.component;
-  }
-
-  this._init = function() {
-    this.component = document.getElementById(this.base + '-component');
-    this.body = document.getElementById(this.base + '-nav');
-    this.scrollIndicator = this.body.querySelector('.scrollIndicator');
-    this.toc = this.body.querySelector('.toc');
-
-    console.log(document.getElementById(this.base));
-    this.titles = [];
-    this.links = this.toc.querySelectorAll('li > a');
-    for (var i = 0; i < this.links.length; i++) {
-      this.titles.push(this.component.querySelector(this.links[i].getAttribute('href')));
-    }
   }
 
   this._init();

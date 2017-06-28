@@ -41,12 +41,3 @@ Transitions between states are animated, using with ease-in-ease-out over 0.3s.
 {% endcode %}
 {% enddemo %}
 
-{% demo %}
-{% code %}
-<button class="btn-wrapper btn-primary">
-    <div class="btn">
-        <span class="btn-text">...</span>
-    </div>  
-</button>
-{% endcode %}
-{% enddemo %}

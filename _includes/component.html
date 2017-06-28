@@ -1,5 +1,6 @@
 {% assign component = include.component %}
 
+<div class="component-container">
 <div class="component" id="{{component.name | cgi_escape }}-component">
   <a class="component-title" href="#{{component.name | cgi_escape }}" id="{{ component.name | cgi_escape }}">
     <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -11,4 +12,5 @@
   <div class="component-body">
     {{ component }}
   </div>
+</div>
 </div>
