@@ -23,7 +23,8 @@ components/
 |   |   └── demo.scss
 |   |   └── demo.js
 |   ├── js/
-|   |   └── scripts.js
+|   |   └── scripts.js (main component js)
+|   |   └── *.js (any other js required for component)
 |   ├── scss/
 |   |   └── styles.scss
 └── └── demo.md

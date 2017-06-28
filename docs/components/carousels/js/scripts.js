@@ -43,7 +43,7 @@ function loopedCarousel(el, pipsCarousel) {
   }
 
   this._calcParentWidth = function() {
-    this.parentWidth = this.pipsCarousel.parent().width();
+    this.parentWidth = this.wrapper.width();
   }
 
   this._positionPipsCarousel = function(animate) {
