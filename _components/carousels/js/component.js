@@ -1,7 +1,8 @@
 Function.prototype.bind||(Function.prototype.bind=function(t){if("function"!=typeof this)throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");var o=Array.prototype.slice.call(arguments,1),n=this,i=function(){},r=function(){return n.apply(this instanceof i&&t?this:t,o.concat(Array.prototype.slice.call(arguments)))};return i.prototype=this.prototype,r.prototype=new i,r});
 
-function loopedCarousel(el) {
+function loopedCarousel(el, pipsCarousel) {
   this.el = $('#' + el);
+  this.pipsCarousel = $('#' + pipsCarousel);
   this.pips = [];
 
   this.numberOfFlankingPips = 2;
@@ -110,22 +111,18 @@ function loopedCarousel(el) {
     }
   }
 
-  this._createPipsCarousel = function() {
+  this._createPips = function() {
     var banners  = this.el.find('.banner');
-    var el = $('<div class="pips-carousel"></div>');
-    $(this.el).after(el);
 
     for (var i = 0; i < banners.length; i += 1) {
       var pip = $('<button class="pip-container"><div class="pip"></div></button>');
       this.pips.push(pip);
-      el.append(pip);
+      this.pipsCarousel.append(pip);
       this._setPipInactive(pip.find('.pip'), 0, false);
     }
 
     this.pipWidth = this.pips[0][0].offsetWidth;
     this._setActivePips();
-    
-    return el;
   }
 
   this._initMainSlider = function() {
@@ -167,7 +164,7 @@ function loopedCarousel(el) {
 
     this.previousActiveIndex = -1;
     this.activeIndex = 0;
-    this.pipsCarousel = this._createPipsCarousel();
+    this._createPips();
     this._calcParentWidth();
     this._positionPipsCarousel(false);
     this._initMainSlider();

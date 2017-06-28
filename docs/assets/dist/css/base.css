@@ -282,6 +282,8 @@
               font-size: 14px;
               letter-spacing: 0.56px;
               line-height: 1.5; }
+    .component .component-body .highlighter-rouge {
+      background: #eaeaea; }
     .component .component-body:not(.demo-container) > h1 {
       font-weight: 300;
       font-size: 2em; }
@@ -298,6 +300,16 @@
     .component .component-body:not(.demo-container) > p {
       font-size: 14px;
       letter-spacing: 0.56px; }
+    .component .component-body table {
+      border-spacing: 0;
+      border-collapse: collapse; }
+      .component .component-body table tr {
+        background-color: #fff; }
+        .component .component-body table tr td, .component .component-body table tr th {
+          padding: 8px 16px;
+          border: 1px solid #dfe2e5; }
+        .component .component-body table tr th {
+          font-weight: 600; }
 
 .highlight {
   background: #ffffff; }

@@ -1,1 +1,1 @@
-var carousel = new loopedCarousel('sliderTarget');
+var carousel = new loopedCarousel('sliderTarget', 'sliderTarget-pips');
