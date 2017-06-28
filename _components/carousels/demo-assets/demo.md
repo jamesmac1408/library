@@ -19,7 +19,9 @@ This method takes 1 argument:
 1. The `.carousel` element will take 100% of the wrapper width.
 2. The `.looped-carousel` element must be an empty div placed directly after the main carousel
 
-Full example code of this can be seen below.
+Full example code & demos can be seen below.
+
+## Creative Content
 
 {% demo %}
 {% output %}
@@ -61,7 +63,7 @@ Full example code of this can be seen below.
       </div>
     </div>
   </div>
-  <div class="pips-carousel" id="sliderTarget-pips"></div>
+  <div class="pips-carousel"></div>
 </div>  
 {% endoutput %}
 {% code %}
@@ -83,14 +85,9 @@ Full example code of this can be seen below.
           <h1>2</h1>
         </div>
       </div>
-      <div class="banner banner-3">
-        <div class="content">
-          <h1>3</h1>
-        </div>
-      </div>
       ...
   </div>
-  <div class="pips-carousel" id="sliderTarget-pips"></div>
+  <div class="pips-carousel"></div>
 </div>
 
 <script>
@@ -98,3 +95,7 @@ Full example code of this can be seen below.
 </script>
 {% endcode %}
 {% enddemo %}
+
+## Product Cards
+
+**Coming soon**
