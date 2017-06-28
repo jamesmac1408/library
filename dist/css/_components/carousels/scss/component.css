@@ -1,0 +1,81 @@
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: none;
+  touch-action: none; }
+
+.slick-list:focus {
+  outline: none; }
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0px;
+  padding: 0px; }
+
+.slick-slider .slick-list, .slick-track, .slick-slide, .slick-slide img {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.slick-track {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  display: table; }
+
+.slick-track:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+.slick-slide {
+  float: left;
+  min-height: 1px; }
+
+.slick-slide img {
+  display: block; }
+
+.slick-slide a {
+  display: block; }
+
+.slick-slide {
+  display: none; }
+
+.slick-list.dragging img {
+  pointer-events: none; }
+
+.slick-initialized .slick-track .slick-slide {
+  display: table-cell; }
+
+.slides {
+  overflow: hidden; }
+
+.ie7 .slides .slick-slide {
+  display: block; }
+
+/* IE7 Fix */
+.pips-carousel {
+  display: inline-block;
+  position: relative;
+  min-height: 56px; }
+
+.pips-carousel .pip-container {
+  visibility: hidden;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0 8px;
+  height: 56px;
+  background: none;
+  border: none; }

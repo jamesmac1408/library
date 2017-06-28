@@ -19,6 +19,7 @@ function TableOfContents(el) {
   this._updateScrollIndicator = function(scrollTop, furthestTitle) {
     // only update these values when we have a new 'furthestTitle' (perf)
     if (furthestTitle !== this.furthestTitle) {
+
       this.furthestTitle = furthestTitle;
 
       var currElementDistance = null;
@@ -52,7 +53,7 @@ function TableOfContents(el) {
   }
 
   this.hideToc = function() {
-    this.maxHeight = this.toc.getBoundingClientRect().height;
+    this.maxHeight = this.toc.offsetHeight + 12;
     this.toc.style.maxHeight = '0px';
   }
 

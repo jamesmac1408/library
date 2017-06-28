@@ -69,6 +69,13 @@
       <li><a href="#moderate-orange" id="markdown-toc-moderate-orange">Moderate Orange</a></li>
       <li><a href="#warning-yellow" id="markdown-toc-warning-yellow">Warning Yellow</a></li>
       <li><a href="#greys" id="markdown-toc-greys">Greys</a></li>
+      <li><a href="#brand-colours" id="markdown-toc-brand-colours">Brand Colours</a>        <ul>
+          <li><a href="#very" id="markdown-toc-very">Very</a></li>
+          <li><a href="#littlewoods" id="markdown-toc-littlewoods">Littlewoods</a></li>
+          <li><a href="#very-exclusive" id="markdown-toc-very-exclusive">Very Exclusive</a></li>
+          <li><a href="#littlewoods-ireland" id="markdown-toc-littlewoods-ireland">Littlewoods Ireland</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ol>
@@ -118,6 +125,14 @@
                             <div class="scrollIndicator"></div>
                             <a href="/library/components/#Card">Card</a>
                             <ol class="toc"></ol>
+                        </li>
+                        
+                        <li class="collection-listItem" id="Carousels-nav">
+                            <div class="scrollIndicator"></div>
+                            <a href="/library/components/#Carousels">Carousels</a>
+                            <ol class="toc">
+  <li><a href="#finite-carousels" id="markdown-toc-finite-carousels">Finite Carousels</a></li>
+</ol>
                         </li>
                         
                         <li class="collection-listItem" id="Ripple-nav">
@@ -208,15 +223,6 @@ It should always be the main call to action that continues or completes the jour
 </div>
 </div>
 
-<div class="demo-container">
-<div class="demo-code"><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn-wrapper btn-primary"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"btn-text"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>  
-<span class="nt">&lt;/button&gt;</span></code></pre></figure>
-</div>
-</div>
 
   </div>
 </div>
@@ -306,6 +312,74 @@ It should always be the main call to action that continues or completes the jour
   
 
 <div class="component-container">
+<div class="component" id="Carousels-component">
+  <a class="component-title" href="#Carousels" id="Carousels">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+    </svg>
+    <span>Carousels</span>
+  </a>
+  <div class="component-body">
+    <ul id="markdown-toc">
+  <li><a href="#finite-carousels" id="markdown-toc-finite-carousels">Finite Carousels</a></li>
+</ul>
+
+<h1 id="finite-carousels">Finite Carousels</h1>
+
+<div class="demo-container">
+<div class="demo-output">
+<div class="demo-grid">
+  <div id="sliderTarget" class="slides slider-300">
+      <div class="banner banner-1">
+        <div class="content">
+          <h1>1</h1>
+        </div>
+      </div>
+      <div class="banner banner-2">
+        <div class="content">
+          <h1>2</h1>
+        </div>
+      </div>
+      <div class="banner banner-3">
+        <div class="content">
+          <h1>3</h1>
+        </div>
+      </div>
+      <div class="banner banner-4">
+        <div class="content">
+          <h1>4</h1>
+        </div>
+      </div>
+      <div class="banner banner-5">
+        <div class="content">
+          <h1>5</h1>
+        </div>
+      </div>
+      <div class="banner banner-6">
+        <div class="content">
+          <h1>6</h1>
+        </div>
+      </div>
+      <div class="banner banner-7">
+        <div class="content">
+          <h1>7</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+
+</div>
+<p>&lt;/div&gt;</p>
+
+  </div>
+</div>
+</div>
+
+  
+
+<div class="component-container">
 <div class="component" id="Ripple-component">
   <a class="component-title" href="#Ripple" id="Ripple">
     <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -342,10 +416,12 @@ f</p>
 
     </div>
 
-    <!-- Demo site specific scripts -->
-<script src="/library/assets/dist/js/main.js"></script>
+    <script src="/library/assets/dist/js/jquery.min.js"></script>
+<script src="/library/assets/dist/js/jquery-ui.min.js"></script>
 <!-- Compiled component scripts (for use in build) -->
 <script src="/library/dist/js/main.js"></script>
+<!-- Demo site specific scripts -->
+<script src="/library/assets/dist/js/main.js"></script>
 
 
 

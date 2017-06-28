@@ -90,6 +90,19 @@ function Drawer(el) {
     this.ticking = true;
   }
 
+  this._scrollToElement = function(evt) {
+
+    this._hideDrawer();
+
+    var targetElId = /(\/.*\/)?(#.*)/.exec(evt.target.getAttribute('href'))[2],
+        targetEl = document.querySelector(targetElId);
+
+    if (targetEl) {
+      evt.preventDefault();
+      doScrolling(targetEl, 500);
+    } 
+  }
+
   // debounces scroll events
   this._onScroll = function() {
     this.latestKnownScrollY = main.scrollTop;
@@ -98,9 +111,9 @@ function Drawer(el) {
 
   this._addEventListeners = function() {
     /* close drawer on clicking a link */
-    var links = this.drawer.querySelectorAll('.collection-listItem > a');
+    var links = this.drawer.querySelectorAll('.collection-listItem a');
     for (var i = 0; i < links.length; i += 1) {
-      links[i].addEventListener('click', this._hideDrawer);
+      links[i].addEventListener('click', this._scrollToElement);
     }
     /* scroll listener */
     main.addEventListener('scroll', this._onScroll);
@@ -119,6 +132,7 @@ function Drawer(el) {
     this._updateTocs = this._updateTocs.bind(this);
     this._requestTick = this._requestTick.bind(this);
     this._onScroll = this._onScroll.bind(this);
+    this._scrollToElement = this._scrollToElement.bind(this);
 
     this.tocs = {};
     var navs = Array.prototype.slice.call(document.querySelectorAll('.collection-listItem'));

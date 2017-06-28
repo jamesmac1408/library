@@ -57,3 +57,23 @@
 @mixin grey-outline($attr) {
   #{$attr}: #E0E0E0;
 }
+
+@mixin very-1($attr) {
+  #{$attr}: #AC0052;
+}
+@mixin very-2($attr) {
+  #{$attr}: #DE007B;
+}
+@mixin very-3($attr) {
+  #{$attr}: #F5B2D7;
+}
+
+@mixin lw-1($attr) {
+  #{$attr}: #530051;
+}
+@mixin lw-2($attr) {
+  #{$attr}: #7D277B;
+}
+@mixin lw-3($attr) {
+  #{$attr}: #D8BED7;
+}

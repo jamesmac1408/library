@@ -105,3 +105,23 @@
 .grey-outline {
   @include grey-outline(background);
 }
+
+.very-1 {
+  @include very-1(background);
+}
+.very-2 {
+  @include very-2(background);
+}
+.very-3 {
+  @include very-3(background);
+}
+
+.lw-1 {
+  @include lw-1(background);
+}
+.lw-2 {
+  @include lw-2(background);
+}
+.lw-3 {
+  @include lw-3(background);
+}

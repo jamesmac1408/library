@@ -193,3 +193,71 @@ Grey colors are used for text, backgrounds, lines and borders.
 }
 {% endcode %}
 {% enddemo %}
+
+### Brand Colours
+
+#### Very
+
+{% demo %}
+{% output %}
+<div class="colour-col">
+  <div class="row very-1">
+    <span class="white">very-1</span>
+  </div>
+  <div class="row very-2">
+    <span class="white">very-2</span>
+  </div>
+  <div class="row very-3">
+    <span class="black">very-3</span>
+  </div>
+</div>
+{% endoutput %}
+{% code scss %}
+.el {
+  @include very-1(background);
+}
+.el {
+  @include very-2(background);
+}
+.el {
+  @include very-3(background);
+}
+{% endcode %}
+{% enddemo %}
+
+#### Littlewoods
+
+{% demo %}
+{% output %}
+<div class="colour-col">
+  <div class="row lw-1">
+    <span class="white">lw-1</span>
+  </div>
+  <div class="row lw-2">
+    <span class="white">lw-2</span>
+  </div>
+  <div class="row lw-3">
+    <span class="black">lw-3</span>
+  </div>
+</div>
+{% endoutput %}
+{% code scss %}
+.el {
+  @include lw-1(background);
+}
+.el {
+  @include lw-2(background);
+}
+.el {
+  @include lw-3(background);
+}
+{% endcode %}
+{% enddemo %}
+
+#### Very Exclusive
+
+** Not Defined Yet **
+
+#### Littlewoods Ireland
+
+** Not Defined Yet **
