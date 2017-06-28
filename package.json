@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sdfrontend/material.git"
+    "url": "git+https://github.com/sdfrontend/library.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sdfrontend/material/issues"
+    "url": "https://github.com/sdfrontend/library/issues"
   },
-  "homepage": "https://github.com/sdfrontend/material#readme",
+  "homepage": "https://github.com/sdfrontend/library#readme",
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "cssnano": "^3.10.0",
