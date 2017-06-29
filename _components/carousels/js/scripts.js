@@ -157,23 +157,23 @@ function loopedCarousel(el, pipsCarousel) {
   this.init = function() {
     this.initialised = false;
 
-    if (this.wrapper.length < 0) {
+    if (this.wrapper.length < 1) {
       throw Error('Could not find wrapper element!');
     }
 
     this.el = this.wrapper.find('.carousel');
     this.pipsCarousel = this.wrapper.find('.pips-carousel');
 
-    console.log(this.wrapper);
+    console.log(this.el, this.pipsCarousel);
 
-    if (this.el.length < 0) {
+    if (this.el.length < 1) {
       throw Error('Could not find main carousel element!');
     }
-    if (this.pipsCarousel.length < 0) {
+    if (this.pipsCarousel.length < 1) {
       throw Error('Could not find pipsCarousel element!');
     }
 
-    if (this.wrapper.length < 0 || this.el.length < 0 || this.pipsCarousel.length < 0) {
+    if (this.wrapper.length < 1 || this.el.length < 1 || this.pipsCarousel.length < 1) {
       return;
     }
 
