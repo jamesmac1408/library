@@ -1,4 +1,5 @@
 @import '_partials';
+@import '_theme';
 
 body, html {
     min-height: 100vh;
@@ -47,7 +48,9 @@ body {
 }
 
 .wrapper {
-    width: 960px;
+    @media (min-width: $screen-mob-max) {
+        width: 960px;
+    }
     margin: 0 auto;
 
     /* TODO: Breakpoints + mobile */
