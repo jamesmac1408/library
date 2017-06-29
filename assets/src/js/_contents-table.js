@@ -1,3 +1,6 @@
+// THIS CODE HAS GOTTEN MESSY, I KNOW
+// TODO: Clean up
+
 function TableOfContents(el) {
   this.base = el;
   this.furthestTitle = null;
