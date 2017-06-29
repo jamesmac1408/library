@@ -87,19 +87,19 @@ function TableOfContents(el) {
     return this.component;
   }
 
-  this._scrollToElement = function(index) {
+  this._scrollToTitle = function(index) {
     doScrolling(this.titles[index], 300);
   }
 
   this._addEvents = function() {
     var self = this;
     for (var i = 0; i < this.links.length; i += 1) {
-        self.links[i].addEventListener('click', this._scrollToElement.bind(null, i));
+        self.links[i].addEventListener('click', this._scrollToTitle.bind(null, i));
     }
   }
 
   this._init = function() {
-    this._scrollToElement = this._scrollToElement.bind(this);
+    this._scrollToTitle = this._scrollToTitle.bind(this);
 
     this.component = document.getElementById(this.base + '-component');
     this.body = document.getElementById(this.base + '-nav');
@@ -115,6 +115,7 @@ function TableOfContents(el) {
     this.titles = [];
     this.links = this.body.querySelectorAll('a');
     for (var i = 0; i < this.links.length; i++) {
+      // this makes me feel ill but is necessary, sorry
       var id = /.*#(.*)/.exec(this.links[i].getAttribute('href'))[1].replace('+', '\\+')
       this.titles.push(this.component.querySelector('#' + id));
     }
