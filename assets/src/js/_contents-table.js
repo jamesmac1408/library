@@ -88,7 +88,7 @@ function TableOfContents(el) {
   }
 
   this._scrollToElement = function(index) {
-    doScrolling(this.titles[index], 500);
+    doScrolling(this.titles[index], 300);
   }
 
   this._addEvents = function() {
