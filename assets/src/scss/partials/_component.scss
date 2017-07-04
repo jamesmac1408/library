@@ -63,7 +63,7 @@
                 box-sizing: initial;
                 border-bottom: 1px solid #e0e6ed;
                 overflow-x: hidden;
-                padding: 16px;
+                padding: 0;
             }
 
             .demo-code {
@@ -126,24 +126,24 @@
             background: rgba(224,230,237,.25);
         }
 
-        &:not(.demo-container) > h1 {
+        &:not(.demo-container) h1 {
             @include display-1();
         }
-        &:not(.demo-container) > h2 {
+        &:not(.demo-container) h2 {
             @include display-2();
         }
-        &:not(.demo-container) > h3 {
+        &:not(.demo-container) h3 {
             @include display-3();
             margin: 40px 0 18px;
         }
-        &:not(.demo-container) > h4 {
+        &:not(.demo-container) h4 {
             @include display-4();
         }
-        &:not(.demo-container) > p {
+        &:not(.demo-container) p {
              @include body-1();
         }
 
-        table {
+        &:not(.demo-container) table {
             border-spacing: 0;
             border-collapse: collapse;
 

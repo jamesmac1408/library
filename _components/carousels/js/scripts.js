@@ -6,9 +6,7 @@ function loopedCarousel(el, pipsCarousel) {
 
   this.numberOfFlankingPips = 2;
 
-  var inactiveState = {
-    
-  }
+  var SPEED = 300;
 
   this._setActivePips = function() {
     
@@ -18,7 +16,7 @@ function loopedCarousel(el, pipsCarousel) {
       width: '16px',
       backgroundColor: '#DE007B',
       borderRadius: '2px',
-    }, 300);
+    }, SPEED);
 
     // set pips to the left to inactive    
     if (this.activeIndex > this.numberOfFlankingPips) {
@@ -49,7 +47,7 @@ function loopedCarousel(el, pipsCarousel) {
   this._positionPipsCarousel = function(animate) {
     var speed;
     if (animate) {
-      speed = 300;
+      speed = SPEED;
     } else {
       speed = 0;
     }
@@ -70,7 +68,7 @@ function loopedCarousel(el, pipsCarousel) {
   this._setPipInactive = function(pip, opacity, animate, callback) {
     var speed;
     if (animate) {
-      speed = 300;
+      speed = SPEED;
     } else {
       speed = 0;
     }
@@ -131,7 +129,7 @@ function loopedCarousel(el, pipsCarousel) {
       centerMode: true,
       dots: false,
       arrows: false,
-      autoplay: false,
+      autoplay: true,
       autoplaySpeed: 2000,
     });
   }

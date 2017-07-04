@@ -21,8 +21,7 @@ function TableOfContents(el) {
   }
 
   this._updateScrollIndicator = function(scrollTop, furthestTitle) {
-    // only update these values when we have a new 'furthestTitle' (perf)
-    if (this.titles[furthestTitle] && furthestTitle !== this.furthestTitle) {
+    if (this.titles[furthestTitle]) {
 
       this.furthestTitle = furthestTitle;
 
@@ -60,7 +59,7 @@ function TableOfContents(el) {
     var self = this;
 
     this.toc.style.maxHeight = 'none';
-    this.maxHeight = this.toc.offsetHeight + 'px';
+    this.maxHeight = this.toc.offsetHeight + 12 + 'px';
 
     requestAnimationFrame(function() {
       if (!self.active) {

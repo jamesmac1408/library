@@ -1,0 +1,5 @@
+.errorMessage {
+  padding: 16px;
+  background: red;
+  color: white;
+  text-transform: uppercase; }

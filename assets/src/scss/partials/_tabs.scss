@@ -1,0 +1,41 @@
+@import '../_theme';
+
+.tabs-container {
+  width: 100%;
+  display: inline-block;
+
+  .tabs-wrapper {
+    display: flex;
+    border-bottom: 1px solid #e0e6ed;
+
+    .tab-link {
+      flex-basis: 100%;
+      cursor: pointer;
+      outline: none;
+      -webkit-appearance: none;
+      font-family: 'Lato', sans-serif;
+      border: none;
+      background: none;
+      padding: 16px;
+      border-bottom-width: 3px;
+      border-bottom-style: solid;
+      border-color: #fff;
+      transition: border-color 0.2s $nice-easing;
+      &.active {
+        border-color: $accent-1;
+
+        .tab-text {
+          color: $accent-1;
+        }
+      }
+
+      .tab-text {
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #6b6b6b;
+        transition: color 0.2s $nice-easing;
+      }
+    }
+  }
+}

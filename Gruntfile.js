@@ -138,7 +138,7 @@ module.exports = function(grunt) {
         options: {
             config: '_config.yml'
         }
-    }
+      }
     },
 
     connect: {

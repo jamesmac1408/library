@@ -243,7 +243,7 @@
         box-sizing: initial;
         border-bottom: 1px solid #e0e6ed;
         overflow-x: hidden;
-        padding: 16px; }
+        padding: 0; }
       .component .component-body .demo-container .demo-code {
         position: relative;
         padding: 16px;
@@ -285,32 +285,92 @@
               line-height: 1.5; }
     .component .component-body .highlighter-rouge {
       background: rgba(224, 230, 237, 0.25); }
-    .component .component-body:not(.demo-container) > h1 {
+    .component .component-body:not(.demo-container) h1 {
       font-weight: 300;
       font-size: 2em; }
-    .component .component-body:not(.demo-container) > h2 {
+    .component .component-body:not(.demo-container) h2 {
       font-weight: 300;
       font-size: 1.5em; }
-    .component .component-body:not(.demo-container) > h3 {
+    .component .component-body:not(.demo-container) h3 {
       font-size: 18px;
       font-weight: 400;
       margin: 40px 0 18px; }
-    .component .component-body:not(.demo-container) > h4 {
+    .component .component-body:not(.demo-container) h4 {
       font-size: 16px;
       font-weight: 400; }
-    .component .component-body:not(.demo-container) > p {
+    .component .component-body:not(.demo-container) p {
       font-size: 14px;
       letter-spacing: 0.56px; }
-    .component .component-body table {
+    .component .component-body:not(.demo-container) table {
       border-spacing: 0;
       border-collapse: collapse; }
-      .component .component-body table tr {
+      .component .component-body:not(.demo-container) table tr {
         background-color: #fff; }
-        .component .component-body table tr td, .component .component-body table tr th {
+        .component .component-body:not(.demo-container) table tr td, .component .component-body:not(.demo-container) table tr th {
           padding: 8px 16px;
           border: 1px solid #dfe2e5; }
-        .component .component-body table tr th {
+        .component .component-body:not(.demo-container) table tr th {
           font-weight: 600; }
+
+.panel-container {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  font-family: 'Lato', sans-serif; }
+  .panel-container .panel-cta {
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 16px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    .panel-container .panel-cta .panel-title {
+      font-family: 'Lato', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: #272727; }
+    .panel-container .panel-cta .title-icon {
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+    .panel-container .panel-cta.active .title-icon {
+      transform: rotateX(180deg); }
+  .panel-container .panel-body {
+    overflow: hidden; }
+    .panel-container .panel-body .body-content {
+      padding: 0 16px 16px; }
+    .panel-container .panel-body.animatable {
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+
+.tabs-container {
+  width: 100%;
+  display: inline-block; }
+  .tabs-container .tabs-wrapper {
+    display: flex;
+    border-bottom: 1px solid #e0e6ed; }
+    .tabs-container .tabs-wrapper .tab-link {
+      flex-basis: 100%;
+      cursor: pointer;
+      outline: none;
+      -webkit-appearance: none;
+      font-family: 'Lato', sans-serif;
+      border: none;
+      background: none;
+      padding: 16px;
+      border-bottom-width: 3px;
+      border-bottom-style: solid;
+      border-color: #fff;
+      transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+      .tabs-container .tabs-wrapper .tab-link.active {
+        border-color: #1E8FE1; }
+        .tabs-container .tabs-wrapper .tab-link.active .tab-text {
+          color: #1E8FE1; }
+      .tabs-container .tabs-wrapper .tab-link .tab-text {
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #6b6b6b;
+        transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
 
 .highlight {
   background: #ffffff; }
@@ -572,7 +632,6 @@ body, html {
   width: 100vw; }
 
 body {
-  font-family: 'Lato', sans-serif;
   font-size: 14px;
   margin: 0;
   padding: 0;
@@ -581,7 +640,8 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background: #ECEFF1; }
+  background: #ECEFF1;
+  font-family: 'Lato', sans-serif; }
 
 * {
   box-sizing: border-box; }

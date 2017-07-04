@@ -7,6 +7,8 @@
 
 # Looped Carousels
 
+{% panel Readme %}
+
 To create a new looped carousel, invoke the `loopedCarousel(wrapper)` method. 
 This method takes 1 argument:
 
@@ -20,6 +22,8 @@ This method takes 1 argument:
 2. The `.looped-carousel` element must be an empty div placed directly after the main carousel
 
 Full example code & demos can be seen below.
+
+{% endpanel %}
 
 ## Creative Content
 
@@ -66,14 +70,14 @@ Full example code & demos can be seen below.
   <div class="pips-carousel"></div>
 </div>  
 {% endoutput %}
-{% code %}
-<style>
-  .wrapper {
-    width: 100%;
-  }
-</style>
 
-<div class="wrapper" id="sliderTarget" >
+{% tabs %}
+{% tab %}html{% endtab %}
+{% tab %}css{% endtab %}
+{% tab %}js{% endtab %}
+{% endtabs %}
+{% code html %}
+<div class="wrapper" id="sliderTarget">
   <div class="carousel">
       <div class="banner banner-1">
         <div class="content">
@@ -89,10 +93,14 @@ Full example code & demos can be seen below.
   </div>
   <div class="pips-carousel"></div>
 </div>
-
-<script>
-  var carousel = new loopedCarousel('sliderTarget');
-</script>
+{% endcode %}
+{% code css %}
+.wrapper {
+  width: 100%;
+}
+{% endcode %}
+{% code js %}
+var carousel = new loopedCarousel('sliderTarget');
 {% endcode %}
 {% enddemo %}
 
