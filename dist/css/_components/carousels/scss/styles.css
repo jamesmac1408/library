@@ -69,12 +69,18 @@
   width: 100%; }
 
 .pips-carousel {
+  display: block;
+  height: 56px;
+  width: 100%;
+  overflow: hidden; }
+
+.pips-track {
   display: inline-block;
   position: relative;
-  max-height: 56px; }
+  height: 100%;
+  left: 50%; }
 
-.pips-carousel .pip-container {
-  visibility: hidden;
+.pips-track .pip-container {
   -webkit-appearance: none;
   cursor: pointer;
   outline: none;

@@ -173,6 +173,10 @@
                 .toc {
                     max-height: 0px;
                     overflow: hidden;
+
+                    &.animatable {
+                        transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+                    }
                 }
                 .toc, .toc ul, .toc ol {
                     list-style: none;

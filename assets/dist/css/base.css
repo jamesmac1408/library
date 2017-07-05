@@ -176,6 +176,8 @@
         .drawer-container .drawer .collection-list .collection-listItem .toc {
           max-height: 0px;
           overflow: hidden; }
+          .drawer-container .drawer .collection-list .collection-listItem .toc.animatable {
+            transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out; }
         .drawer-container .drawer .collection-list .collection-listItem .toc, .drawer-container .drawer .collection-list .collection-listItem .toc ul, .drawer-container .drawer .collection-list .collection-listItem .toc ol {
           list-style: none;
           padding: 0 0 0 12px; }
@@ -318,20 +320,20 @@
   font-family: 'Lato', sans-serif; }
   .panel-container .panel-cta {
     -webkit-appearance: none;
+    outline: none;
     cursor: pointer;
     background: none;
     border: none;
     padding: 16px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; }
+    width: 100%; }
     .panel-container .panel-cta .panel-title {
+      float: left;
       font-family: 'Lato', sans-serif;
       font-size: 20px;
       font-weight: 300;
       color: #272727; }
     .panel-container .panel-cta .title-icon {
+      float: right;
       transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
     .panel-container .panel-cta.active .title-icon {
       transform: rotateX(180deg); }

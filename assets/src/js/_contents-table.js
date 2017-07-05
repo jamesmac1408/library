@@ -66,7 +66,7 @@ function TableOfContents(el) {
         self.toc.style.maxHeight = '0px';
         self.toc.style.opacity = 0;
       }
-      self.toc.style.transition = 'max-height 0.3s ease-in-out, opacity 0.2s ease-in-out';      
+      self.toc.classList.add('animatable');
     });
   }
 
