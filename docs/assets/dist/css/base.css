@@ -236,56 +236,6 @@
     line-height: 1.5; }
     .component .component-body #markdown-toc {
       display: none; }
-    .component .component-body .demo-container {
-      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
-      border-radius: 4px;
-      margin: 16px 0; }
-      .component .component-body .demo-container .demo-output {
-        position: relative;
-        border-bottom: 1px solid #e0e6ed;
-        overflow-x: hidden;
-        padding: 0; }
-      .component .component-body .demo-container .demo-output * {
-        box-sizing: initial; }
-      .component .component-body .demo-container .demo-code {
-        position: relative;
-        padding: 16px;
-        background: rgba(224, 230, 237, 0.25); }
-        .component .component-body .demo-container .demo-code .demo-code--copy {
-          -webkit-appearance: none;
-          cursor: pointer;
-          background-color: #FFF;
-          border: 1px solid #e0e6ed;
-          border-top: 0;
-          border-right: 0;
-          padding: 8px;
-          position: absolute;
-          top: 0;
-          right: 0; }
-          @media (max-width: 767px) {
-            .component .component-body .demo-container .demo-code .demo-code--copy {
-              display: none; } }
-          .component .component-body .demo-container .demo-code .demo-code--copy svg {
-            fill-opacity: 0.3;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transition-property: fill, fill-opacity; }
-          .component .component-body .demo-container .demo-code .demo-code--copy.success svg {
-            fill-opacity: 1;
-            fill: #00c853; }
-          .component .component-body .demo-container .demo-code .demo-code--copy:hover svg {
-            fill-opacity: 1; }
-        .component .component-body .demo-container .demo-code figure {
-          margin: 0;
-          background: none; }
-          .component .component-body .demo-container .demo-code figure pre {
-            margin: 0;
-            padding: 0;
-            white-space: pre-wrap; }
-            .component .component-body .demo-container .demo-code figure pre code {
-              font-family: 'Roboto Mono', monospace;
-              font-size: 14px;
-              letter-spacing: 0.56px;
-              line-height: 1.5; }
     .component .component-body .highlighter-rouge {
       background: rgba(224, 230, 237, 0.25); }
     .component .component-body:not(.demo-container) h1 {
@@ -314,6 +264,57 @@
           border: 1px solid #dfe2e5; }
         .component .component-body:not(.demo-container) table tr th {
           font-weight: 600; }
+
+.demo-container {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin: 16px 0; }
+  .demo-container .demo-output {
+    position: relative;
+    border-bottom: 1px solid #e0e6ed;
+    overflow-x: hidden;
+    padding: 0; }
+  .demo-container .demo-output * {
+    box-sizing: initial; }
+  .demo-container .demo-code {
+    position: relative;
+    padding: 16px;
+    background: rgba(224, 230, 237, 0.25); }
+    .demo-container .demo-code .demo-code--copy {
+      -webkit-appearance: none;
+      cursor: pointer;
+      background-color: #FFF;
+      border: 1px solid #e0e6ed;
+      border-top: 0;
+      border-right: 0;
+      padding: 8px;
+      position: absolute;
+      top: 0;
+      right: 0; }
+      @media (max-width: 767px) {
+        .demo-container .demo-code .demo-code--copy {
+          display: none; } }
+      .demo-container .demo-code .demo-code--copy svg {
+        fill-opacity: 0.3;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition-property: fill, fill-opacity; }
+      .demo-container .demo-code .demo-code--copy.success svg {
+        fill-opacity: 1;
+        fill: #00c853; }
+      .demo-container .demo-code .demo-code--copy:hover svg {
+        fill-opacity: 1; }
+    .demo-container .demo-code figure {
+      margin: 0;
+      background: none; }
+      .demo-container .demo-code figure pre {
+        margin: 0;
+        padding: 0;
+        white-space: pre-wrap; }
+        .demo-container .demo-code figure pre code {
+          font-family: 'Roboto Mono', monospace;
+          font-size: 14px;
+          letter-spacing: 0.56px;
+          line-height: 1.5; }
 
 .panel-container {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);

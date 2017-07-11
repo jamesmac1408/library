@@ -15,7 +15,7 @@ This method takes 2 arguments:
 | Parameter | Description  |
 |---|---|
 | `el`  | id or element of the slider element (must have the class 'carousel')  |  
-| `opts`  | The 'slick' slider options to pass to the carousel ((see here)[http://kenwheeler.github.io/slick/])  |  
+| `opts`  | The 'slick' slider options to pass to the carousel ([see here](http://kenwheeler.github.io/slick/))  |  
 
 *In the 'opts' object, you must not override the `dots` option, this value of this must remain `false`*
 
