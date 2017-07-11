@@ -184,6 +184,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
 
   grunt.registerTask('default', ['sass', 'concat', 'postcss', 'uglify', 'jekyll:dist']);
-  grunt.registerTask('serve', ['sass', 'concat' ,'postcss', 'uglify', 'jekyll:dev', 'connect', 'watch']);
-
+  grunt.registerTask('serve', ['sass', 'concat' ,'postcss', 'uglify', 'jekyll:dev', 'connect', 'watch']); 
 };
