@@ -1,15 +1,9 @@
+/* Generic slick-slider styles */
 .slick-slider {
   position: relative;
   display: block;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -ms-touch-action: none;
   touch-action: none; }
 
 .slick-list:focus {
@@ -22,10 +16,10 @@
   margin: 0px;
   padding: 0px; }
 
-.slick-slider .slick-list, .slick-track, .slick-slide, .slick-slide img {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
+.slick-slider .slick-list,
+.slick-track,
+.slick-slide,
+.slick-slide img {
   transform: translate3d(0, 0, 0); }
 
 .slick-track {
@@ -58,57 +52,51 @@
 .slick-initialized .slick-track .slick-slide {
   display: table-cell; }
 
-.carousel {
-  overflow: hidden; }
-
 .ie7 .carousel .slick-slide {
   display: block; }
 
-/* IE7 Fix */
 .carousel {
-  width: 100%;
+  overflow: hidden;
   padding-bottom: 56px; }
 
-.banner {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  background: #E0E0E0;
-  height: 300px; }
-
-.slick-dots {
-  display: inline-block;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  padding: 0;
-  margin: 0;
-  height: 56px;
-  list-style-type: none; }
-
-.slick-dots > li {
-  float: left;
-  position: relative;
-  list-style: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0 8px;
-  height: 56px;
-  width: 16px; }
-
-.slick-dots > li > button {
-  -webkit-appearance: none;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background: none;
-  font-size: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: 10px;
-  height: 10px; }
+/* Looped Carousels */
+.carousel--looped {
+  width: 100%; }
+  .carousel--looped .banner {
+    height: 485px;
+    position: relative;
+    display: block; }
+  .carousel--looped .slick-dots {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    padding: 0;
+    margin: 0;
+    height: 56px;
+    list-style-type: none;
+    overflow: hidden; }
+    .carousel--looped .slick-dots > li {
+      float: left;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+      padding: 0 8px;
+      height: 56px;
+      width: 16px; }
+      .carousel--looped .slick-dots > li > button {
+        -webkit-appearance: none;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: none;
+        font-size: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 10px;
+        height: 10px; }

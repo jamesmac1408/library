@@ -315,7 +315,7 @@ This method takes 2 arguments:</p>
   <tbody>
     <tr>
       <td><code class="highlighter-rouge">el</code></td>
-      <td>id or element of the slider element (must have the class ‘carousel’)</td>
+      <td>id or element of the slider element (must have the classes ‘carousel &amp; carousel–looped’)</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">opts</code></td>
@@ -335,41 +335,20 @@ This method takes 2 arguments:</p>
 <div class="demo-container">
 <div class="demo-output">
 <div class="demo-grid">
-  <div class="carousel" id="sliderTarget">
+  <div class="carousel carousel--looped" id="sliderTarget">
     <div class="banner banner-1">
-      <div class="content">
-        <h1>1</h1>
-      </div>
     </div>
     <div class="banner banner-2">
-      <div class="content">
-        <h1>2</h1>
-      </div>
     </div>
     <div class="banner banner-3">
-      <div class="content">
-        <h1>3</h1>
-      </div>
     </div>
     <div class="banner banner-4">
-      <div class="content">
-        <h1>4</h1>
-      </div>
     </div>
     <div class="banner banner-5">
-      <div class="content">
-        <h1>5</h1>
-      </div>
     </div>
     <div class="banner banner-6">
-      <div class="content">
-        <h1>6</h1>
-      </div>
     </div>
     <div class="banner banner-7">
-      <div class="content">
-        <h1>7</h1>
-      </div>
     </div>
   </div>
 </div>  
@@ -396,9 +375,16 @@ This method takes 2 arguments:</p>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 </div>
 <div class="demo-code css "><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
-<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.wrapper</span> <span class="p">{</span>
-  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.banner</span> <span class="p">{</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="m">100%</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.banner-1</span> <span class="p">{</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url('http://content.very.co.uk/assets/static/2017/06/sale/26th-june-fashion/desktop/homepage/sale-fashion-homepage-primary.jpg')</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.banner-2</span> <span class="p">{</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url('http://content.very.co.uk/assets/static/2017/07/homepage/10-homepage/the-edit.jpg')</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">...</span></code></pre></figure>
 </div>
 <div class="demo-code js "><button class="demo-code--copy"><svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none" /> <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg></button>
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">carousel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">loopedCarousel</span><span class="p">(</span><span class="s1">'sliderTarget'</span><span class="p">);</span></code></pre></figure>
