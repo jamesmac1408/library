@@ -164,7 +164,7 @@
           background: #1E8FE1;
           width: 5px;
           height: 0px;
-          transition: height 0.1s cubic-bezier(0.4, 0, 0.2, 1); }
+          transition: height 0s cubic-bezier(0.4, 0, 0.2, 1); }
         .drawer-container .drawer .collection-list .collection-listItem a {
           font-size: 14px;
           letter-spacing: 0.56px;
@@ -242,10 +242,11 @@
       margin: 16px 0; }
       .component .component-body .demo-container .demo-output {
         position: relative;
-        box-sizing: initial;
         border-bottom: 1px solid #e0e6ed;
         overflow-x: hidden;
         padding: 0; }
+      .component .component-body .demo-container .demo-output * {
+        box-sizing: initial; }
       .component .component-body .demo-container .demo-code {
         position: relative;
         padding: 16px;

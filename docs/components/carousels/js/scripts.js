@@ -1,10 +1,5 @@
-// bind polyfill
-Function.prototype.bind||(Function.prototype.bind=function(t){if("function"!=typeof this)throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");var o=Array.prototype.slice.call(arguments,1),n=this,i=function(){},r=function(){return n.apply(this instanceof i&&t?this:t,o.concat(Array.prototype.slice.call(arguments)))};return i.prototype=this.prototype,r.prototype=new i,r});
-// gets whether 'transform' is available
-function getSupportedTransform(){for(var r="transform WebkitTransform MozTransform OTransform msTransform".split(" "),n=document.createElement("div"),t=0;t<r.length;t++)if(n&&void 0!==n.style[r[t]])return r[t];return!1}
-
 function loopedCarousel(el, opts) {
-  this.wrapper = $('#' + el);
+  this.el = $('#' + el);
   this.opts = opts;
   this.pips = [];
 
@@ -12,8 +7,8 @@ function loopedCarousel(el, opts) {
 
   this._setActivePips = function() {
 
-    // this.pips[this.activeIndex].addClass('animatable').addClass('active');
-    this.pips[this.activeIndex].css('visibility', '');
+    // set active pip
+    $(this.pips[this.activeIndex]).css('visibility', 'visible');
     var props = {
       'height': '16px',
       'width': '16px',
@@ -22,11 +17,9 @@ function loopedCarousel(el, opts) {
       'opacity': '1',
     };
     if (this.initialised) {
-      this.pips[this.activeIndex].find('.pip').animate(props, 300);
-      this._pipTransitionEnd(this.pips[this.activeIndex]);
+      $(this.pips[this.activeIndex]).children().animate(props, 300);
     } else {
-      console.log('here');
-      this.pips[this.activeIndex].find('.pip').css(props);
+      $(this.pips[this.activeIndex]).children().css(props);
     }
 
     // set pips to the left to inactive    
@@ -47,39 +40,27 @@ function loopedCarousel(el, opts) {
       this._fadeInPip(i);
     }
 
-    // set active pip
-  }
-
-  this._setMainCarousel = function(index) {
-    this.el.slick('slickGoTo', index);
   }
 
   this._calcParentWidth = function() {
-    this.parentWidth = this.pipsCarousel.width();
+    this.parentWidth = this.el.width();
   }
 
   this._positionPipsCarousel = function(animate) {
-    var speed;
-    if (animate) {
-      speed = 300;
-    } else {
-      speed = 0;
-    }
-    var left = -(this.activeIndex * this.pipWidth) - (this.pipWidth / 2) + (this.parentWidth / 2);
+    var left = (this.parentWidth / 2) - (this.activeIndex * this.pipWidth) - (this.pipWidth / 2);
 
     if (animate) {
-      this.track.animate({
+      this.pipsCarousel.animate({
         left: parseInt(left),
-      }, speed);
+      }, 300);
     } else {
-      this.track.css('left', left);
+      this.pipsCarousel.css('left', left);
     }
   }
 
-  this._pipTransitionEnd = function(pip, callback) {
+  this._pipTransitionEnd = function(callback) {
     // I would like to use transitionend but unfortuantly there's not enough support.
     setTimeout(function() {
-      pip.removeClass('animatable');
       if (callback) {
         callback();
       }
@@ -87,7 +68,6 @@ function loopedCarousel(el, opts) {
   }
 
   this._setActivePip = function(index) {
-    this.previousActiveIndex = this.activeIndex;
     this.activeIndex = index;
 
     this._positionPipsCarousel(true);
@@ -103,11 +83,14 @@ function loopedCarousel(el, opts) {
       'opacity': opacity
     };
     if (this.initialised) {
-      pip.find('.pip').animate(props, 300);
-      this._pipTransitionEnd(pip, callback);
+      $(pip).children().animate(props, 300);
+      this._pipTransitionEnd(callback);
     } else {
-      pip.find('.pip').css(props);
-      this.pipWidth = pip[0].offsetWidth;
+      $(pip).children().css(props);
+      this.pipWidth = $(pip)[0].offsetWidth;
+      if (callback) {
+        callback();
+      }
     }
   }
 
@@ -115,41 +98,27 @@ function loopedCarousel(el, opts) {
     var self = this;
     if (this.pips[index]) {
       this._setPipDefaultStyles(this.pips[index], 0, true, function() {
-        self.pips[index].css('visibility', 'hidden');
+        $(self.pips[index]).css('visibility', 'hidden');
       });
     }
   }
 
   this._fadeInPip = function(index) {
     if (this.pips[index] && index !== this.activeIndex) {
-      var pip = this.pips[index];
+      var pip = $(this.pips[index]);
       // fade in if was not visible
       if (pip.css('visibility') === 'hidden') {
-        pip.css('visibility', '');
+        pip.css('visibility', 'visible');
       }
       this._setPipDefaultStyles(pip, 1, true);
     }
   }
 
-  this._createPips = function() {
-    var banners  = this.el.find('.banner');
-    this.track = $('<div class="pips-track"></div>');
-    this.pipsCarousel.append(this.track);
-
-    for (var i = 0; i < banners.length; i += 1) {
-      var pip = $('<button class="pip-container"><div class="pip"></div></button>');
-      this.pips.push(pip);
-      this.track.append(pip);
-    }
-
-    this._setActivePips();
-    this.initialised = true;
-  }
 
   this._initMainSlider = function() {
     var defaultOpts = {
       arrows: false,
-      dots: false,
+      dots: true,
       slidesToShow: 1,
       centerMode: true,
       centerPadding: 0,
@@ -163,6 +132,9 @@ function loopedCarousel(el, opts) {
       }
     }
     this.el.slick(defaultOpts);
+    this.pipsCarousel = this.el.find('.slick-dots'); 
+    this.pips = this.pipsCarousel.find('li');
+    this._setActivePips();
   }
 
   this._addEvents = function() {
@@ -172,47 +144,32 @@ function loopedCarousel(el, opts) {
         self._setActivePip(nextSlide);
       }
     });
-    
-    for (var i = 0; i < this.pips.length; i += 1) {
-        self.pips[i].on('click', this._setMainCarousel.bind(null, i));
-    }
 
     $(window).resize(function() {
       self._positionPipsCarousel(false);
       self._calcParentWidth();
-    })
+    });
+
+    $(window).on("orientationchange",function(){
+      self._positionPipsCarousel(false);
+      self._calcParentWidth();
+    });
   }
 
   this.init = function() {
-    this.initialised = false;
-
-    if (this.wrapper.length < 0) {
-      throw Error('Could not find wrapper element!');
-    }
-
-    this.el = this.wrapper.find('.carousel');
-    this.pipsCarousel = this.wrapper.find('.pips-carousel'); 
-
     if (this.el.length < 0) {
       throw Error('Could not find main carousel element!');
     }
-    if (this.pipsCarousel.length < 0) {
-      throw Error('Could not find pipsCarousel element!');
-    }
 
-    if (this.wrapper.length < 0 || this.el.length < 0 || this.pipsCarousel.length < 0) {
-      return;
-    }
+    this.initialised = false;
 
-    this._setMainCarousel = this._setMainCarousel.bind(this);
-
-    this.previousActiveIndex = -1;
     this.activeIndex = 0;
-    this._createPips();
+    this._initMainSlider();
     this._calcParentWidth();
     this._positionPipsCarousel(false);
-    this._initMainSlider();
     this._addEvents();
+
+    this.initialised = true;
   }
 
   this.init();

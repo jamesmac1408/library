@@ -60,10 +60,12 @@
 
             .demo-output {
                 position: relative;
-                box-sizing: initial;
                 border-bottom: 1px solid #e0e6ed;
                 overflow-x: hidden;
                 padding: 0;
+            }
+            .demo-output * {
+                box-sizing: initial;
             }
 
             .demo-code {
