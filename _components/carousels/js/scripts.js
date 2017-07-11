@@ -2,19 +2,18 @@ function loopedCarousel(el, opts) {
   this.el = $('#' + el);
   this.opts = opts;
   this.pips = [];
-
   this.numberOfFlankingPips = 2;
+  this.initialised = false;
 
   this._setActivePips = function() {
-
     // set active pip
     $(this.pips[this.activeIndex]).css('visibility', 'visible');
     var props = {
-      'height': '16px',
-      'width': '16px',
-      'backgroundColor': '#DE007B',
-      'borderRadius': '2px',
-      'opacity': '1',
+      'height'          : '16px',
+      'width'           : '16px',
+      'backgroundColor' : '#DE007B',
+      'borderRadius'    : '2px',
+      'opacity'         : '1',
     };
     if (this.initialised) {
       $(this.pips[this.activeIndex]).children().animate(props, 300);
@@ -39,7 +38,6 @@ function loopedCarousel(el, opts) {
     for (var i = this.activeIndex - (this.numberOfFlankingPips); i <= (this.activeIndex + this.numberOfFlankingPips); i += 1) {
       this._fadeInPip(i);
     }
-
   }
 
   this._calcParentWidth = function() {
@@ -58,15 +56,6 @@ function loopedCarousel(el, opts) {
     }
   }
 
-  this._pipTransitionEnd = function(callback) {
-    // I would like to use transitionend but unfortuantly there's not enough support.
-    setTimeout(function() {
-      if (callback) {
-        callback();
-      }
-    }, 300)
-  }
-
   this._setActivePip = function(index) {
     this.activeIndex = index;
 
@@ -83,8 +72,11 @@ function loopedCarousel(el, opts) {
       'opacity': opacity
     };
     if (this.initialised) {
-      $(pip).children().animate(props, 300);
-      this._pipTransitionEnd(callback);
+      $(pip).children().animate(props, 300, function() {
+        if (callback) {
+          callback();
+        }
+      });
     } else {
       $(pip).children().css(props);
       this.pipWidth = $(pip)[0].offsetWidth;
@@ -114,7 +106,6 @@ function loopedCarousel(el, opts) {
     }
   }
 
-
   this._initMainSlider = function() {
     var defaultOpts = {
       arrows: false,
@@ -125,15 +116,15 @@ function loopedCarousel(el, opts) {
       autoplaySpeed: 2000,
       autoplay: false,
     }
-    // rough object assign, default options -> passed in options
+    // rough object.assign, default options -> passed in options
     for (var opt in defaultOpts) {
       if (this.opts.hasOwnProperty(opt)) {
         defaultOpts[opt] = this.opts[opt];
       }
     }
     this.el.slick(defaultOpts);
-    this.pipsCarousel = this.el.find('.slick-dots'); 
-    this.pips = this.pipsCarousel.find('li');
+    this.pipsCarousel = this.el.children('.slick-dots'); 
+    this.pips = this.pipsCarousel.children('li');
     this._setActivePips();
   }
 
@@ -161,8 +152,6 @@ function loopedCarousel(el, opts) {
       throw Error('Could not find main carousel element!');
     }
 
-    this.initialised = false;
-
     this.activeIndex = 0;
     this._initMainSlider();
     this._calcParentWidth();
@@ -171,7 +160,5 @@ function loopedCarousel(el, opts) {
 
     this.initialised = true;
   }
-
   this.init();
-
 }
