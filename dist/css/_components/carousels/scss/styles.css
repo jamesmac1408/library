@@ -63,7 +63,6 @@
 .carousel--looped {
   width: 100%; }
   .carousel--looped .banner {
-    height: 485px;
     position: relative;
     display: block; }
   .carousel--looped .slick-dots {

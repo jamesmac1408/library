@@ -67,9 +67,14 @@ Full example code & demos can be seen below.
     ...
 </div>
 {% endcode %}
-{% code css %}
+{% code scss %}
 .banner {
   background-size: 100% 100%;
+
+  height: 485px;
+  @media (max-width: $screen-mob-max) {
+      height: 185px;
+  }
 }
 .banner-1 {
   background-image: url('http://content.very.co.uk/assets/static/2017/06/sale/26th-june-fashion/desktop/homepage/sale-fashion-homepage-primary.jpg');

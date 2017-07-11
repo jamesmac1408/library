@@ -278,7 +278,7 @@
     box-sizing: initial; }
   .demo-container .demo-code {
     position: relative;
-    padding: 16px;
+    padding: 0;
     background: rgba(224, 230, 237, 0.25); }
     .demo-container .demo-code .demo-code--copy {
       -webkit-appearance: none;
@@ -308,8 +308,9 @@
       background: none; }
       .demo-container .demo-code figure pre {
         margin: 0;
-        padding: 0;
-        white-space: pre-wrap; }
+        padding: 16px;
+        white-space: pre;
+        overflow-x: auto; }
         .demo-container .demo-code figure pre code {
           font-family: 'Roboto Mono', monospace;
           font-size: 14px;
