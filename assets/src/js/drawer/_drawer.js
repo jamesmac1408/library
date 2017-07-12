@@ -1,17 +1,13 @@
 /*
   ============ Drawer ============
 */
+import TableOfContents from './_contents-table';
 
 var main = document.querySelector('.main');
-var IN_VIEW_THRESHOLD = 60;
 
-function Drawer(el) {
-  this.drawerContainer = el;
-  this.drawer = el.querySelector('.drawer');
-  this.tocs = el.querySelectorAll('.toc');
-  this.active = false;
+class Drawer {
 
-  this.toggle = function() {
+  toggle() {
     if (this.active) {
       this._hideDrawer();
     } else {
@@ -19,7 +15,7 @@ function Drawer(el) {
     }
   }
 
-  this._showDrawer = function() {
+  _showDrawer() {
     this.active = true;
     this.drawerContainer.classList.add('in');
     var self = this;
@@ -31,13 +27,13 @@ function Drawer(el) {
     });
   }
 
-  this._removeDrawer = function() {
+  _removeDrawer() {
     this.drawerContainer.removeEventListener('transitionend', this._removeDrawer);
     this.active = false;
     this.drawerContainer.classList.remove('in');
   }
 
-  this._hideDrawer = function() {
+  _hideDrawer() {
     if (!this.active) {
       return;
     }
@@ -47,7 +43,7 @@ function Drawer(el) {
     this.drawerContainer.addEventListener('transitionend', this._removeDrawer);
   }
 
-  this._onBodyClick = function(evt) {
+  _onBodyClick(evt) {
     if (!this.active) {
       return;
     }
@@ -57,33 +53,12 @@ function Drawer(el) {
     }
   }
 
-  this._updateTocs = function() {
+  _updateTocs() {
     this.ticking = false;
-
-    var tocsInView = [],
-        keys = Object.keys(this.tocs);
-
-    for (var i = 0; i < keys.length; i++) {
-
-      var component = this.tocs[keys[i]].getComponent();
-
-      if (component) {
-        var bottom = (component.offsetTop + component.offsetHeight) - this.latestKnownScrollY;
-
-        if (bottom > 0) {
-          tocsInView.push(this.tocs[keys[i]]);
-        }
-      }
-    }
-    
-    var tocToShow = tocsInView[0];
-    for (var i = 0; i < keys.length; i++) {
-        var toShow = (this.tocs[keys[i]] === tocToShow);
-        this.tocs[keys[i]].update(toShow, this.latestKnownScrollY);
-    }
+    this.activeContents.update(this.latestKnownScrollY);
   }
 
-  this._requestTick = function() {
+  _requestTick() {
     if (!this.ticking) {
       requestAnimationFrame(this._updateTocs);
     }
@@ -91,24 +66,34 @@ function Drawer(el) {
   }
 
   // debounces scroll events
-  this._onScroll = function() {
-    this.latestKnownScrollY = main.scrollTop;
+  _onScroll(scrollTop) {
+    this.latestKnownScrollY = scrollTop;
 	  this._requestTick();
   }
 
-  this._addEventListeners = function() {
+  _addEventListeners() {
     /* close drawer on clicking a link */
     var links = this.drawer.querySelectorAll('.collection-listItem a');
     for (var i = 0; i < links.length; i += 1) {
       links[i].addEventListener('click', this._hideDrawer);
     }
     /* scroll listener */
-    main.addEventListener('scroll', this._onScroll);
+    document.body.addEventListener('scroll', () => {
+      this._onScroll(document.body.scrollTop);
+    });
+    main.addEventListener('scroll', () => {
+      this._onScroll(main.scrollTop);
+    });
     window.addEventListener('resize', this._onScroll);
     window.addEventListener('hashchange', this._onScroll);
   }
 
-  this._init = function() {
+  constructor(el) {
+    this.drawerContainer = el;
+    this.drawer = el.querySelector('.drawer');
+    this.tocs = el.querySelectorAll('.toc');
+    this.active = false;
+
     // sets up debouncing of scroll events
     this.latestKnownScrollY = 0;
   	this.ticking = false;
@@ -120,22 +105,15 @@ function Drawer(el) {
     this._requestTick = this._requestTick.bind(this);
     this._onScroll = this._onScroll.bind(this);
 
-    this.tocs = {};
-    var secs = Array.prototype.slice.call(document.querySelectorAll('.content-section'));
-    for (var i = 0; i < secs.length; i += 1) {
-      var navs = Array.prototype.slice.call(document.querySelectorAll('.collection-listItem'));
-      for (var j = 0; j < navs.length; j += 1) {
-        var component = /(.*)-nav/.exec(navs[j].getAttribute('id'))[1];
-        this.tocs[component] = new TableOfContents(component, secs[i]);
-      }
-    }
-    
+    var activeComponent = document.querySelector('.component');
+    var component = /(.*)-component/.exec(activeComponent.getAttribute('id'))[1];
+    this.activeContents = new TableOfContents(component)
 
 
     this._updateTocs();
 
     this._addEventListeners();
   }
-
-  this._init();
 }
+
+export default Drawer;

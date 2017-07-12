@@ -4,7 +4,8 @@
   display: block;
   box-sizing: border-box;
   user-select: none;
-  touch-action: none; }
+  touch-action: none;
+  margin: 0; }
 
 .slick-list:focus {
   outline: none; }
@@ -20,7 +21,8 @@
 .slick-track,
 .slick-slide,
 .slick-slide img {
-  transform: translate3d(0, 0, 0); }
+  transform: translate3d(0, 0, 0);
+  height: 100%; }
 
 .slick-track {
   position: relative;
@@ -115,7 +117,7 @@
       position: relative;
       cursor: pointer;
       outline: none;
-      padding: 0 8px;
+      padding: 0 14px;
       height: 56px;
       width: 16px; }
       .carousel--looped .slick-dots > li > button {

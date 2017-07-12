@@ -1,7 +1,5 @@
-function TabController(el) {
-  this.el = $(el);
-
-  this._goToTab = function(index) {
+class Tabs {
+  _goToTab(index) {
     this.activeIndex = index;
     for (var i = 0; i < this.tabs.length; i++) {
       if (i === this.activeIndex) {
@@ -14,13 +12,15 @@ function TabController(el) {
     }
   }
 
-  this._addEvents = function() {
+  _addEvents() {
     for (var i = 0; i < this.links.length; i += 1) {
       $(this.links[i]).on('click', this._goToTab.bind(null, i));
     }
   }
 
-  this.init = function() {
+  constructor(el) {
+    this.el = $(el);
+
     this._addEvents = this._addEvents.bind(this);
     this._goToTab = this._goToTab.bind(this);
 
@@ -31,6 +31,6 @@ function TabController(el) {
     this._addEvents();
     this._goToTab(0);
   }
-
-  this.init();
 }
+
+export default Tabs;

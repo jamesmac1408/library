@@ -1,22 +1,19 @@
-function PanelController(el) {
-  this.el = $(el);
-  this.active = false;
-
-  this._slideUp = function() {
+class Panel {
+  _slideUp() {
     this.cta.removeClass('active');
     this.body.addClass('animatable');
     this.body.css('maxHeight', 0);
     this.body.css('opacity', 0);
   }
 
-  this._slideDown = function() {
+  _slideDown() {
     this.cta.addClass('active');
     this.body.addClass('animatable');
     this.body.css('maxHeight', this.height);
     this.body.css('opacity', 1);
   }
 
-  this._togglePanel = function(index) {
+  _togglePanel(index) {
     if (this.active) {
       this._slideUp();
     } else {
@@ -25,13 +22,13 @@ function PanelController(el) {
     this.active = !this.active;
   }
 
-  this._calculateHeight = function() {
+  _calculateHeight() {
     this.height = this.body.height();
     this.body.css('maxHeight', 0);
     this.body.css('opacity', 0);
   }
 
-  this._addEvents = function() {
+  _addEvents() {
     this.cta.on('click', this._togglePanel);
     var self = this;
     this.body.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
@@ -39,7 +36,10 @@ function PanelController(el) {
     });
   }
 
-  this.init = function() {
+  constructor(el) {
+    this.el = $(el);
+    this.active = false;
+
     this._addEvents = this._addEvents.bind(this);
     this._togglePanel = this._togglePanel.bind(this);
 
@@ -49,6 +49,6 @@ function PanelController(el) {
     this._calculateHeight();
     this._addEvents();
   }
-
-  this.init();
 }
+
+export default Panel;

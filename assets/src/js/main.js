@@ -2,6 +2,11 @@
   ============ Initialisation ============
 */
 
+import Drawer from './drawer/_drawer';
+import CodeBlock from './_codeblock';
+import Panel from './_panel';
+import Tabs from './_tabs';
+
 var headerIcon = document.getElementById('headerIcon');
 var drawer = new Drawer(document.getElementById('drawerContainer'));
 headerIcon.addEventListener('click', function() {
@@ -15,11 +20,11 @@ for (var i = 0; i < codeBlocks.length; i += 1) {
 
 var panels = document.querySelectorAll('.panel-container');
 for (var i = 0; i < panels.length; i += 1) {
-  new PanelController(panels[i]);
+  new Panel(panels[i]);
 }
 
 var tabs = document.querySelectorAll('.tabs-container');
 for (var i = 0; i < tabs.length; i += 1) {
-  new TabController(tabs[i]);
+  new Tabs(tabs[i]);
 }
 

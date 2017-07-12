@@ -15,32 +15,48 @@
                 </a>
             </div>
 
-            <div class="content-section">
+            {% if page.type contains "Design" %}
+                <div class="content-section active">
+            {% else %}
+                <div class="content-section">
+            {% endif %}
                 <a class="content-titleContainer" href="{{ site.baseurl }}/design/">
-                    <h2 class="content-titleText">Design</h1>
+                    <h2 class="content-titleText dropdown">Design {{ page.type }}</h1>
                 </a>
                 <div class="content-body">
-                    <ul class="collection-list">
+                    <ul class="collection-list">    
                         {% for component in site.design %}
-                        <li class="collection-listItem" id="{{ component.name | cgi_escape }}-nav">
-                            <div class="scrollIndicator"></div>
-                            <a href="{{ site.baseurl }}/design/#{{component.name | cgi_escape }}">{{ component.name }}</a>
-                            {{ component.content | toc }}
-                        </li>
+                        {% if page.url == component.url %}
+                            <li class="collection-listItem active"  id="{{ component.name | cgi_escape }}-nav">
+                                <div class="scrollIndicator"></div>
+                                <a href="{{component.url}}">{{component.name}}</a>
+                                {{ component.content | toc }}
+                            </li>
+                        {% else %}
+                            <li class="collection-listItem"  id="{{ component.name | cgi_escape }}-nav">
+                                <div class="scrollIndicator"></div>
+                                <a href="{{component.url}}">{{component.name}}</a>
+                            </li>
+                        {% endif %}
                         {% endfor %}
                     </ul>
                 </div>
             </div>
-            <div class="content-section">
+
+            {% if page.type contains "Component" %}
+                <div class="content-section active">
+            {% else %}
+                <div class="content-section">
+            {% endif %}
                 <a class="content-titleContainer" href="{{ site.baseurl }}/components/">
-                    <h2 class="content-titleText">Components</h1>
+                    <h2 class="content-titleText dropdown">Components</h1>
                 </a>
                 <div class="content-body">
                     <ul class="collection-list">
                         {% for component in site.components %}
                         <li class="collection-listItem" id="{{ component.name | cgi_escape }}-nav">
                             <div class="scrollIndicator"></div>
-                            <a href="{{ site.baseurl }}/components/#{{component.name | cgi_escape }}">{{ component.name }}</a>
+                            <a href="{{ component.url }}">{{ component.name }}</a>
                             {{ component.content | toc }}
                         </li>
                         {% endfor %}

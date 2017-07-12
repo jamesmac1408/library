@@ -1,3 +1,5 @@
+const webpackConfig = require('./webpack.config');
+
 module.exports = function(grunt) {
 
   grunt.initConfig({
@@ -109,6 +111,21 @@ module.exports = function(grunt) {
       }
     },
 
+    webpack: {
+      demo: webpackConfig
+    },
+    // babel: {
+    //   options: {
+    //     sourceMap: true,
+    //     presets: ['es2015']
+    //   },
+    //   demo: {
+    //     files: {
+    //       'assets/dist/js/bundle.js': 'assets/src/js/main.js'
+    //     }
+    //   }
+    // },
+
     uglify: {
       /* The uglify script takes in all files in each components/designs /js sub-folder.
        * This allows us to include multiple scripts per component, for an example if we 
@@ -122,8 +139,8 @@ module.exports = function(grunt) {
         dest: 'dist/js/main.js'
       },
       demo: {
-        src: ['_components/**/demo-assets/demo.js', '_design/**/demo-assets/demo.js', 'assets/src/js/*'],
-        dest: 'assets/dist/js/main.js'
+        src: ['_components/**/demo-assets/demo.js', '_design/**/demo-assets/demo.js', 'assets/dist/js/bundle.js'],
+        dest: 'assets/dist/js/bundle.min.js'
       }
     },
 
@@ -165,8 +182,8 @@ module.exports = function(grunt) {
 				tasks: ['sass', 'concat', 'postcss', 'jekyll:dev']
 			},
 			js: {
-				files: ['<%= uglify.dist.src %>', '<%= uglify.demo.src %>'],
-				tasks: ['uglify', 'jekyll:dev']
+				files: ['<%= uglify.dist.src %>', '_components/**/demo-assets/demo.js', '_design/**/demo-assets/demo.js', 'assets/src/js/**/*' ],
+				tasks: ['webpack', 'uglify', 'jekyll:dev']
 			},
       demo: {
         files: ['_components/**/demo.md', '_design/**/demo.md', '_layouts/**/*', '_includes/**/*', '_plugins/**/*', '_assets/css/*'],
@@ -177,12 +194,13 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-jekyll');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['sass', 'concat', 'postcss', 'uglify', 'jekyll:dist']);
-  grunt.registerTask('serve', ['sass', 'concat' ,'postcss', 'uglify', 'jekyll:dev', 'connect', 'watch']); 
+  grunt.registerTask('default', ['sass', 'concat', 'postcss', 'webpack', 'uglify', 'jekyll:dist']);
+  grunt.registerTask('serve', ['sass', 'concat' ,'postcss', 'webpack', 'uglify', 'jekyll:dev', 'connect', 'watch']); 
 };

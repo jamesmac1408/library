@@ -1,3 +1,5 @@
+@import './theme';
+
 @mixin body-1() {
   font-size: 14px;
   letter-spacing: 0.56px;
@@ -24,6 +26,14 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
+}
+
+@mixin header-title() {
+  @media (min-width: $screen-mob-max) {
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 48px;
+  }
 }
 
 @mixin subheading() {

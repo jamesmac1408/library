@@ -5,13 +5,14 @@
 }
 
 #sliderTarget {
+  height: 485px;
   width: 100%;
 }
 
 .banner {
   background-size: 100% 100%;
-
   height: 485px;
+
   @media (max-width: $screen-mob-max) {
       height: 185px;
   }

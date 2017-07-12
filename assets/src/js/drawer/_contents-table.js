@@ -1,13 +1,10 @@
 // THIS CODE HAS GOTTEN MESSY, I KNOW
 // TODO: Clean up
 
-function TableOfContents(el, section) {
-  this.parent = section;
-  this.base = el;
-  this.furthestTitle = null;
-  this.active = false;
+import { IN_VIEW_THRESHOLD } from '../_constants';
 
-  this._highlightTitles = function(scrollTop) {
+class TableOfContents {
+  _highlightTitles(scrollTop) {
     var furthestTitle = 0;
     for (var i = 0; i < this.titles.length; i++) {
       var rect = this.titles[i].getBoundingClientRect();
@@ -21,7 +18,7 @@ function TableOfContents(el, section) {
     this._updateScrollIndicator(scrollTop, furthestTitle);
   }
 
-  this._updateScrollIndicator = function(scrollTop, furthestTitle) {
+  _updateScrollIndicator(scrollTop, furthestTitle) {
     if (this.titles[furthestTitle]) {
 
       this.furthestTitle = furthestTitle;
@@ -45,8 +42,8 @@ function TableOfContents(el, section) {
       }
     }
 
-    goal = this.nextElementDistance - this.currElementDistance;
-    distance = goal - (this.nextElementDistance - scrollTop - IN_VIEW_THRESHOLD);
+    const goal = this.nextElementDistance - this.currElementDistance;
+    let distance = goal - (this.nextElementDistance - scrollTop - IN_VIEW_THRESHOLD);
     distance = (distance > goal) ? goal : distance;
 
     var percentage = (distance / goal),
@@ -56,61 +53,75 @@ function TableOfContents(el, section) {
     this.scrollIndicator.style.height = height + 'px';
   }
 
-  this.initialiseMaxHeight = function() {
+  initialiseMaxHeight() {
     var self = this;
 
     this.parent.style.display = 'block';
     this.toc.style.maxHeight = 'none';
     this.maxHeight = this.toc.offsetHeight + 12 + 'px';
 
-    this.toc.style.maxHeight = '0px';
-    this.toc.style.opacity = 0;
+    requestAnimationFrame(function() {
+      if (!self.active) {
+        self.toc.style.maxHeight = '0px';
+        self.toc.style.opacity = 0;
+      }
+    })
   }
 
-  this.update = function(active, scrollTop) {
-    if (active) {
+  update(scrollTop) {
+    // if (active) {
       if (!this.active) {
         console.log('here');
         this.active = true;
         this.toc.classList.add('animatable');
-        this.parent.classList.add('active');
         this.body.classList.add('active');
         this.toc.style.maxHeight = this.maxHeight;
         this.toc.style.opacity = 1;
       }
       this._highlightTitles(scrollTop);
-    } else if (this.active) {
-        console.log('here 2')
-        this.active = false;
-        this.toc.style.maxHeight = '0px';
-        this.toc.style.opacity = 0;
-        this.scrollIndicator.style.height = '0px';
-        this.body.classList.remove('active');
-    }
+    // } 
+    // else if (this.active) {
+    //     console.log('here 2')
+    //     this.active = false;
+    //     this.toc.style.maxHeight = '0px';
+    //     this.toc.style.opacity = 0;
+    //     this.scrollIndicator.style.height = '0px';
+    //     this.body.classList.remove('active');
+    // }
   }
 
-  this.getComponent = function() {
+  getComponent() {
     return this.component;
   }
 
-  this._scrollToTitle = function(index) {
+  _scrollToTitle(index) {
     doScrolling(this.titles[index], 300);
   }
 
-  this._addEvents = function() {
+  _addEvents() {
     var self = this;
     for (var i = 0; i < this.links.length; i += 1) {
         self.links[i].addEventListener('click', this._scrollToTitle.bind(null, i));
     }
   }
 
-  this._init = function() {
+  constructor(el) {
+    this.base = el;
+    this.furthestTitle = null;
+    this.active = false;
+
     this._scrollToTitle = this._scrollToTitle.bind(this);
 
-    this.component = document.getElementById(this.base + '-component');
+    this.component = document.querySelector('.component');
     this.body = document.getElementById(this.base + '-nav');
     this.scrollIndicator = this.body.querySelector('.scrollIndicator');
     this.toc = this.body.querySelector('.toc');
+
+    console.log(this.body);
+
+    var el = this.body;
+    while ((el = el.parentElement) && !el.classList.contains('content-section'));
+    this.parent = el;
 
     if (!this.component) {
       return;
@@ -120,7 +131,8 @@ function TableOfContents(el, section) {
     
     this.titles = [];
     this.links = this.body.querySelectorAll('a');
-    for (var i = 0; i < this.links.length; i++) {
+    this.titles.push(this.component.querySelector('.component-title'));
+    for (var i = 1; i < this.links.length; i++) {
       // this makes me feel ill but is necessary, sorry
       var id = /.*#(.*)/.exec(this.links[i].getAttribute('href'))[1].replace('+', '\\+')
       this.titles.push(this.component.querySelector('#' + id));
@@ -128,6 +140,6 @@ function TableOfContents(el, section) {
 
     this._addEvents();
   }
-
-  this._init();
 }
+
+export default TableOfContents;
