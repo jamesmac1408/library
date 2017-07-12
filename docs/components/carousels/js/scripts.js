@@ -108,7 +108,7 @@ function loopedCarousel(el, opts) {
 
   this._initMainSlider = function() {
     var defaultOpts = {
-      arrows: false,
+      arrows: true,
       dots: true,
       slidesToShow: 1,
       centerMode: true,

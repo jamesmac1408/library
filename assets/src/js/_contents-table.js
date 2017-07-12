@@ -1,7 +1,8 @@
 // THIS CODE HAS GOTTEN MESSY, I KNOW
 // TODO: Clean up
 
-function TableOfContents(el) {
+function TableOfContents(el, section) {
+  this.parent = section;
   this.base = el;
   this.furthestTitle = null;
   this.active = false;
@@ -58,28 +59,28 @@ function TableOfContents(el) {
   this.initialiseMaxHeight = function() {
     var self = this;
 
+    this.parent.style.display = 'block';
     this.toc.style.maxHeight = 'none';
     this.maxHeight = this.toc.offsetHeight + 12 + 'px';
 
-    requestAnimationFrame(function() {
-      if (!self.active) {
-        self.toc.style.maxHeight = '0px';
-        self.toc.style.opacity = 0;
-      }
-      self.toc.classList.add('animatable');
-    });
+    this.toc.style.maxHeight = '0px';
+    this.toc.style.opacity = 0;
   }
 
   this.update = function(active, scrollTop) {
     if (active) {
       if (!this.active) {
+        console.log('here');
         this.active = true;
+        this.toc.classList.add('animatable');
+        this.parent.classList.add('active');
         this.body.classList.add('active');
         this.toc.style.maxHeight = this.maxHeight;
         this.toc.style.opacity = 1;
       }
       this._highlightTitles(scrollTop);
     } else if (this.active) {
+        console.log('here 2')
         this.active = false;
         this.toc.style.maxHeight = '0px';
         this.toc.style.opacity = 0;

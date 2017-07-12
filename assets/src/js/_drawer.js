@@ -121,11 +121,15 @@ function Drawer(el) {
     this._onScroll = this._onScroll.bind(this);
 
     this.tocs = {};
-    var navs = Array.prototype.slice.call(document.querySelectorAll('.collection-listItem'));
-    for (var i = 0; i < navs.length; i++) {
-      var component = /(.*)-nav/.exec(navs[i].getAttribute('id'))[1];
-      this.tocs[component] = new TableOfContents(component);
+    var secs = Array.prototype.slice.call(document.querySelectorAll('.content-section'));
+    for (var i = 0; i < secs.length; i += 1) {
+      var navs = Array.prototype.slice.call(document.querySelectorAll('.collection-listItem'));
+      for (var j = 0; j < navs.length; j += 1) {
+        var component = /(.*)-nav/.exec(navs[j].getAttribute('id'))[1];
+        this.tocs[component] = new TableOfContents(component, secs[i]);
+      }
     }
+    
 
 
     this._updateTocs();
