@@ -28,7 +28,7 @@ Full example code & demos can be seen below.
 {% demo %}
 {% output %}
 <div class="demo-grid">
-  <div class="carousel carousel--looped" id="sliderTarget">
+  <div class="carousel" id="sliderTarget">
     <div class="banner banner-1">
     </div>
     <div class="banner banner-2">

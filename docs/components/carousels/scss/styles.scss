@@ -1,3 +1,5 @@
+@import '../../../_design/colour/scss/styles';
+
 /* Generic slick-slider styles */
 .slick-slider {
     position: relative;
@@ -63,6 +65,13 @@
 
 /* Carousel Controls */
 .carousel {
+    width: 100%;
+
+    .banner {
+        position: relative;
+        display: block;
+    }
+
     .slick-arrow {
         -webkit-appearance: none;
         cursor: pointer;
@@ -110,13 +119,6 @@
 
 /* Looped Carousels */
 .carousel--looped {
-    width: 100%;
-
-    .banner {
-        position: relative;
-        display: block;
-    }
-
     .slick-dots {
         display: inline-block;
         position: absolute;
@@ -153,6 +155,52 @@
                 margin: auto;
                 width: 10px;
                 height: 10px;
+            }
+        }
+    }
+}
+
+/* Finite Carousels */
+.carousel--finite {
+    
+    .slick-dots {
+        display: table !important;
+        table-layout: fixed;
+        width: 50%;
+        height: 4px;
+        padding: 0;
+        margin: 52px 0 0 0;
+        background: #E0E0E0;
+
+        position: absolute;
+        top: 100%;
+        left: 25%;
+        list-style-type: none;
+        overflow: hidden;
+
+        > li {
+            display: table-cell;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            height: 4px;
+
+            > button {
+                @include very-2(background);
+
+                -webkit-appearance: none;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                font-size: 0;
+                padding: 0;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                margin: auto;
+                width: 0;
+                height: 4px;
             }
         }
     }
