@@ -5,37 +5,38 @@
   padding-bottom: 40px;
 }
 
-#sliderTarget {
+#sliderTarget, #sliderTarget2 {
   height: 485px;
   width: 100%;
-}
 
-.banner {
-  background-size: 100% 100%;
-  height: 485px;
+  .banner {
+    background-size: 100% 100%;
+    height: 485px;
 
-  @media (max-width: $screen-mob-max) {
-      height: 185px;
+    @media (max-width: $screen-mob-max) {
+        height: 185px;
+    }
+
+    &.banner-1 {
+      background-image: url('http://content.very.co.uk/assets/static/2017/06/sale/26th-june-fashion/desktop/homepage/sale-fashion-homepage-primary.jpg');
+    }
+    &.banner-2 {
+      background-image: url('http://content.very.co.uk/assets/static/2017/07/homepage/10-homepage/the-edit.jpg');
+    }
+    &.banner-3 {
+      background-image: url('http://content.very.co.uk/assets/static/2017/06/sale/12th-june/desktop/homepage/home-electricals.jpg');
+    }
+    &.banner-4 {
+      background-image: url('http://content.very.co.uk/assets/static//2017/07/homepage/10-homepage/holidy-shop.jpg');
+    }
+    &.banner-5 {
+      background-image: url('http://content.very.co.uk/assets/static/2017/06/sale/26th-june-fashion/desktop/zonepage/sale-mens-zone.jpg');
+    }
+    &.banner-6 {
+      background-image: url('http://content.very.co.uk/assets/static/2017/07/zonepages/03-zonepages/02-mens/p2-holiday-shop.jpg');
+    }
+    &.banner-7 {
+      background-image: url('http://content.very.co.uk/assets/static/2017/06/credit-to-account/29-refrigeration-cta/desktop/zonepage/zonepage.jpg');
+    }
   }
-}
-.banner-1 {
-  background-image: url('http://content.very.co.uk/assets/static/2017/06/sale/26th-june-fashion/desktop/homepage/sale-fashion-homepage-primary.jpg');
-}
-.banner-2 {
-  background-image: url('http://content.very.co.uk/assets/static/2017/07/homepage/10-homepage/the-edit.jpg');
-}
-.banner-3 {
-  background-image: url('http://content.very.co.uk/assets/static/2017/06/sale/12th-june/desktop/homepage/home-electricals.jpg');
-}
-.banner-4 {
-  background-image: url('http://content.very.co.uk/assets/static//2017/07/homepage/10-homepage/holidy-shop.jpg');
-}
-.banner-5 {
-  background-image: url('http://content.very.co.uk/assets/static/2017/06/sale/26th-june-fashion/desktop/zonepage/sale-mens-zone.jpg');
-}
-.banner-6 {
-  background-image: url('http://content.very.co.uk/assets/static/2017/07/zonepages/03-zonepages/02-mens/p2-holiday-shop.jpg');
-}
-.banner-7 {
-  background-image: url('http://content.very.co.uk/assets/static/2017/06/credit-to-account/29-refrigeration-cta/desktop/zonepage/zonepage.jpg');
 }
