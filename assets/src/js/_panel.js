@@ -25,7 +25,6 @@ class Panel {
   }
 
   _calculateHeight() {
-    this.body.css('display', 'block');
     requestAnimationFrame(() => {
       this.height = this.body.height() + 12; // giving a little bit of room (not sure why its needed but it seems to be)
 

@@ -5,8 +5,6 @@
 * TOC
 {:toc}
 
-# Carousels
-
 {% panel Readme %}
 
 To create a new carousel, invoke either the `loopedCarousel(el, opts)` or `finiteCarousel(el, opts)` method. 
@@ -23,9 +21,9 @@ Full example code & demos can be seen below.
 
 {% endpanel %}
 
-## Looped Carousels
+# Looped Carousels
 
-### Creative Content
+## Creative Content
 
 {% demo %}
 {% output %}
@@ -91,13 +89,13 @@ var carousel = new LoopedCarousel('sliderTarget');
 {% endcode %}
 {% enddemo %}
 
-### Product Cards
+## Product Cards
 
 **Coming soon**
 
-## Finite Carousels
+# Finite Carousels
 
-### Creative Content
+## Creative Content
 
 {% demo %}
 {% output %}
@@ -163,6 +161,6 @@ var carousel = new FiniteCarousel('sliderTarget2');
 {% endcode %}
 {% enddemo %}
 
-### Product Cards
+## Product Cards
 
 **Coming soon**

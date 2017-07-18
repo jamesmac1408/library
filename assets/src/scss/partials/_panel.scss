@@ -36,7 +36,6 @@
   }
 
   .panel-body {
-    display: none;
     overflow: hidden;
 
     &.animatable {
@@ -45,6 +44,7 @@
   }
 
   &.active {
+
     .panel-title:after {
       transform: rotateX(180deg);
     }
