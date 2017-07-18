@@ -70,8 +70,10 @@ class Drawer {
     this._hideDrawer = this._hideDrawer.bind(this);
     this._removeDrawer = this._removeDrawer.bind(this);
 
-    var activeContents = document.querySelector('.collection-listItem.active');
-    this.activeContents = new TableOfContents(activeContents)
+    const activeContents = document.querySelector('.collection-listItem.active');
+    if (activeContents) {
+      this.activeContents = new TableOfContents(activeContents)
+    }
 
     this._addEvents();
   }

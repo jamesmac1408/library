@@ -214,7 +214,9 @@ var Drawer = function () {
     this._removeDrawer = this._removeDrawer.bind(this);
 
     var activeContents = document.querySelector('.collection-listItem.active');
-    this.activeContents = new _contentsTable2.default(activeContents);
+    if (activeContents) {
+      this.activeContents = new _contentsTable2.default(activeContents);
+    }
 
     this._addEvents();
   }
