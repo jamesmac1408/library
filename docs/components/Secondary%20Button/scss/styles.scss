@@ -1,4 +1,5 @@
 @import '../../../_design/colour/scss/styles';
+@import '../../../_design/typography/scss/styles';
 
 .btn-secondary {
     padding: 4px 0;
@@ -17,7 +18,7 @@
         transition: background 0.3s ease-in-out;
 
         .btn-text {
-            font-family: 'Lato', sans-serif;
+            @include base-font();
             color: #fff;
             line-height: 40px;
             font-size: 14px;

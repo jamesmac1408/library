@@ -1,3 +1,7 @@
+@mixin base-font() {
+  font-family: 'Lato', sans-serif;
+}
+
 @mixin heading-1() {
   font-size: 20px;
   font-weight: 700;

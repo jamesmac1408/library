@@ -1,8 +1,9 @@
 @import '../_theme';
 @import '../_typography';
+@import '../../../../_design/typography/scss/styles';
 
 .panel-container {
-  font-family: 'Lato', sans-serif;
+  @include base-font();
 
   .panel-cta {
     -webkit-appearance: none;
@@ -13,7 +14,7 @@
     width: 100%;
 
     .panel-title {
-      font-family: 'Lato', sans-serif;
+      @include base-font();
       position: relative;
       width: 100%;
       float: left;

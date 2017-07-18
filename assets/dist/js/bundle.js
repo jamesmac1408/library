@@ -92,26 +92,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   ============ Initialisation ============
 */
 
-var headerIcon = document.getElementById('headerIcon');
-var drawer = new _drawer2.default(document.getElementById('drawerContainer'));
-headerIcon.addEventListener('click', function () {
-  drawer.toggle();
+$(document).ready(function () {
+  var headerIcon = document.getElementById('headerIcon');
+  var drawer = new _drawer2.default(document.getElementById('drawerContainer'));
+  headerIcon.addEventListener('click', function () {
+    drawer.toggle();
+  });
+
+  var codeBlocks = document.querySelectorAll('.demo-code');
+  for (var i = 0; i < codeBlocks.length; i += 1) {
+    new _codeblock2.default(codeBlocks[i]);
+  }
+
+  var panels = document.querySelectorAll('.panel-container');
+  for (var _i = 0; _i < panels.length; _i += 1) {
+    new _panel2.default(panels[_i]);
+  }
+
+  var tabs = document.querySelectorAll('.tabs-container');
+  for (var _i2 = 0; _i2 < tabs.length; _i2 += 1) {
+    new _tabs2.default(tabs[_i2]);
+  }
 });
-
-var codeBlocks = document.querySelectorAll('.demo-code');
-for (var i = 0; i < codeBlocks.length; i += 1) {
-  new _codeblock2.default(codeBlocks[i]);
-}
-
-var panels = document.querySelectorAll('.panel-container');
-for (var i = 0; i < panels.length; i += 1) {
-  new _panel2.default(panels[i]);
-}
-
-var tabs = document.querySelectorAll('.tabs-container');
-for (var i = 0; i < tabs.length; i += 1) {
-  new _tabs2.default(tabs[i]);
-}
 
 /***/ }),
 /* 1 */

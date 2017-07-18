@@ -9,11 +9,12 @@
     border-bottom: 1px solid #e0e6ed;
 
     .tab-link {
+      @include base-font();
+      
       flex-basis: 100%;
       cursor: pointer;
       outline: none;
       -webkit-appearance: none;
-      font-family: 'Lato', sans-serif;
       border: none;
       background: none;
       padding: 16px;

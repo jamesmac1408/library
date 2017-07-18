@@ -1,5 +1,6 @@
 @import '_partials';
 @import '_theme';
+@import '../../../_design/typography/scss/styles';
 
 body, html {
     min-height: 100vh;
@@ -21,7 +22,7 @@ body {
     height: 100vh;
     width: 100vw;
     background: $body-bg;
-    font-family: 'Lato', sans-serif;
+    @include base-font();
 }
 
 
