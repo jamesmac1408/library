@@ -71,6 +71,7 @@ class Drawer {
     this._removeDrawer = this._removeDrawer.bind(this);
 
     const activeContents = document.querySelector('.collection-listItem.active');
+    console.log(activeContents);
     if (activeContents) {
       this.activeContents = new TableOfContents(activeContents)
     }

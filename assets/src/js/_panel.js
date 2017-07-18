@@ -25,18 +25,16 @@ class Panel {
   }
 
   _calculateHeight() {
-    requestAnimationFrame(() => {
-      this.height = this.body.height() + 12; // giving a little bit of room (not sure why its needed but it seems to be)
+    this.height = this.body.height() + 12; // giving a little bit of room (not sure why its needed but it seems to be)
 
-      if (!this.active) {
-        this.body.css('maxHeight', 0);
-        this.body.css('opacity', 0);
-      }
+    if (!this.active) {
+      this.body.css('maxHeight', 0);
+      this.body.css('opacity', 0);
+    }
 
-      this.active = !this.active;
-      this._togglePanel();
-      this.initialised = true;
-    });
+    this.active = !this.active;
+    this._togglePanel();
+    this.initialised = true;
   }
 
   _addEvents() {

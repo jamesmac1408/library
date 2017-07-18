@@ -8,12 +8,6 @@ import Panel from './_panel';
 import Tabs from './_tabs';
 
 $( document ).ready(function() {
-  const headerIcon = document.getElementById('headerIcon');
-  const drawer = new Drawer(document.getElementById('drawerContainer'));
-  headerIcon.addEventListener('click', function() {
-    drawer.toggle();
-  });
-
   const codeBlocks = document.querySelectorAll('.demo-code');
   for (let i = 0; i < codeBlocks.length; i += 1) {
     new CodeBlock(codeBlocks[i]);
@@ -28,5 +22,11 @@ $( document ).ready(function() {
   for (let i = 0; i < tabs.length; i += 1) {
     new Tabs(tabs[i]);
   }
+
+  const headerIcon = document.getElementById('headerIcon');
+  const drawer = new Drawer(document.getElementById('drawerContainer'));
+  headerIcon.addEventListener('click', function() {
+    drawer.toggle();
+  });
 });
 

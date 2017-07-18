@@ -93,12 +93,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 */
 
 $(document).ready(function () {
-  var headerIcon = document.getElementById('headerIcon');
-  var drawer = new _drawer2.default(document.getElementById('drawerContainer'));
-  headerIcon.addEventListener('click', function () {
-    drawer.toggle();
-  });
-
   var codeBlocks = document.querySelectorAll('.demo-code');
   for (var i = 0; i < codeBlocks.length; i += 1) {
     new _codeblock2.default(codeBlocks[i]);
@@ -113,6 +107,12 @@ $(document).ready(function () {
   for (var _i2 = 0; _i2 < tabs.length; _i2 += 1) {
     new _tabs2.default(tabs[_i2]);
   }
+
+  var headerIcon = document.getElementById('headerIcon');
+  var drawer = new _drawer2.default(document.getElementById('drawerContainer'));
+  headerIcon.addEventListener('click', function () {
+    drawer.toggle();
+  });
 });
 
 /***/ }),
@@ -216,6 +216,7 @@ var Drawer = function () {
     this._removeDrawer = this._removeDrawer.bind(this);
 
     var activeContents = document.querySelector('.collection-listItem.active');
+    console.log(activeContents);
     if (activeContents) {
       this.activeContents = new _contentsTable2.default(activeContents);
     }
@@ -1461,29 +1462,25 @@ var Panel = function () {
   }, {
     key: '_calculateHeight',
     value: function _calculateHeight() {
-      var _this = this;
+      this.height = this.body.height() + 12; // giving a little bit of room (not sure why its needed but it seems to be)
 
-      requestAnimationFrame(function () {
-        _this.height = _this.body.height() + 12; // giving a little bit of room (not sure why its needed but it seems to be)
+      if (!this.active) {
+        this.body.css('maxHeight', 0);
+        this.body.css('opacity', 0);
+      }
 
-        if (!_this.active) {
-          _this.body.css('maxHeight', 0);
-          _this.body.css('opacity', 0);
-        }
-
-        _this.active = !_this.active;
-        _this._togglePanel();
-        _this.initialised = true;
-      });
+      this.active = !this.active;
+      this._togglePanel();
+      this.initialised = true;
     }
   }, {
     key: '_addEvents',
     value: function _addEvents() {
-      var _this2 = this;
+      var _this = this;
 
       this.cta.on('click', this._togglePanel);
       this.body.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
-        _this2.body.removeClass('animatable');
+        _this.body.removeClass('animatable');
       });
     }
   }]);
