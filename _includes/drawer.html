@@ -36,7 +36,7 @@
                                         <li class="collection-listItem" id="{{ doc.name | cgi_escape }}-nav">
                                     {% endif %}     
                                         <div class="scrollIndicator"></div>
-                                        <a href="{{ doc.url }}">{{ doc.name }}</a>
+                                        <a href="{{ site.baseurl }}{{ doc.url }}">{{ doc.name }}</a>
                                         {{ doc.content | toc }}
                                     </li>
                                 {% endfor %}
