@@ -4,7 +4,7 @@
      entry: './assets/src/js/main.js',
      output: {
          path: path.resolve(__dirname, 'assets', 'dist', 'js'),
-         filename: 'bundle.js'
+         filename: 'demo-site.js'
      },
      module: {
          loaders: [

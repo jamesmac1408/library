@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,KAAM;EACJ,UAAU,EAAE,8BAA0B;EACtC,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,IAAI",
-"sources": ["../../../../../_components/card/scss/styles.scss"],
-"names": [],
-"file": "styles.css"
-}

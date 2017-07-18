@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,WAAY;EACR,UAAU,EAAE,IAAI;EAChB,UAAU,EAAE,8BAA2B;EACvC,OAAO,EAAE,YAAY;EACrB,OAAO,EAAE,WAAW",
-"sources": ["../../../../../../_components/ripple/demo-assets/demo.scss"],
-"names": [],
-"file": "demo.css"
-}

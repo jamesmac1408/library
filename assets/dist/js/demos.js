@@ -1,0 +1,2 @@
+if(document.getElementById("sliderTarget")){var carousel=new LoopedCarousel("sliderTarget",{autoplay:!0,autoplaySpeed:2e3}),carouselFinite=new FiniteCarousel("sliderTarget2",{autoplay:!0,autoplaySpeed:2e3});console.log(carousel instanceof Carousel),console.log(carouselFinite instanceof Carousel)}
+//# sourceMappingURL=demos.js.map

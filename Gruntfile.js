@@ -1,95 +1,89 @@
 const webpackConfig = require('./webpack.config');
 
 module.exports = function(grunt) {
+  const brands = ['very', 'veryexclusive', 'littlewoods', 'littlewoodsireland'];
+  const devices = ['desktop', 'mobile'];
 
-  grunt.initConfig({
+  /* The sass task compiles all _components/styles.scss files into css files, 
+   * and the same for  the _design/styles.scss files.
+   * These then both get concatenated down to the main.css, with correct sourcemapping
+   */
+  const sassConfig = {}
+  for (let brand of brands) {
+    const files = [];
+    for (let device of devices) {
+      files.push({
+        expand: true,
+        cwd: '/',
+        src: [`_components/**/scss/*${brand}-${device}.scss`, `_design/**/scss/*${brand}-${device}.scss`],
+        dest: `dist/css`,
+        ext: '.css'
+      });
+    }
 
-    concat: {
+    sassConfig[brand] = {
       options: {
+        sourcemap: 'none'
       },
+      files: files
+    }
+  }
+
+  const concatConfig = {}
+  for (let brand of brands) {
+    for (let device of devices) {
+      concatConfig[`${brand}-${device}`] = {
+      options: {
+          sourceMap: true,
+        },
+        src: [`dist/css/**/*${brand}-${device}.css`],
+        dest: `dist/css/${device}-${brand}.css`,
+      }
+    }
+    
+  }
+
+  const config = {
+
+    concat: Object.assign(concatConfig, {
       demo: {
         options: {
           sourceMap: true
         },
-        src: ['assets/src/css/*.css', 'assets/dist/css/_components/**/*.css', 'assets/dist/css/_design/**/*.css', 'assets/dist/css/base.css'],
+        src: ['assets/dist/css/**/*.css'],
         dest: 'assets/dist/css/main.css'
       },
-      dist: {
-        options: {
-          sourceMap: true
-        },
-        src: ['dist/css/_components/**/*.css', 'dist/css/_design/**/*.css'],
-        dest: 'dist/css/main.css'
-      }
-    },
+    }),
 
-    sass: {
-      /* The sass task compiles all _components/styles.scss files into css files, 
-       * and the same for  the _design/styles.scss files.
-       * These then both get concatenated down to the main.css, with correct sourcemapping
-       */
-      components: {
-        options: {
-          sourcemap: 'none'
-        },
-        files: [{
-          expand: true,
-          cwd: '',
-          src: ['_components/**/scss/*.scss'],
-          dest: 'dist/css',
-          ext: '.css'
-        }]
-      },
-      design: {
-        options: {
-          sourcemap: 'none'
-        },
-        files: [{
-          expand: true,
-          cwd: '',
-          src: ['_design/**/scss/*.scss'],
-          dest: 'dist/css',
-          ext: '.css'
-        }]
-      },
+    sass: Object.assign(sassConfig, {
       /* These tasks compile all _components/demo-assets/*.scss files into css files, 
        * and the same for  the _design/demo-assets/*.scss files, as well as the main
        * demo site styles .scss file.
        * These all then get concatenated down to the main demo site .css file, with correct sourcemapping
        */
-      demo: {
+      demos: {
+        options: {
+          sourcemap: 'none'
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '',
+            src: ['_components/**/demo-assets/*.scss', '_design/**/demo-assets/*.scss'],
+            dest: 'assets/dist/css/demos',
+            ext: '.css'
+          }
+        ]
+      },
+      "demo-site": {
         options: {
           sourcemap: 'none'
         },
         files: {
-          'assets/dist/css/base.css': 'assets/src/scss/main.scss',
+          'assets/dist/css/base.css': 'assets/src/scss/base.scss'
         }
-      },
-      componentsDemo: {
-        options: {
-          sourcemap: 'none'
-        },
-        files: [{
-          expand: true,
-          cwd: '',
-          src: ['_components/**/demo-assets/*.scss'],
-          dest: 'assets/dist/css',
-          ext: '.css'
-        }]
-      },
-      designDemo: {
-        options: {
-          sourcemap: 'none'
-        },
-        files: [{
-          expand: true,
-          cwd: '',
-          src: ['_design/**/demo-assets/*.scss'],
-          dest: 'assets/dist/css',
-          ext: '.css'
-        }]
-      },
-    },
+      }
+    }),
 
     postcss: {
       /* The postcss script performs functions on the generated css files, at the moment it:
@@ -104,27 +98,16 @@ module.exports = function(grunt) {
         ]
       },
       dist: {
-        src: 'dist/css/main.css'
+        src: 'dist/css/**/*.css'
       },
       demo: {
-        src: 'assets/dist/css/main.css'
+        src: 'assets/dist/css/**/*.css'
       }
     },
 
     webpack: {
       demo: webpackConfig
     },
-    // babel: {
-    //   options: {
-    //     sourceMap: true,
-    //     presets: ['es2015']
-    //   },
-    //   demo: {
-    //     files: {
-    //       'assets/dist/js/bundle.js': 'assets/src/js/main.js'
-    //     }
-    //   }
-    // },
 
     uglify: {
       /* The uglify script takes in all files in each components/designs /js sub-folder.
@@ -135,12 +118,12 @@ module.exports = function(grunt) {
         sourceMap: true
       },
       dist: {
-        src:  ['_components/**/js/*', '_design/**/js/*'],
+        src:  ['_components/**/js/*.js', '_design/**/js/*.js'],
         dest: 'dist/js/main.js'
       },
-      demo: {
-        src: ['_components/**/demo-assets/demo.js', '_design/**/demo-assets/demo.js', 'assets/dist/js/bundle.js'],
-        dest: 'assets/dist/js/bundle.min.js'
+      demos: {
+        src: ['_components/**/demo-assets/*.js', '_design/**/demo-assets/*.js'],
+        dest: 'assets/dist/js/demos.js'
       }
     },
 
@@ -190,7 +173,9 @@ module.exports = function(grunt) {
         tasks: ['jekyll:dev']
       }
 		},
-  });
+  }
+
+  grunt.initConfig(config);
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-postcss');

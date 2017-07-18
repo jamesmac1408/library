@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,OAAQ;EACN,KAAK,EAAE,KAAK;;AAGd,OAAQ;EACN,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,KAAK",
-"sources": ["../../../../../../_components/Secondary%20Button/demo-assets/demo.scss"],
-"names": [],
-"file": "demo.css"
-}
