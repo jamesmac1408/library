@@ -125,7 +125,7 @@
       cursor: pointer;
       outline: none;
       border: none;
-      background: none;
+      background-color: #E0E0E0;
       font-size: 0;
       padding: 0;
       position: absolute;
@@ -135,7 +135,10 @@
       bottom: 0;
       margin: auto;
       width: 10px;
-      height: 10px; }
+      height: 10px;
+      transition: background-color 0.3s ease-in-out; }
+    .carousel--looped .slick-dots > li.slick-active > button {
+      background-color: #DE007B; }
 
 /* Finite Carousels */
 .carousel--finite .slick-dots {
@@ -159,7 +162,7 @@
     padding: 0;
     height: 4px; }
     .carousel--finite .slick-dots > li > button {
-      background: #DE007B;
+      background-color: #DE007B;
       -webkit-appearance: none;
       cursor: pointer;
       outline: none;

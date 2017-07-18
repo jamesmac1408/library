@@ -1,19 +1,21 @@
 class Panel {
   _slideUp() {
-    this.cta.removeClass('active');
-    this.body.addClass('animatable');
+    this.el.removeClass('active');
     this.body.css('maxHeight', 0);
     this.body.css('opacity', 0);
   }
 
   _slideDown() {
-    this.cta.addClass('active');
-    this.body.addClass('animatable');
+    this.el.addClass('active');
     this.body.css('maxHeight', this.height);
     this.body.css('opacity', 1);
   }
 
-  _togglePanel(index) {
+  _togglePanel() {
+    if (this.initialised) {
+      this.body.addClass('animatable');
+    }
+
     if (this.active) {
       this._slideUp();
     } else {
@@ -23,22 +25,32 @@ class Panel {
   }
 
   _calculateHeight() {
-    this.height = this.body.height();
-    this.body.css('maxHeight', 0);
-    this.body.css('opacity', 0);
+    this.body.css('display', 'block');
+    requestAnimationFrame(() => {
+      this.height = this.body.height() + 12; // giving a little bit of room (not sure why its needed but it seems to be)
+
+      if (!this.active) {
+        this.body.css('maxHeight', 0);
+        this.body.css('opacity', 0);
+      }
+
+      this.active = !this.active;
+      this._togglePanel();
+      this.initialised = true;
+    });
   }
 
   _addEvents() {
     this.cta.on('click', this._togglePanel);
-    var self = this;
-    this.body.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
-       self.body.removeClass('animatable');
+    this.body.on('transitionend webkitTransitionEnd oTransitionEnd', () => {
+       this.body.removeClass('animatable');
     });
   }
 
   constructor(el) {
     this.el = $(el);
-    this.active = false;
+    this.active = this.el.hasClass('active');
+    this.initialised = false;
 
     this._addEvents = this._addEvents.bind(this);
     this._togglePanel = this._togglePanel.bind(this);

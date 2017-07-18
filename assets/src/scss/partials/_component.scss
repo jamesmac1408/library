@@ -48,6 +48,30 @@
     .component-body {
         padding: 16px;
         line-height: 1.5;
+
+        .panel-container {
+            box-shadow: 0px 1px 4px rgba(0,0,0,0.2);
+            background: #fff;
+
+            .panel-cta {
+                padding: 16px;
+
+                .panel-title {
+                    font-size: 20px;
+                    font-weight: 300;
+                    color: #272727;
+                }
+                .panel-title:after {
+                    height: 100%;
+                    width: 24px;
+                }
+            }
+            .panel-body {
+                .body-content {
+                    padding: 0 16px 16px;
+                }
+            }
+        } 
         
         #markdown-toc {
             display: none;

@@ -8,4 +8,7 @@ if (document.getElementById('sliderTarget')) {
     autoplay: true,
     autoplaySpeed: 2000,
   });
+
+  console.log(carousel instanceof Carousel);
+  console.log(carouselFinite instanceof Carousel);
 }

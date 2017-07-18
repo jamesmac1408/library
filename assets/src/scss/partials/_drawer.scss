@@ -94,131 +94,107 @@
             border-color: $border-color;
             border-style: solid;
             border-width: 0px;
+            background-color: none;
+            
+            transition: background-color 0.1s ease-in-out;
 
+            .content-titleContainer {
+                padding: 16px;
+                text-decoration: none;
+                display: inline-block;
+                width: 100%;
+
+                .content-titleText {
+                    @include subheading();
+                    color: $primary-1-text;
+                    margin: 0;
+                    overflow: hidden;
+                    position: relative;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .content-titleText:after {
+                    height: 100%;
+                    width: 17px;
+                }
+            }
+            
+            &:hover {
+                background-color: #eceff5;
+            }
             &.active {
-                background: #eceff5;
+                background-color: #eceff5;
 
                 .content-titleText.dropdown:after {
                     transform: rotate(90deg);
                 }
             }
-            // border-bottom-width: 1px;
-        }
 
-        .content-section:nth-of-type(1) {
-            // border-top-width: 1px;
-        }
-
-        .content-titleContainer {
-            padding: 16px;
-            text-decoration: none;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .content-titleText {
-            @include subheading();
-            color: $primary-1-text;
-            margin: 0;
-            overflow: hidden;
-            position: relative;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-
-            &.dropdown:after {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 0;
-                right: 0;
-                height: 100%;
-                width: 17px;
-                background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTEwIDZMOC41OSA3LjQxIDEzLjE3IDEybC00LjU4IDQuNTlMMTAgMThsNi02eiIvPiAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PC9zdmc+);
-                background-repeat: no-repeat;
-                background-size: 100%;
-                background-position: center;
-            }
-        }
-
-        .content-body {
-            display: none;
-            padding: 0;
-        }
-
-        .content-section.active .content-title--text::after {
-            transform: rotate(180deg);
-        }
-
-        .content-section.active .content-body {
-            display: block;
-        }
-
-        .collection-list {
-            margin: 0;
-            padding: 0;
-
-            .collection-listItem {
-                position: relative;
-                list-style: none;
+            .collection-list {
+                margin: 0;
                 padding: 0;
 
-                .scrollIndicator {
-                    display: none;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    background: $accent-1;
-                    width: 5px;
-                    height: 0px;
-                    transition: height 0s $nice-easing;
-                }
-
-                a {
-                    @include body-1();
-                    display: block;
-                    padding: 8px 8px 8px 44px;
-                    text-decoration: none;
-                    color: $primary-1-text;
-                    transition: color 0.2s $nice-easing;
-                }
-
-                .toc {
-                    max-height: 0px;
-                    overflow: hidden;
-
-                    &.animatable {
-                        transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out;
-                    }
-                }
-                .toc, .toc ul, .toc ol {
+                .collection-listItem {
+                    position: relative;
                     list-style: none;
-                    padding: 0 0 0 16px;
-                }
-
-                &.active {
-                    background: rgba(222, 230, 245, 0.68);
+                    padding: 0;
 
                     .scrollIndicator {
-                        display: block;
+                        display: none;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background: $accent-1;
+                        width: 5px;
+                        height: 0px;
+                        transition: height 0s $nice-easing;
                     }
 
-                    > a {
-                        color: $accent-1;
+                    a {
+                        @include body-1();
+                        display: block;
+                        padding: 10px 8px 10px 32px;
+                        text-decoration: none;
+                        color: $primary-1-text;
+                        transition: color 0.2s $nice-easing;
                     }
+
                     .toc {
-                        display: block;
+                        display: none;
 
-                         @media (max-width: $screen-mob-max) {
-                            max-height: none !important;
+                        &.animatable {
+                            transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+                        }
+                    }
+                    .toc, .toc ul, .toc ol {
+                        list-style: none;
+                        padding: 0 0 0 24px;
+                    }
+
+                    &.active {
+                        background: rgba(222, 230, 245, 0.68);
+
+                        .scrollIndicator {
+                            display: block;
                         }
 
-                        li > a.active {
+                        > a {
                             color: $accent-1;
+                        }
+                        .toc {
+                            display: block;
+
+                            @media (max-width: $screen-mob-max) {
+                                max-height: none !important;
+                            }
+
+                            li > a.active {
+                                color: $accent-1;
+                            }
                         }
                     }
                 }
             }
         }
     }
-
 }

@@ -63,7 +63,7 @@ defaults:
       path: "_components" 
     values:
       layout: "component"
-      type: "component"
+      type: "components"
 
 liquid:
   error_mode: warn

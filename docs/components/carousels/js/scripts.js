@@ -63,7 +63,8 @@ var LoopedCarousel = function(el, opts) {
   // 'super()'
   Carousel.call(this, el, opts);
 }
-LoopedCarousel.prototype = Object.assign({}, Carousel.prototype, 
+LoopedCarousel.prototype = Object.create(Carousel.prototype);
+Object.assign(LoopedCarousel.prototype, 
   {
     initialised: false,
     numberOfFlankingPips: 2,
@@ -73,7 +74,6 @@ LoopedCarousel.prototype = Object.assign({}, Carousel.prototype,
       var props = {
         'height'          : '16px',
         'width'           : '16px',
-        'backgroundColor' : '#DE007B',
         'borderRadius'    : '2px',
         'opacity'         : '1',
       };
@@ -127,7 +127,6 @@ LoopedCarousel.prototype = Object.assign({}, Carousel.prototype,
       var props = {
         'height': '8px',
         'width': '8px',
-        'backgroundColor': '#E0E0E0',
         'borderRadius': '1px',
         'opacity': opacity
       };
@@ -203,7 +202,8 @@ var FiniteCarousel = function(el, opts) {
   // 'super()'
   Carousel.call(this, el, opts);
 }
-FiniteCarousel.prototype = Object.assign({}, Carousel.prototype,
+FiniteCarousel.prototype = Object.create(Carousel.prototype);
+Object.assign(FiniteCarousel.prototype,
   {
     BASE_SPEED: 300,
     initialised: false,
@@ -270,5 +270,5 @@ FiniteCarousel.prototype = Object.assign({}, Carousel.prototype,
     }
   }
 );
-
 FiniteCarousel.prototype.constructor = FiniteCarousel;
+

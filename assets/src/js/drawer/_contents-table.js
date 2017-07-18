@@ -1,14 +1,15 @@
 // THIS CODE HAS GOTTEN MESSY, I KNOW
 // TODO: Clean up
 
+import ScrollManager from '../_scroll-manager';
 import { IN_VIEW_THRESHOLD } from '../_constants';
 
 class TableOfContents {
   _highlightTitles(scrollTop) {
     var furthestTitle = 0;
     for (var i = 0; i < this.titles.length; i++) {
-      var rect = this.titles[i].getBoundingClientRect();
-      if (rect.top < IN_VIEW_THRESHOLD) {
+      var top = this.titles[i].offsetTop;
+      if (scrollTop >= (top - this.offsetInViewThreshold)) {
         furthestTitle = i;
         this.links[i].classList.add('active');
       } else {
@@ -19,75 +20,39 @@ class TableOfContents {
   }
 
   _updateScrollIndicator(scrollTop, furthestTitle) {
-    if (this.titles[furthestTitle]) {
+    if ((furthestTitle !== this.furthestTitle) && this.titles[furthestTitle]) {
 
       this.furthestTitle = furthestTitle;
 
-      var currElementDistance = null;
-      var nextElementDistance = null;
-
-      var currTitleOffsetTop = this.titles[furthestTitle].offsetTop;
-
       if (furthestTitle === (this.titles.length - 1)) {
-        var componentOffsetBottom = (this.component.offsetTop + this.component.offsetHeight) ;
-
-        this.nextElementDistance = componentOffsetBottom;
-        this.currElementDistance = currTitleOffsetTop;
-
+        // if we're at at the list title in the contents table, set the next distance to the bottom of the 
+        // component body
+        this.nextElementDistance = (this.component.offsetTop + this.component.offsetHeight) - this.offsetInViewThreshold
       } else {
-        var nextTitleOffsetTop = this.titles[furthestTitle + 1].offsetTop;
-
-        this.nextElementDistance = nextTitleOffsetTop;
-        this.currElementDistance = currTitleOffsetTop;
+        // else, set the next distance to the next title
+        this.nextElementDistance = this.titles[furthestTitle + 1].offsetTop - this.offsetInViewThreshold
       }
+
+      // declare current element distance and clamp it to be above 0
+      this.currElementDistance = furthestTitle > 0 ? this.titles[furthestTitle].offsetTop - this.offsetInViewThreshold : 0;
     }
 
-    const goal = this.nextElementDistance - this.currElementDistance;
-    let distance = goal - (this.nextElementDistance - scrollTop - IN_VIEW_THRESHOLD);
-    distance = (distance > goal) ? goal : distance;
+    // work out the distance travelled
+    const distance = scrollTop - this.currElementDistance;
 
-    var percentage = (distance / goal),
-        extraHeight = (33 * percentage),
+    // work this out as a percentage of the distance between the current and next element distance
+    let percentageDistanceTravelled = distance / (this.nextElementDistance - this.currElementDistance);
+    percentageDistanceTravelled = (percentageDistanceTravelled > 1) ? 1 : percentageDistanceTravelled;
+
+    // work out height of the bar accordingly
+    var extraHeight = (33 * percentageDistanceTravelled),
         height = (33 * (furthestTitle)) + extraHeight;
 
     this.scrollIndicator.style.height = height + 'px';
   }
 
   initialiseMaxHeight() {
-    var self = this;
-
-    this.parent.style.display = 'block';
-    this.toc.style.maxHeight = 'none';
-    this.maxHeight = this.toc.offsetHeight + 12 + 'px';
-
-    requestAnimationFrame(function() {
-      if (!self.active) {
-        self.toc.style.maxHeight = '0px';
-        self.toc.style.opacity = 0;
-      }
-    })
-  }
-
-  update(scrollTop) {
-    // if (active) {
-      if (!this.active) {
-        console.log('here');
-        this.active = true;
-        this.toc.classList.add('animatable');
-        this.body.classList.add('active');
-        this.toc.style.maxHeight = this.maxHeight;
-        this.toc.style.opacity = 1;
-      }
-      this._highlightTitles(scrollTop);
-    // } 
-    // else if (this.active) {
-    //     console.log('here 2')
-    //     this.active = false;
-    //     this.toc.style.maxHeight = '0px';
-    //     this.toc.style.opacity = 0;
-    //     this.scrollIndicator.style.height = '0px';
-    //     this.body.classList.remove('active');
-    // }
+    this.maxHeight = this.toc.offsetHeight + 'px';
   }
 
   getComponent() {
@@ -95,50 +60,46 @@ class TableOfContents {
   }
 
   _scrollToTitle(index) {
-    doScrolling(this.titles[index], 300);
+    this.scrollManager.scrollTo(this.titles[index], 300);
   }
 
   _addEvents() {
+    this.scrollManager = new ScrollManager(document.body, this._highlightTitles);
+
     var self = this;
     for (var i = 0; i < this.links.length; i += 1) {
-        self.links[i].addEventListener('click', this._scrollToTitle.bind(null, i));
+      (function() {
+        var k = i;
+        self.links[k].addEventListener('click', (e) => {
+          self._scrollToTitle(k);
+          e.preventDefault();
+        });
+      }());
     }
   }
 
   constructor(el) {
-    this.base = el;
-    this.furthestTitle = null;
-    this.active = false;
-
-    this._scrollToTitle = this._scrollToTitle.bind(this);
-
+    this.body = el;
+    this.offsetInViewThreshold = IN_VIEW_THRESHOLD - document.querySelector('.main').offsetTop;
     this.component = document.querySelector('.component');
-    this.body = document.getElementById(this.base + '-nav');
     this.scrollIndicator = this.body.querySelector('.scrollIndicator');
     this.toc = this.body.querySelector('.toc');
 
-    console.log(this.body);
+    this._scrollToTitle = this._scrollToTitle.bind(this);
+    this._highlightTitles = this._highlightTitles.bind(this);
 
-    var el = this.body;
-    while ((el = el.parentElement) && !el.classList.contains('content-section'));
-    this.parent = el;
+    this.furthestTitle = null;
 
-    if (!this.component) {
-      return;
+    this.titles = [this.component.querySelector('.component-title')];
+    this.links = this.body.querySelectorAll('a');
+    for (var i = 1; i < this.links.length; i++) {
+      var id = /.*#(.*)/.exec(this.links[i].getAttribute('href'))[1].replace('+', '\\+')
+      this.titles = [...this.titles, this.component.querySelector('#' + id)];
     }
 
     this.initialiseMaxHeight();
-    
-    this.titles = [];
-    this.links = this.body.querySelectorAll('a');
-    this.titles.push(this.component.querySelector('.component-title'));
-    for (var i = 1; i < this.links.length; i++) {
-      // this makes me feel ill but is necessary, sorry
-      var id = /.*#(.*)/.exec(this.links[i].getAttribute('href'))[1].replace('+', '\\+')
-      this.titles.push(this.component.querySelector('#' + id));
-    }
-
     this._addEvents();
+    this._highlightTitles(0);
   }
 }
 

@@ -1,8 +1,8 @@
-function doScrolling(element, duration) {
-	var startingY = main.scrollTop
+function doScrolling(scrollTarget, element, duration) {
+	var startingY = scrollTarget.scrollTop
   var elementY = element.getBoundingClientRect().top
   // If element is close to page's bottom then window will scroll only to some position above the element.
-  var targetY = main.scrollHeight - elementY < main.offsetHeight ? main.scrollHeight - main.offsetHeight : elementY + main.scrollTop
+  var targetY = scrollTarget.scrollHeight - elementY < scrollTarget.offsetHeight ? scrollTarget.scrollHeight - scrollTarget.offsetHeight : elementY + scrollTarget.scrollTop
 	var diff = targetY - startingY
   // Easing function: easeInOutCubic
   // From: https://gist.github.com/gre/1650294
@@ -10,7 +10,7 @@ function doScrolling(element, duration) {
   var start
 
   if (!diff) return
-
+  
 	// Bootstrap our animation - it will get called right before next frame shall be rendered.
 	window.requestAnimationFrame(function step(timestamp) {
     if (!start) start = timestamp
@@ -22,7 +22,7 @@ function doScrolling(element, duration) {
     // It can cause bad-looking slow frames in browser performance tool, so be careful.
     percent = easing(percent)
 
-    main.scrollTop = startingY + diff * percent;
+    scrollTarget.scrollTop = startingY + diff * percent;
 
 		// Proceed with animation as long as we wanted it to.
     if (time < duration) {
@@ -30,3 +30,5 @@ function doScrolling(element, duration) {
     }
   })
 }
+
+export default doScrolling;

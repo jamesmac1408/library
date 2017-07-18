@@ -74,15 +74,15 @@ var _drawer = __webpack_require__(1);
 
 var _drawer2 = _interopRequireDefault(_drawer);
 
-var _codeblock = __webpack_require__(4);
+var _codeblock = __webpack_require__(6);
 
 var _codeblock2 = _interopRequireDefault(_codeblock);
 
-var _panel = __webpack_require__(6);
+var _panel = __webpack_require__(8);
 
 var _panel2 = _interopRequireDefault(_panel);
 
-var _tabs = __webpack_require__(7);
+var _tabs = __webpack_require__(9);
 
 var _tabs2 = _interopRequireDefault(_tabs);
 
@@ -137,8 +137,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var main = document.querySelector('.main');
-
 var Drawer = function () {
   _createClass(Drawer, [{
     key: 'toggle',
@@ -192,45 +190,13 @@ var Drawer = function () {
       }
     }
   }, {
-    key: '_updateTocs',
-    value: function _updateTocs() {
-      this.ticking = false;
-      this.activeContents.update(this.latestKnownScrollY);
-    }
-  }, {
-    key: '_requestTick',
-    value: function _requestTick() {
-      if (!this.ticking) {
-        requestAnimationFrame(this._updateTocs);
-      }
-      this.ticking = true;
-    }
-
-    // debounces scroll events
-
-  }, {
-    key: '_onScroll',
-    value: function _onScroll(scrollTop) {
-      this.latestKnownScrollY = scrollTop;
-      this._requestTick();
-    }
-  }, {
-    key: '_addEventListeners',
-    value: function _addEventListeners() {
-      var _this = this;
-
+    key: '_addEvents',
+    value: function _addEvents() {
       /* close drawer on clicking a link */
       var links = this.drawer.querySelectorAll('.collection-listItem a');
       for (var i = 0; i < links.length; i += 1) {
         links[i].addEventListener('click', this._hideDrawer);
       }
-      /* scroll listener */
-      document.body.addEventListener('scroll', function () {
-        _this._onScroll(document.body.scrollTop);
-      });
-      main.addEventListener('scroll', function () {
-        _this._onScroll(main.scrollTop);
-      });
       window.addEventListener('resize', this._onScroll);
       window.addEventListener('hashchange', this._onScroll);
     }
@@ -241,27 +207,16 @@ var Drawer = function () {
 
     this.drawerContainer = el;
     this.drawer = el.querySelector('.drawer');
-    this.tocs = el.querySelectorAll('.toc');
     this.active = false;
-
-    // sets up debouncing of scroll events
-    this.latestKnownScrollY = 0;
-    this.ticking = false;
 
     this._onBodyClick = this._onBodyClick.bind(this);
     this._hideDrawer = this._hideDrawer.bind(this);
     this._removeDrawer = this._removeDrawer.bind(this);
-    this._updateTocs = this._updateTocs.bind(this);
-    this._requestTick = this._requestTick.bind(this);
-    this._onScroll = this._onScroll.bind(this);
 
-    var activeComponent = document.querySelector('.component');
-    var component = /(.*)-component/.exec(activeComponent.getAttribute('id'))[1];
-    this.activeContents = new _contentsTable2.default(component);
+    var activeContents = document.querySelector('.collection-listItem.active');
+    this.activeContents = new _contentsTable2.default(activeContents);
 
-    this._updateTocs();
-
-    this._addEventListeners();
+    this._addEvents();
   }
 
   return Drawer;
@@ -283,7 +238,15 @@ Object.defineProperty(exports, "__esModule", {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // THIS CODE HAS GOTTEN MESSY, I KNOW
 // TODO: Clean up
 
-var _constants = __webpack_require__(3);
+var _scrollManager = __webpack_require__(3);
+
+var _scrollManager2 = _interopRequireDefault(_scrollManager);
+
+var _constants = __webpack_require__(5);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -293,8 +256,8 @@ var TableOfContents = function () {
     value: function _highlightTitles(scrollTop) {
       var furthestTitle = 0;
       for (var i = 0; i < this.titles.length; i++) {
-        var rect = this.titles[i].getBoundingClientRect();
-        if (rect.top < _constants.IN_VIEW_THRESHOLD) {
+        var top = this.titles[i].offsetTop;
+        if (scrollTop >= top - this.offsetInViewThreshold) {
           furthestTitle = i;
           this.links[i].classList.add('active');
         } else {
@@ -306,34 +269,32 @@ var TableOfContents = function () {
   }, {
     key: '_updateScrollIndicator',
     value: function _updateScrollIndicator(scrollTop, furthestTitle) {
-      if (this.titles[furthestTitle]) {
+      if (furthestTitle !== this.furthestTitle && this.titles[furthestTitle]) {
 
         this.furthestTitle = furthestTitle;
 
-        var currElementDistance = null;
-        var nextElementDistance = null;
-
-        var currTitleOffsetTop = this.titles[furthestTitle].offsetTop;
-
         if (furthestTitle === this.titles.length - 1) {
-          var componentOffsetBottom = this.component.offsetTop + this.component.offsetHeight;
-
-          this.nextElementDistance = componentOffsetBottom;
-          this.currElementDistance = currTitleOffsetTop;
+          // if we're at at the list title in the contents table, set the next distance to the bottom of the 
+          // component body
+          this.nextElementDistance = this.component.offsetTop + this.component.offsetHeight - this.offsetInViewThreshold;
         } else {
-          var nextTitleOffsetTop = this.titles[furthestTitle + 1].offsetTop;
-
-          this.nextElementDistance = nextTitleOffsetTop;
-          this.currElementDistance = currTitleOffsetTop;
+          // else, set the next distance to the next title
+          this.nextElementDistance = this.titles[furthestTitle + 1].offsetTop - this.offsetInViewThreshold;
         }
+
+        // declare current element distance and clamp it to be above 0
+        this.currElementDistance = furthestTitle > 0 ? this.titles[furthestTitle].offsetTop - this.offsetInViewThreshold : 0;
       }
 
-      var goal = this.nextElementDistance - this.currElementDistance;
-      var distance = goal - (this.nextElementDistance - scrollTop - _constants.IN_VIEW_THRESHOLD);
-      distance = distance > goal ? goal : distance;
+      // work out the distance travelled
+      var distance = scrollTop - this.currElementDistance;
 
-      var percentage = distance / goal,
-          extraHeight = 33 * percentage,
+      // work this out as a percentage of the distance between the current and next element distance
+      var percentageDistanceTravelled = distance / (this.nextElementDistance - this.currElementDistance);
+      percentageDistanceTravelled = percentageDistanceTravelled > 1 ? 1 : percentageDistanceTravelled;
+
+      // work out height of the bar accordingly
+      var extraHeight = 33 * percentageDistanceTravelled,
           height = 33 * furthestTitle + extraHeight;
 
       this.scrollIndicator.style.height = height + 'px';
@@ -341,41 +302,7 @@ var TableOfContents = function () {
   }, {
     key: 'initialiseMaxHeight',
     value: function initialiseMaxHeight() {
-      var self = this;
-
-      this.parent.style.display = 'block';
-      this.toc.style.maxHeight = 'none';
-      this.maxHeight = this.toc.offsetHeight + 12 + 'px';
-
-      requestAnimationFrame(function () {
-        if (!self.active) {
-          self.toc.style.maxHeight = '0px';
-          self.toc.style.opacity = 0;
-        }
-      });
-    }
-  }, {
-    key: 'update',
-    value: function update(scrollTop) {
-      // if (active) {
-      if (!this.active) {
-        console.log('here');
-        this.active = true;
-        this.toc.classList.add('animatable');
-        this.body.classList.add('active');
-        this.toc.style.maxHeight = this.maxHeight;
-        this.toc.style.opacity = 1;
-      }
-      this._highlightTitles(scrollTop);
-      // } 
-      // else if (this.active) {
-      //     console.log('here 2')
-      //     this.active = false;
-      //     this.toc.style.maxHeight = '0px';
-      //     this.toc.style.opacity = 0;
-      //     this.scrollIndicator.style.height = '0px';
-      //     this.body.classList.remove('active');
-      // }
+      this.maxHeight = this.toc.offsetHeight + 'px';
     }
   }, {
     key: 'getComponent',
@@ -385,14 +312,22 @@ var TableOfContents = function () {
   }, {
     key: '_scrollToTitle',
     value: function _scrollToTitle(index) {
-      doScrolling(this.titles[index], 300);
+      this.scrollManager.scrollTo(this.titles[index], 300);
     }
   }, {
     key: '_addEvents',
     value: function _addEvents() {
+      this.scrollManager = new _scrollManager2.default(document.body, this._highlightTitles);
+
       var self = this;
       for (var i = 0; i < this.links.length; i += 1) {
-        self.links[i].addEventListener('click', this._scrollToTitle.bind(null, i));
+        (function () {
+          var k = i;
+          self.links[k].addEventListener('click', function (e) {
+            self._scrollToTitle(k);
+            e.preventDefault();
+          });
+        })();
       }
     }
   }]);
@@ -400,39 +335,27 @@ var TableOfContents = function () {
   function TableOfContents(el) {
     _classCallCheck(this, TableOfContents);
 
-    this.base = el;
-    this.furthestTitle = null;
-    this.active = false;
-
-    this._scrollToTitle = this._scrollToTitle.bind(this);
-
+    this.body = el;
+    this.offsetInViewThreshold = _constants.IN_VIEW_THRESHOLD - document.querySelector('.main').offsetTop;
     this.component = document.querySelector('.component');
-    this.body = document.getElementById(this.base + '-nav');
     this.scrollIndicator = this.body.querySelector('.scrollIndicator');
     this.toc = this.body.querySelector('.toc');
 
-    console.log(this.body);
+    this._scrollToTitle = this._scrollToTitle.bind(this);
+    this._highlightTitles = this._highlightTitles.bind(this);
 
-    var el = this.body;
-    while ((el = el.parentElement) && !el.classList.contains('content-section')) {}
-    this.parent = el;
+    this.furthestTitle = null;
 
-    if (!this.component) {
-      return;
+    this.titles = [this.component.querySelector('.component-title')];
+    this.links = this.body.querySelectorAll('a');
+    for (var i = 1; i < this.links.length; i++) {
+      var id = /.*#(.*)/.exec(this.links[i].getAttribute('href'))[1].replace('+', '\\+');
+      this.titles = [].concat(_toConsumableArray(this.titles), [this.component.querySelector('#' + id)]);
     }
 
     this.initialiseMaxHeight();
-
-    this.titles = [];
-    this.links = this.body.querySelectorAll('a');
-    this.titles.push(this.component.querySelector('.component-title'));
-    for (var i = 1; i < this.links.length; i++) {
-      // this makes me feel ill but is necessary, sorry
-      var id = /.*#(.*)/.exec(this.links[i].getAttribute('href'))[1].replace('+', '\\+');
-      this.titles.push(this.component.querySelector('#' + id));
-    }
-
     this._addEvents();
+    this._highlightTitles(0);
   }
 
   return TableOfContents;
@@ -447,12 +370,179 @@ exports.default = TableOfContents;
 "use strict";
 
 
-module.exports = {
-    IN_VIEW_THRESHOLD: 60
-};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _smoothScrolling = __webpack_require__(4);
+
+var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ScrollManager = function () {
+  _createClass(ScrollManager, [{
+    key: 'addHandler',
+    value: function addHandler(handler) {
+      this.handlers.push(handler);
+    }
+  }, {
+    key: 'scrollTo',
+    value: function scrollTo(target, duration) {
+      (0, _smoothScrolling2.default)(this.scrollTarget, target, duration);
+    }
+  }, {
+    key: '_fireHandlers',
+    value: function _fireHandlers() {
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.handlers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var handler = _step.value;
+
+          handler(this.latestKnownScrollY);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      this.ticking = false;
+    }
+  }, {
+    key: '_requestTick',
+    value: function _requestTick() {
+      var _this = this;
+
+      if (!this.ticking) {
+        requestAnimationFrame(function () {
+          _this._fireHandlers();
+        });
+      }
+      this.ticking = true;
+    }
+  }, {
+    key: '_onScroll',
+    value: function _onScroll(scrollTop) {
+      this.latestKnownScrollY = scrollTop;
+      this._requestTick();
+    }
+  }, {
+    key: '_addEvents',
+    value: function _addEvents() {
+      var _this2 = this;
+
+      document.body.addEventListener('scroll', function (e) {
+        _this2._onScroll(document.body.scrollTop);
+      });
+      if (this.scrollTarget !== document.body) {
+        this.scrollTarget.addEventListener('scroll', function (e) {
+          _this2._onScroll(_this2.scrollTarget.scrollTop);
+        });
+      }
+      window.addEventListener('resize', this._onScroll);
+      window.addEventListener('hashchange', this._onScroll);
+    }
+  }]);
+
+  function ScrollManager(scrollTarget) {
+    _classCallCheck(this, ScrollManager);
+
+    this.scrollTarget = scrollTarget;
+
+    for (var _len = arguments.length, handlers = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      handlers[_key - 1] = arguments[_key];
+    }
+
+    this.handlers = handlers;
+    this.ticking = false;
+
+    this._onScroll = this._onScroll.bind(this);
+
+    this._addEvents();
+  }
+
+  return ScrollManager;
+}();
+
+exports.default = ScrollManager;
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function doScrolling(scrollTarget, element, duration) {
+  var startingY = scrollTarget.scrollTop;
+  var elementY = element.getBoundingClientRect().top;
+  // If element is close to page's bottom then window will scroll only to some position above the element.
+  var targetY = scrollTarget.scrollHeight - elementY < scrollTarget.offsetHeight ? scrollTarget.scrollHeight - scrollTarget.offsetHeight : elementY + scrollTarget.scrollTop;
+  var diff = targetY - startingY;
+  // Easing function: easeInOutCubic
+  // From: https://gist.github.com/gre/1650294
+  var easing = function easing(t) {
+    return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+  };
+  var start;
+
+  if (!diff) return;
+
+  // Bootstrap our animation - it will get called right before next frame shall be rendered.
+  window.requestAnimationFrame(function step(timestamp) {
+    if (!start) start = timestamp;
+    // Elapsed miliseconds since start of scrolling.
+    var time = timestamp - start;
+    // Get percent of completion in range [0, 1].
+    var percent = Math.min(time / duration, 1);
+    // Apply the easing.
+    // It can cause bad-looking slow frames in browser performance tool, so be careful.
+    percent = easing(percent);
+
+    scrollTarget.scrollTop = startingY + diff * percent;
+
+    // Proceed with animation as long as we wanted it to.
+    if (time < duration) {
+      window.requestAnimationFrame(step);
+    }
+  });
+}
+
+exports.default = doScrolling;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+    IN_VIEW_THRESHOLD: 0
+};
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -466,7 +556,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ============ Code Block ============
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
 
-var _clipboard = __webpack_require__(5);
+var _clipboard = __webpack_require__(7);
 
 var _clipboard2 = _interopRequireDefault(_clipboard);
 
@@ -517,7 +607,7 @@ var CodeBlock = function () {
 exports.default = CodeBlock;
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1320,7 +1410,7 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 });
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1338,22 +1428,24 @@ var Panel = function () {
   _createClass(Panel, [{
     key: '_slideUp',
     value: function _slideUp() {
-      this.cta.removeClass('active');
-      this.body.addClass('animatable');
+      this.el.removeClass('active');
       this.body.css('maxHeight', 0);
       this.body.css('opacity', 0);
     }
   }, {
     key: '_slideDown',
     value: function _slideDown() {
-      this.cta.addClass('active');
-      this.body.addClass('animatable');
+      this.el.addClass('active');
       this.body.css('maxHeight', this.height);
       this.body.css('opacity', 1);
     }
   }, {
     key: '_togglePanel',
-    value: function _togglePanel(index) {
+    value: function _togglePanel() {
+      if (this.initialised) {
+        this.body.addClass('animatable');
+      }
+
       if (this.active) {
         this._slideUp();
       } else {
@@ -1364,17 +1456,30 @@ var Panel = function () {
   }, {
     key: '_calculateHeight',
     value: function _calculateHeight() {
-      this.height = this.body.height();
-      this.body.css('maxHeight', 0);
-      this.body.css('opacity', 0);
+      var _this = this;
+
+      this.body.css('display', 'block');
+      requestAnimationFrame(function () {
+        _this.height = _this.body.height() + 12; // giving a little bit of room (not sure why its needed but it seems to be)
+
+        if (!_this.active) {
+          _this.body.css('maxHeight', 0);
+          _this.body.css('opacity', 0);
+        }
+
+        _this.active = !_this.active;
+        _this._togglePanel();
+        _this.initialised = true;
+      });
     }
   }, {
     key: '_addEvents',
     value: function _addEvents() {
+      var _this2 = this;
+
       this.cta.on('click', this._togglePanel);
-      var self = this;
       this.body.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
-        self.body.removeClass('animatable');
+        _this2.body.removeClass('animatable');
       });
     }
   }]);
@@ -1383,7 +1488,8 @@ var Panel = function () {
     _classCallCheck(this, Panel);
 
     this.el = $(el);
-    this.active = false;
+    this.active = this.el.hasClass('active');
+    this.initialised = false;
 
     this._addEvents = this._addEvents.bind(this);
     this._togglePanel = this._togglePanel.bind(this);
@@ -1401,7 +1507,7 @@ var Panel = function () {
 exports.default = Panel;
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

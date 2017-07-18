@@ -144,7 +144,7 @@
                 cursor: pointer;
                 outline: none;
                 border: none;
-                background: none;
+                background-color: #E0E0E0;
                 font-size: 0;
                 padding: 0;
                 position: absolute;
@@ -155,6 +155,11 @@
                 margin: auto;
                 width: 10px;
                 height: 10px;
+
+                transition: background-color 0.3s ease-in-out;
+            }
+            &.slick-active > button {
+                @include very-2(background-color);
             }
         }
     }
@@ -187,7 +192,7 @@
             height: 4px;
 
             > button {
-                @include very-2(background);
+                @include very-2(background-color);
 
                 -webkit-appearance: none;
                 cursor: pointer;
