@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     for (let device of devices) {
       files.push({
         expand: true,
-        cwd: '/',
+        cwd: '',
         src: [`_components/**/scss/*${brand}-${device}.scss`, `_design/**/scss/*${brand}-${device}.scss`],
         dest: `dist/css`,
         ext: '.css'
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
         options: {
           sourceMap: true
         },
-        src: ['assets/dist/css/**/*.css'],
+        src: ['assets/dist/css/**/*.css', '!assets/dist/css/main.css'],
         dest: 'assets/dist/css/main.css'
       },
     }),

@@ -1,8 +1,7 @@
 @import './theme';
 
 @mixin body-1() {
-  font-size: 14px;
-  letter-spacing: 0.56px;
+  font-size: 16px;
 }
 
 @mixin display-1() {
@@ -37,7 +36,7 @@
 }
 
 @mixin subheading() {
-  font-weight: 500;
-  font-size: 14px;
-  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 12.5px;
+  text-transform: uppercase;
 }

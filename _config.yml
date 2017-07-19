@@ -51,6 +51,8 @@ timezone:      null
 
 quiet:    false
 verbose:  false
+
+# collections
 defaults: 
   -
     scope:
@@ -64,6 +66,16 @@ defaults:
     values:
       layout: "component"
       type: "components"
+
+# variables
+brands: 
+  - "very"
+  - "littlewoods"
+  - "littlewoodsireland"
+  - "veryexclusive"
+devices:
+  - "desktop"
+  - "mobile"
 
 liquid:
   error_mode: warn

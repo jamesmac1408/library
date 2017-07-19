@@ -74,15 +74,15 @@ var _drawer = __webpack_require__(1);
 
 var _drawer2 = _interopRequireDefault(_drawer);
 
-var _codeblock = __webpack_require__(6);
+var _codeblock = __webpack_require__(7);
 
 var _codeblock2 = _interopRequireDefault(_codeblock);
 
-var _panel = __webpack_require__(8);
+var _panel = __webpack_require__(9);
 
 var _panel2 = _interopRequireDefault(_panel);
 
-var _tabs = __webpack_require__(9);
+var _tabs = __webpack_require__(10);
 
 var _tabs2 = _interopRequireDefault(_tabs);
 
@@ -134,6 +134,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _contentsTable = __webpack_require__(2);
 
 var _contentsTable2 = _interopRequireDefault(_contentsTable);
+
+var _stylesManager = __webpack_require__(6);
+
+var _stylesManager2 = _interopRequireDefault(_stylesManager);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -192,6 +196,16 @@ var Drawer = function () {
       }
     }
   }, {
+    key: '_updateBrand',
+    value: function _updateBrand(e) {
+      this.stylesManager.setBrand(e.target.value);
+    }
+  }, {
+    key: '_updateDevice',
+    value: function _updateDevice(e) {
+      this.stylesManager.setDevice(e.target.value);
+    }
+  }, {
     key: '_addEvents',
     value: function _addEvents() {
       /* close drawer on clicking a link */
@@ -201,6 +215,15 @@ var Drawer = function () {
       }
       window.addEventListener('resize', this._onScroll);
       window.addEventListener('hashchange', this._onScroll);
+
+      var brandRadios = this.drawer.querySelectorAll('.brands-container input[type="radio"]');
+      var deviceRadios = this.drawer.querySelectorAll('.devices-container input[type="radio"]');
+      for (var i = 0; i < brandRadios.length; i += 1) {
+        brandRadios[i].addEventListener('click', this._updateBrand);
+      }
+      for (var i = 0; i < deviceRadios.length; i += 1) {
+        deviceRadios[i].addEventListener('click', this._updateDevice);
+      }
     }
   }]);
 
@@ -214,12 +237,15 @@ var Drawer = function () {
     this._onBodyClick = this._onBodyClick.bind(this);
     this._hideDrawer = this._hideDrawer.bind(this);
     this._removeDrawer = this._removeDrawer.bind(this);
+    this._updateBrand = this._updateBrand.bind(this);
+    this._updateDevice = this._updateDevice.bind(this);
 
     var activeContents = document.querySelector('.collection-listItem.active');
     console.log(activeContents);
     if (activeContents) {
       this.activeContents = new _contentsTable2.default(activeContents);
     }
+    this.stylesManager = new _stylesManager2.default('very', 'desktop');
 
     this._addEvents();
   }
@@ -558,11 +584,64 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var StylesManager = function () {
+  _createClass(StylesManager, [{
+    key: "setBrand",
+    value: function setBrand(brand) {
+      this.brand = brand;
+      this._loadStyles();
+    }
+  }, {
+    key: "setDevice",
+    value: function setDevice(device) {
+      this.device = device;
+      this._loadStyles();
+    }
+  }, {
+    key: "_loadStyles",
+    value: function _loadStyles() {
+      var href = this.currHref.replace(/(.*)dist\/css\/(.*)-(.*).css/, "$1dist/css/" + this.device + "-" + this.brand + ".css");
+      this.link.attr("href", href);
+      this.currHref = href;
+    }
+  }]);
+
+  function StylesManager(brand, device) {
+    _classCallCheck(this, StylesManager);
+
+    this.brand = brand;
+    this.device = device;
+    this.link = $('#dynamicStyles');
+    this.currHref = this.link.attr("href");
+
+    this._loadStyles();
+  }
+
+  return StylesManager;
+}();
+
+exports.default = StylesManager;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /*
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ============ Code Block ============
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
 
-var _clipboard = __webpack_require__(7);
+var _clipboard = __webpack_require__(8);
 
 var _clipboard2 = _interopRequireDefault(_clipboard);
 
@@ -613,7 +692,7 @@ var CodeBlock = function () {
 exports.default = CodeBlock;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1416,7 +1495,7 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 });
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1508,7 +1587,7 @@ var Panel = function () {
 exports.default = Panel;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

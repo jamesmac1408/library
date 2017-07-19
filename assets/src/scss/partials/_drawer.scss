@@ -63,6 +63,11 @@
             box-shadow: 0px 5px 10px #D8DDE6;
         }
 
+        .panel-title:after {
+            height: 100%;
+            width: 17px;
+        }
+
 
         .drawer-header {
             align-items: center;
@@ -98,24 +103,20 @@
             
             transition: background-color 0.1s ease-in-out;
 
-            .content-titleContainer {
+            .sectionTitle-container {
                 padding: 16px;
                 text-decoration: none;
                 display: inline-block;
                 width: 100%;
 
-                .content-titleText {
+                .sectionTitle-text {
                     @include subheading();
-                    color: $primary-1-text;
+                    color: #949494;
                     margin: 0;
                     overflow: hidden;
                     position: relative;
                     text-overflow: ellipsis;
                     white-space: nowrap;
-                }
-                .content-titleText:after {
-                    height: 100%;
-                    width: 17px;
                 }
             }
             
@@ -125,7 +126,7 @@
             &.active {
                 background-color: #eceff5;
 
-                .content-titleText.dropdown:after {
+                .sectionTitle-text.dropdown:after {
                     transform: rotate(90deg);
                 }
             }
@@ -191,6 +192,28 @@
                             li > a.active {
                                 color: $accent-1;
                             }
+                        }
+                    }
+                }
+            }
+        }
+
+        .drawer-footer {
+            form {
+                padding: 0 16px 16px 16px;
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+
+                label {
+                    text-transform: capitalize;
+
+                    input[type="radio"] {
+                        &:before {
+                            border-color: $accent-1;
+                        }
+                        &:after {
+                            background-color: $accent-1;
                         }
                     }
                 }

@@ -10,8 +10,8 @@
         <div class="drawer-content">
             
             <div class="content-section">
-                <a class="content-titleContainer" href="{{ site.baseurl }}/">
-                    <h2 class="content-titleText">Overview</h1>
+                <a class="sectionTitle-container" href="{{ site.baseurl }}/">
+                    <h2 class="sectionTitle-text">Overview</h1>
                 </a>
             </div>
 
@@ -24,8 +24,8 @@
                     {% else %}
                         <div class="content-section panel-container">
                     {% endif %}
-                        <button class="content-titleContainer panel-cta">
-                            <h2 class="content-titleText panel-title">{{ c.label }}</h1>
+                        <button class="sectionTitle-container panel-cta">
+                            <h2 class="sectionTitle-text panel-title">{{ c.label }}</h1>
                         </button>
                         <div class="content-body panel-body">
                             <ul class="collection-list">
@@ -45,8 +45,48 @@
                     </div>
                 {% endif %}
             {% endfor %}
+        </div>
 
-            
+        <div class="drawer-footer">
+            <div class="panel-container content-section devices-container">
+                <button class="panel-cta sectionTitle-container">
+                    <h2 class="panel-title sectionTitle-text">Device</h2>
+                </button>
+                <div class="panel-body">
+                    <form action="">
+                        {% for device in site.devices %}
+                            <label for="{{ device }}" class="radioButton">
+                                {% if device == "desktop" %}
+                                    <input type="radio" name="device" value="{{ device }}" id="{{ device }}" checked>
+                                {% else %}
+                                    <input type="radio" name="device" value="{{ device }}" id="{{ device }}">
+                                {% endif %}
+                                <span>{{ device }}</span>
+                            </label>
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel-container content-section brands-container">
+                <button class="panel-cta sectionTitle-container">
+                    <h2 class="panel-title sectionTitle-text">Brand</h2>
+                </button>
+                <div class="panel-body">
+                    <form action="">
+                        {% for brand in site.brands %}
+                            <label for="{{ brand }}" class="radioButton">
+                                {% if brand == "very" %}
+                                    <input type="radio" name="brand" value="{{ brand }}" id="{{ brand }}" checked>
+                                {% else %}
+                                    <input type="radio" name="brand" value="{{ brand }}" id="{{ brand }}">
+                                {% endif %}
+                                <span>{{ brand }}</span>
+                            </label>
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     

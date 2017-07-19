@@ -20,15 +20,7 @@
   <!-- Base site styles -->
   <link rel="stylesheet" href="/library/assets/dist/css/main.css">
   <!-- Compiled component styles (that is used in build) -->
-  <link rel="stylesheet" href="/library/dist/css/desktop-very.css">
-  <link rel="stylesheet" href="/library/dist/css/desktop-veryexclusive.css">
-  <link rel="stylesheet" href="/library/dist/css/desktop-littlewoods.css">
-  <link rel="stylesheet" href="/library/dist/css/desktop-littlewoodsireland.css">
-
-  <link rel="stylesheet" href="/library/dist/css/mobile-very.css">
-  <link rel="stylesheet" href="/library/dist/css/mobile-veryexclusive.css">
-  <link rel="stylesheet" href="/library/dist/css/mobile-littlewoods.css">
-  <link rel="stylesheet" href="/library/dist/css/mobile-littlewoodsireland.css">
+  <link rel="stylesheet" href="/library/dist/css/desktop-very.css" id="dynamicStyles">
 
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -54,8 +46,8 @@
         <div class="drawer-content">
             
             <div class="content-section">
-                <a class="content-titleContainer" href="/library/">
-                    <h2 class="content-titleText">Overview</h1>
+                <a class="sectionTitle-container" href="/library/">
+                    <h2 class="sectionTitle-text">Overview</h1>
                 </a>
             </div>
 
@@ -66,8 +58,8 @@
                     
                         <div class="content-section panel-container active">
                     
-                        <button class="content-titleContainer panel-cta">
-                            <h2 class="content-titleText panel-title">components</h1>
+                        <button class="sectionTitle-container panel-cta">
+                            <h2 class="sectionTitle-text panel-title">components</h1>
                         </button>
                         <div class="content-body panel-body">
                             <ul class="collection-list">
@@ -100,6 +92,14 @@
                                     </li>
                                 
                                     
+                                        <li class="collection-listItem" id="Radio+Buttons-nav">
+                                         
+                                        <div class="scrollIndicator"></div>
+                                        <a href="/library/components/radio%20buttons.html">Radio Buttons</a>
+                                        <ol class="toc"></ol>
+                                    </li>
+                                
+                                    
                                         <li class="collection-listItem" id="Secondary+Button-nav">
                                          
                                         <div class="scrollIndicator"></div>
@@ -117,8 +117,8 @@
                     
                         <div class="content-section panel-container">
                     
-                        <button class="content-titleContainer panel-cta">
-                            <h2 class="content-titleText panel-title">design</h1>
+                        <button class="sectionTitle-container panel-cta">
+                            <h2 class="sectionTitle-text panel-title">design</h1>
                         </button>
                         <div class="content-body panel-body">
                             <ul class="collection-list">
@@ -146,8 +146,72 @@
             
                 
             
+        </div>
 
-            
+        <div class="drawer-footer">
+            <div class="panel-container content-section devices-container">
+                <button class="panel-cta sectionTitle-container">
+                    <h2 class="panel-title sectionTitle-text">Device</h2>
+                </button>
+                <div class="panel-body">
+                    <form action="">
+                        
+                            <label for="desktop" class="radioButton">
+                                
+                                    <input type="radio" name="device" value="desktop" id="desktop" checked>
+                                
+                                <span>desktop</span>
+                            </label>
+                        
+                            <label for="mobile" class="radioButton">
+                                
+                                    <input type="radio" name="device" value="mobile" id="mobile">
+                                
+                                <span>mobile</span>
+                            </label>
+                        
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel-container content-section brands-container">
+                <button class="panel-cta sectionTitle-container">
+                    <h2 class="panel-title sectionTitle-text">Brand</h2>
+                </button>
+                <div class="panel-body">
+                    <form action="">
+                        
+                            <label for="very" class="radioButton">
+                                
+                                    <input type="radio" name="brand" value="very" id="very" checked>
+                                
+                                <span>very</span>
+                            </label>
+                        
+                            <label for="littlewoods" class="radioButton">
+                                
+                                    <input type="radio" name="brand" value="littlewoods" id="littlewoods">
+                                
+                                <span>littlewoods</span>
+                            </label>
+                        
+                            <label for="littlewoodsireland" class="radioButton">
+                                
+                                    <input type="radio" name="brand" value="littlewoodsireland" id="littlewoodsireland">
+                                
+                                <span>littlewoodsireland</span>
+                            </label>
+                        
+                            <label for="veryexclusive" class="radioButton">
+                                
+                                    <input type="radio" name="brand" value="veryexclusive" id="veryexclusive">
+                                
+                                <span>veryexclusive</span>
+                            </label>
+                        
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     
