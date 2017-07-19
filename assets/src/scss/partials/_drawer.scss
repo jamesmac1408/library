@@ -100,8 +100,9 @@
             border-style: solid;
             border-width: 0px;
             background-color: none;
+            opacity: 0.7;
             
-            transition: background-color 0.1s ease-in-out;
+            transition: background-color 0.1s linear, opacity 0.1s linear;
 
             .sectionTitle-container {
                 padding: 16px;
@@ -113,7 +114,7 @@
                     display: flex;
                     align-items: center;
                     @include subheading();
-                    color: #212121;
+                    color: $title-text;
                     margin: 0;
                     overflow: hidden;
                     position: relative;
@@ -121,19 +122,20 @@
                     white-space: nowrap;
 
                     svg {
-                        fill: #212121;
+                        fill: $title-text;
                         width: 20px;
-                        margin-right: 12px;
+                        margin-right: 24px;
                     }
                 }
             }
-            
-            &:hover {
+
+            &.active, &.expanded, &:hover {
+                opacity: 1;
+            }
+            &.expanded, &:hover {
                 background-color: #eceff5;
             }
-            &.active {
-                background-color: #eceff5;
-
+            &.expanded {
                 .sectionTitle-text.dropdown:after {
                     transform: rotate(90deg);
                 }
@@ -141,7 +143,7 @@
 
             .collection-list {
                 margin: 0;
-                padding: 0;
+                padding: 0 0 10px 0;
 
                 .collection-listItem {
                     position: relative;
@@ -162,7 +164,7 @@
                     a {
                         @include body-1();
                         display: block;
-                        padding: 10px 8px 10px 48px;
+                        padding: 10px 8px 10px 60px;
                         text-decoration: none;
                         color: $primary-1-text;
                         transition: color 0.2s $nice-easing;
@@ -207,6 +209,8 @@
         }
 
         .drawer-footer {
+            border-top: 1px solid #d0d0d0;
+
             form {
                 padding: 0 16px 16px 16px;
                 display: flex;

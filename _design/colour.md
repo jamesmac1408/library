@@ -256,8 +256,8 @@ Grey colors are used for text, backgrounds, lines and borders.
 
 #### Very Exclusive
 
-** Not Defined Yet **
+**Not Defined Yet**
 
 #### Littlewoods Ireland
 
-** Not Defined Yet **
+**Not Defined Yet**

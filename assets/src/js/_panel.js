@@ -1,12 +1,12 @@
 class Panel {
   _slideUp() {
-    this.el.removeClass('active');
+    this.el.removeClass('expanded');
     this.body.css('maxHeight', 0);
     this.body.css('opacity', 0);
   }
 
   _slideDown() {
-    this.el.addClass('active');
+    this.el.addClass('expanded');
     this.body.css('maxHeight', this.height);
     this.body.css('opacity', 1);
   }
@@ -46,7 +46,7 @@ class Panel {
 
   constructor(el) {
     this.el = $(el);
-    this.active = this.el.hasClass('active');
+    this.active = this.el.hasClass('expanded');
     this.initialised = false;
 
     this._addEvents = this._addEvents.bind(this);

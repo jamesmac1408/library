@@ -1,4 +1,4 @@
-class StylesManager {
+class AssetsManager {
 
   setBrand(brand) {
     this.brand = brand;
@@ -26,4 +26,4 @@ class StylesManager {
   }
 }
 
-export default StylesManager;
+export default AssetsManager;

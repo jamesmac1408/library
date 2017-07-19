@@ -135,9 +135,9 @@ var _contentsTable = __webpack_require__(2);
 
 var _contentsTable2 = _interopRequireDefault(_contentsTable);
 
-var _stylesManager = __webpack_require__(6);
+var _assetsManager = __webpack_require__(6);
 
-var _stylesManager2 = _interopRequireDefault(_stylesManager);
+var _assetsManager2 = _interopRequireDefault(_assetsManager);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -198,12 +198,12 @@ var Drawer = function () {
   }, {
     key: '_updateBrand',
     value: function _updateBrand(e) {
-      this.stylesManager.setBrand(e.target.value);
+      this.assetsManager.setBrand(e.target.value);
     }
   }, {
     key: '_updateDevice',
     value: function _updateDevice(e) {
-      this.stylesManager.setDevice(e.target.value);
+      this.assetsManager.setDevice(e.target.value);
     }
   }, {
     key: '_addEvents',
@@ -245,7 +245,7 @@ var Drawer = function () {
     if (activeContents) {
       this.activeContents = new _contentsTable2.default(activeContents);
     }
-    this.stylesManager = new _stylesManager2.default('very', 'desktop');
+    this.assetsManager = new _assetsManager2.default('very', 'desktop');
 
     this._addEvents();
   }
@@ -588,8 +588,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var StylesManager = function () {
-  _createClass(StylesManager, [{
+var AssetsManager = function () {
+  _createClass(AssetsManager, [{
     key: "setBrand",
     value: function setBrand(brand) {
       this.brand = brand;
@@ -610,8 +610,8 @@ var StylesManager = function () {
     }
   }]);
 
-  function StylesManager(brand, device) {
-    _classCallCheck(this, StylesManager);
+  function AssetsManager(brand, device) {
+    _classCallCheck(this, AssetsManager);
 
     this.brand = brand;
     this.device = device;
@@ -621,10 +621,10 @@ var StylesManager = function () {
     this._loadStyles();
   }
 
-  return StylesManager;
+  return AssetsManager;
 }();
 
-exports.default = StylesManager;
+exports.default = AssetsManager;
 
 /***/ }),
 /* 7 */
@@ -1513,14 +1513,14 @@ var Panel = function () {
   _createClass(Panel, [{
     key: '_slideUp',
     value: function _slideUp() {
-      this.el.removeClass('active');
+      this.el.removeClass('expanded');
       this.body.css('maxHeight', 0);
       this.body.css('opacity', 0);
     }
   }, {
     key: '_slideDown',
     value: function _slideDown() {
-      this.el.addClass('active');
+      this.el.addClass('expanded');
       this.body.css('maxHeight', this.height);
       this.body.css('opacity', 1);
     }
@@ -1568,7 +1568,7 @@ var Panel = function () {
     _classCallCheck(this, Panel);
 
     this.el = $(el);
-    this.active = this.el.hasClass('active');
+    this.active = this.el.hasClass('expanded');
     this.initialised = false;
 
     this._addEvents = this._addEvents.bind(this);

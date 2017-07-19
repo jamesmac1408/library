@@ -2,7 +2,7 @@
   ============ Drawer ============
 */
 import TableOfContents from './_contents-table';
-import StylesManager from './_styles-manager';
+import AssetsManager from './_assets-manager';
 
 class Drawer {
 
@@ -53,10 +53,10 @@ class Drawer {
   }
 
   _updateBrand(e) {
-    this.stylesManager.setBrand(e.target.value);
+    this.assetsManager.setBrand(e.target.value);
   }
   _updateDevice(e) {
-    this.stylesManager.setDevice(e.target.value);
+    this.assetsManager.setDevice(e.target.value);
   }
 
   _addEvents() {
@@ -94,7 +94,7 @@ class Drawer {
     if (activeContents) {
       this.activeContents = new TableOfContents(activeContents)
     }
-    this.stylesManager = new StylesManager('very', 'desktop');
+    this.assetsManager = new AssetsManager('very', 'desktop');
 
     this._addEvents();
   }
