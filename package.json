@@ -6,7 +6,7 @@
   "scripts": {
     "jekyll": "jekyll build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "grunt": "grunt serve"
+    "dev": "grunt serve"
   },
   "repository": {
     "type": "git",

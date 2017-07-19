@@ -110,13 +110,21 @@
                 width: 100%;
 
                 .sectionTitle-text {
+                    display: flex;
+                    align-items: center;
                     @include subheading();
-                    color: #949494;
+                    color: #212121;
                     margin: 0;
                     overflow: hidden;
                     position: relative;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+
+                    svg {
+                        fill: #212121;
+                        width: 20px;
+                        margin-right: 12px;
+                    }
                 }
             }
             
@@ -154,7 +162,7 @@
                     a {
                         @include body-1();
                         display: block;
-                        padding: 10px 8px 10px 32px;
+                        padding: 10px 8px 10px 48px;
                         text-decoration: none;
                         color: $primary-1-text;
                         transition: color 0.2s $nice-easing;
