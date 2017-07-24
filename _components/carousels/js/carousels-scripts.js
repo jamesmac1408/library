@@ -27,13 +27,8 @@ Carousel.prototype = {
       autoplaySpeed: 2000,
       autoplay: false,
     }
-    // rough object.assign, default options -> passed in options
-    for (var opt in defaultOpts) {
-      if (this.opts.hasOwnProperty(opt)) {
-        defaultOpts[opt] = this.opts[opt];
-      }
-    }
-    return defaultOpts;
+    var opts = Object.assign({}, defaultOpts, this.opts);
+    return opts;
   },
   _initMainSlider: function() {
     this.opts = this._assignOpts();
@@ -200,7 +195,9 @@ LoopedCarousel.prototype.constructor = LoopedCarousel;
 
 var FiniteCarousel = function(el, opts) {
   // 'super()'
-  Carousel.call(this, el, opts);
+  Carousel.call(this, el, Object.assign({}, opts, {
+    infinite: false
+  }));
 }
 FiniteCarousel.prototype = Object.create(Carousel.prototype);
 Object.assign(FiniteCarousel.prototype,

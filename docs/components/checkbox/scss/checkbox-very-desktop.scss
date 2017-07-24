@@ -1,0 +1,92 @@
+@import '../../../_design/colour/scss/styles';
+
+.checkbox {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  margin: 12px 0;
+  cursor: pointer;
+
+  input[type=checkbox] {
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    float: left;
+    padding: 0;
+    margin: 0 8px 0 0;
+    width: 18px;
+    height: 18px;
+    overflow: hidden;
+
+    border-width: 2px;
+    border-style: solid;
+    border-color:transparent;
+    border-radius: 2px;
+    background-color: #fff;
+
+    transition: background-color 0.1s linear, border-color 0.1s linear;
+
+    &:before {
+      display: block;
+      content: '';
+      
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      height: 16px;
+      width: 16px;
+
+	    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNOSAxNi4xN0w0LjgzIDEybC0xLjQyIDEuNDFMOSAxOSAyMSA3bC0xLjQxLTEuNDF6Ii8+PC9zdmc+);
+      background-size: 18px 18px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #E0E0E0;
+
+      transition: border-color 0.1s ease-in-out;
+    }
+    &:after {
+      display: block;
+      content: '';
+
+      position: absolute;
+      z-index: 2;
+      top: 2px;
+      left: 2px;
+      height: 14px;
+      width: 14px;
+      
+      background-color: #fff;
+      transform: translateX(0%);
+
+      transition: transform 0.3s ease-in-out, background-color 0.1s linear;
+    }
+    &:hover, &:checked {
+      @include very-2(border-color);
+
+      &:before {
+        border-color: transparent;
+      }
+    }
+    &:checked {
+      @include very-2(background-color);
+
+      &:before {
+        
+      }
+      &:after {
+        @include very-2(background-color);
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  span {
+    float: left;
+    line-height: 20px;
+    margin-left: 8px;
+  }
+}
