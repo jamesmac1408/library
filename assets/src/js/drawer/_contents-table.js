@@ -1,11 +1,9 @@
-// THIS CODE HAS GOTTEN MESSY, I KNOW
-// TODO: Clean up
-
 import ScrollManager from '../_scroll-manager';
 import { IN_VIEW_THRESHOLD } from '../_constants';
 
 class TableOfContents {
   _highlightTitles(scrollTop) {
+    console.log(scrollTop);
     var furthestTitle = 0;
     for (var i = 0; i < this.titles.length; i++) {
       var top = this.titles[i].offsetTop;
@@ -65,7 +63,7 @@ class TableOfContents {
   }
 
   _addEvents() {
-    this.scrollManager = new ScrollManager(document.body, this._highlightTitles);
+    this.scrollManager = new ScrollManager(document.querySelector('.page-container'), this._highlightTitles);
 
     var self = this;
     for (var i = 0; i < this.links.length; i += 1) {

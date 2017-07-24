@@ -266,8 +266,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // THIS CODE HAS GOTTEN MESSY, I KNOW
-// TODO: Clean up
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _scrollManager = __webpack_require__(3);
 
@@ -285,6 +284,7 @@ var TableOfContents = function () {
   _createClass(TableOfContents, [{
     key: '_highlightTitles',
     value: function _highlightTitles(scrollTop) {
+      console.log(scrollTop);
       var furthestTitle = 0;
       for (var i = 0; i < this.titles.length; i++) {
         var top = this.titles[i].offsetTop;
@@ -349,7 +349,7 @@ var TableOfContents = function () {
   }, {
     key: '_addEvents',
     value: function _addEvents() {
-      this.scrollManager = new _scrollManager2.default(document.body, this._highlightTitles);
+      this.scrollManager = new _scrollManager2.default(document.querySelector('.page-container'), this._highlightTitles);
 
       var self = this;
       for (var i = 0; i < this.links.length; i += 1) {
